@@ -32,6 +32,7 @@ import ProfileSDB from "./SystemDashBoard/ProfileSDB";
 import SuppliersOfficeBills from "./SuppliersOfficeBills";
 import ShowEmployee from "./ShowEmployee";
 import axios from "axios";
+import PrivateRoutes from "./PrivateRoutes";
 
 const queryClient = new QueryClient();
 function App() {
@@ -44,41 +45,42 @@ function App() {
         <Provider store={store}>
           <Routes>
             <Route path="/DoctorDashBoard" element={<DoctorDashBoard />} />
-            <Route path="/SystemDashBoard" element={<SystemDashBoard />} />
             <Route path="/SystemDashBoard/Login" element={<LoginSystemDB />} />
-
-            <Route
-              path="/SystemDashBoard/Labs"
-              element={
-                <QueryClientProvider client={queryClient}>
-                  <LabsSystemDB />
-                </QueryClientProvider>
-              }
-            />
-            <Route
-              path="/SystemDashBoard/Analytic"
-              element={<AnalyticSystemDB />}
-            />
-            <Route
-              path="/SystemDashBoard/Quantity"
-              element={<QuantitySystemDB />}
-            />
-            <Route
-              path="/SystemDashBoard/MeasuringUnit"
-              element={<MeasuringUnit />}
-            />
-            <Route
-              path="/SystemDashBoard/TestMethod"
-              element={<TestMethodDB />}
-            />
-            <Route
-              path="/SystemDashBoard/Gender"
-              element={<GenderSystemDB />}
-            />
-            <Route
-              path="/SystemDashBoard/ProfileSDB"
-              element={<ProfileSDB />}
-            />
+            <Route element={<PrivateRoutes />}>
+              <Route path="/SystemDashBoard" element={<SystemDashBoard />} />
+              <Route
+                path="/SystemDashBoard/Labs"
+                element={
+                  <QueryClientProvider client={queryClient}>
+                    <LabsSystemDB />
+                  </QueryClientProvider>
+                }
+              />
+              <Route
+                path="/SystemDashBoard/Analytic"
+                element={<AnalyticSystemDB />}
+              />
+              <Route
+                path="/SystemDashBoard/Quantity"
+                element={<QuantitySystemDB />}
+              />
+              <Route
+                path="/SystemDashBoard/MeasuringUnit"
+                element={<MeasuringUnit />}
+              />
+              <Route
+                path="/SystemDashBoard/TestMethod"
+                element={<TestMethodDB />}
+              />
+              <Route
+                path="/SystemDashBoard/Gender"
+                element={<GenderSystemDB />}
+              />
+              <Route
+                path="/SystemDashBoard/ProfileSDB"
+                element={<ProfileSDB />}
+              />
+            </Route>
             <Route path="/" element={<Home />} />
             <Route path="/Login" element={<Login />} />
             <Route path="/Accounting" element={<Accounting />} />
