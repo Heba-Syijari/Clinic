@@ -317,7 +317,7 @@ export default function AddDoctor({ open, setOpen }) {
                             className="w-6 h-6 opacity-40 text-[#98A2B3]"
                           />
                           <input
-                            placeholder="Patient name"
+                            placeholder="Doctor name"
                             name="name"
                             id="NameInput"
                             type="text"
@@ -327,7 +327,7 @@ export default function AddDoctor({ open, setOpen }) {
                             id="Name"
                             className="hidden font-Poppins-Medium text-xs absolute top-[-0.8rem] bg-white left-[0.2rem]  px-1 text-[#B7C835] font-medium"
                           >
-                            Patient name
+                            Doctor name
                           </p>
                         </div>
 

@@ -9,10 +9,12 @@ import { HiOutlineArrowRight } from "react-icons/hi";
 import { AiOutlineEye } from "react-icons/ai";
 import profile from "../../Images/profile.jpg";
 import OutProductContainer from "./Inside/OutProductContainer";
+import EditoutsideProduct from "./EditoutsideProduct";
+import DeleteoutsideProduct from "./DeleteoutsideProduct";
 
 // Example items, to simulate fetching from another resources.
 
-function Items({ currentItems }) {
+function Items({ setOpenDeleteProduct, setOpenEditProduct, currentItems }) {
   return (
     <>
       {currentItems &&
@@ -50,8 +52,15 @@ function Items({ currentItems }) {
 
             <td>
               <div className="flex space-x-2 py-4">
-                <TiEdit className="text-2xl  opacity-50 cursor-pointer" />
-                <IoTrashOutline className="text-2xl text-[#F04438] cursor-pointer" />
+                <TiEdit
+                  className="text-2xl  opacity-50 cursor-pointer"
+                  onClick={() => setOpenEditProduct(true)}
+                />
+
+                <IoTrashOutline
+                  className="text-2xl text-[#F04438] cursor-pointer"
+                  onClick={() => setOpenDeleteProduct(true)}
+                />
               </div>
             </td>
           </tr>
@@ -65,6 +74,8 @@ function OutSidePangration({ section, itemsPerPage, Data }) {
   // following the API or data you're working with.
   const [itemOffset, setItemOffset] = useState(0);
   const [OpenOutProduct, setOpenOutProduct] = useState(false);
+  const [OpenEditProduct, setOpenEditProduct] = useState(false);
+  const [OpenDeleteProduct, setOpenDeleteProduct] = useState(false);
 
   // Simulate fetching items from another resources.
   // (This could be items from props; or items loaded in a local state
@@ -90,6 +101,11 @@ function OutSidePangration({ section, itemsPerPage, Data }) {
         section === "Outside" ? "block" : "hidden"
       } overflow-x-scroll`}
     >
+      <EditoutsideProduct open={OpenEditProduct} setOpen={setOpenEditProduct} />
+      <DeleteoutsideProduct
+        open={OpenDeleteProduct}
+        setOpen={setOpenDeleteProduct}
+      />
       <table className="w-full h-full mt-8 bg-white rounded-t-2xl ">
         <tr className="border-b-[1px] w-full">
           <td className="w-fit">
@@ -124,6 +140,8 @@ function OutSidePangration({ section, itemsPerPage, Data }) {
           </td>
         </tr>
         <Items
+          setOpenDeleteProduct={setOpenDeleteProduct}
+          setOpenEditProduct={setOpenEditProduct}
           setOpenOutProduct={setOpenOutProduct}
           currentItems={currentItems}
           className="w-full bg-white"

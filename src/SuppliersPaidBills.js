@@ -266,7 +266,7 @@ function SuppliersPaidBills() {
                 </Link>
 
                 <Link
-                  to="/Suppliers/ScientificOfficeBills"
+                  to="/Suppliers/OfficeBills"
                   className="bg-white w-fit flex items-center px-4 py-2 lg:py-0 rounded-xl cursor-pointer"
                 >
                   <p className="text-[#101828] text-center">
@@ -275,7 +275,7 @@ function SuppliersPaidBills() {
                 </Link>
 
                 <Link
-                  to="/Suppliers/ScientificOfficeBills"
+                  to="/Suppliers/PaidBills"
                   className="bg-[#B7C835] w-fit flex items-center px-4 py-2 lg:py-0 rounded-xl cursor-pointer"
                 >
                   <p className="text-white text-center">Paid bills</p>

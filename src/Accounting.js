@@ -10,6 +10,8 @@ import { VscListFlat } from "react-icons/vsc";
 import ExportPangration from "./components/Accounting.js/ExportPangration";
 import RevenuesPangration from "./components/Accounting.js/RevenuesPangration";
 import AddAccounting from "./components/Accounting.js/AddAccounting";
+import EditAccount from "./components/Accounting.js/EditAccountExport";
+import EditAccountExport from "./components/Accounting.js/EditAccountExport";
 
 const exports = [
   {
@@ -131,6 +133,8 @@ const Revenues = [
 
 function Accounting() {
   const [OpenAddAccounting, setOpenAddAccounting] = useState(false);
+
+
   const [Section, setSection] = useState("exports");
 
   const AccountingAdd = () => {
@@ -159,7 +163,7 @@ function Accounting() {
   return (
     <div className="w-full h-full pr-5 p-5">
       <AddAccounting open={OpenAddAccounting} setOpen={setOpenAddAccounting} />
-
+     
       <div className="w-full flex ">
         <div className="bg-white mr-[-1rem] lg:mr-0 rounded-l-xl ">
           <VscListFlat

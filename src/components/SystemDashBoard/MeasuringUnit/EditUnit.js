@@ -26,7 +26,7 @@ export default function EditUnit({ open, setOpen, id }) {
 
     await axios
       .put(
-        `/update-TestUnit?test_unit_id=${formdata.get(
+        `/admin-scope/update-TestUnit?test_unit_id=${formdata.get(
           "id"
         )}&test_unit=${formdata.get("test_unit")}`
       )
@@ -37,6 +37,14 @@ export default function EditUnit({ open, setOpen, id }) {
             : item;
         });
         dispatch(addAllUnit(content));
+        setOpen(false);
+      })
+      .catch((error) => {
+        if (error.response) {
+          document.getElementById("messag").textContent =
+            error.response.data.error[0];
+          console.log(error.response.data.error[0]);
+        }
       });
   };
   return (
@@ -102,6 +110,10 @@ export default function EditUnit({ open, setOpen, id }) {
                           />
                         </div>
                       </div>
+                      <p
+                        id="messag"
+                        className="text-center text-red-500 text-sm "
+                      ></p>
                     </div>
                   </div>
 

@@ -4,10 +4,11 @@ import { BsThreeDots } from "react-icons/bs";
 import { HiOutlineArrowLeft } from "react-icons/hi";
 import { HiOutlineArrowRight } from "react-icons/hi";
 import EmployerContainer from "./EmployerContainer";
+import DeleteEmployee from "./DeleteEmployee";
 
 // Example items, to simulate fetching from another resources.
 
-function Items({ currentItems }) {
+function Items({ currentItems, setOpenDeleteEmployss }) {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-8">
       {currentItems &&
@@ -18,6 +19,7 @@ function Items({ currentItems }) {
             work={item.work}
             phone={item.phone}
             email={item.email}
+            setOpenDeleteEmployss={setOpenDeleteEmployss}
           />
         ))}
     </div>
@@ -28,6 +30,7 @@ function StaffPangration({ itemsPerPage, Data }) {
   // Here we use item offsets; we could also use page offsets
   // following the API or data you're working with.
   const [itemOffset, setItemOffset] = useState(0);
+  const [OpenDeleteEmployss, setOpenDeleteEmployss] = useState(false);
 
   // Simulate fetching items from another resources.
   // (This could be items from props; or items loaded in a local state
@@ -48,8 +51,16 @@ function StaffPangration({ itemsPerPage, Data }) {
   };
 
   return (
-    <>
-      <Items currentItems={currentItems} className="w-full bg-white" />
+    <div>
+      <DeleteEmployee
+        open={OpenDeleteEmployss}
+        setOpen={setOpenDeleteEmployss}
+      />
+      <Items
+        setOpenDeleteEmployss={setOpenDeleteEmployss}
+        currentItems={currentItems}
+        className="w-full bg-white"
+      />
 
       <ReactPaginate
         breakLabel={<BsThreeDots />}
@@ -71,7 +82,7 @@ function StaffPangration({ itemsPerPage, Data }) {
         activeClassName="bg-[#B7C835] text-[#FFFFFF] "
         renderOnZeroPageCount={null}
       />
-    </>
+    </div>
   );
 }
 export default StaffPangration;

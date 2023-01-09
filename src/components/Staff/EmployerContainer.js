@@ -8,7 +8,14 @@ import { RiEdit2Fill } from "react-icons/ri";
 import { IoMdTrash } from "react-icons/io";
 import { Link } from "react-router-dom";
 
-function EmployerContainer({ id, name, work, phone, email }) {
+function EmployerContainer({
+  setOpenDeleteEmployss,
+  id,
+  name,
+  work,
+  phone,
+  email,
+}) {
   const ShowSettings = () => {
     if (
       document.getElementById(`DropSettings-${id}`).classList.contains("hidden")
@@ -46,14 +53,17 @@ function EmployerContainer({ id, name, work, phone, email }) {
           id={`DropSettings-${id}`}
           className="hidden  flex-col w-[60%] absolute top-0 left-5 pt-3 px-1 rounded-md  shadow-around pb-2 bg-white"
         >
-          <div className="w-full flex items-center space-x-2 py-1 relative group">
+          <Link
+            to="/Staff/ShowEmployee"
+            className="w-full flex items-center space-x-2 py-1 relative group"
+          >
             <div className="bg-[#b7c835] opacity-10 absolute w-full h-full rounded-md hidden group-hover:block" />
 
             <AiFillEye className="text-[#98A2B3] text-xl" />
             <h1 className="font-Poppins-Regular text-[#98A2B3] text-sm">
               View profile
             </h1>
-          </div>
+          </Link>
 
           <Link
             to="/Staff/EditEmployee"
@@ -66,7 +76,10 @@ function EmployerContainer({ id, name, work, phone, email }) {
             </h1>
           </Link>
 
-          <div className="flex items-center space-x-2 py-1 relative group">
+          <div
+            className="flex items-center space-x-2 py-1 relative group"
+            onClick={() => setOpenDeleteEmployss(true)}
+          >
             <div className="bg-[#b7c835] opacity-10 absolute w-full h-full rounded-md hidden group-hover:block" />
             <IoMdTrash className="text-[#F04438] text-xl " />
             <h1 className="font-Poppins-Regular text-[#F04438] text-sm">

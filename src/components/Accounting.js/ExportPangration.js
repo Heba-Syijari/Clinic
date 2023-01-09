@@ -7,10 +7,16 @@ import { BsThreeDots } from "react-icons/bs";
 import { HiOutlineArrowLeft } from "react-icons/hi";
 import { HiOutlineArrowRight } from "react-icons/hi";
 import { AiOutlineEye } from "react-icons/ai";
+import EditAccountExport from "./EditAccountExport";
+import DeleteAccountExport from "./DeleteAccountExport";
 
 // Example items, to simulate fetching from another resources.
 
-function Items({ currentItems }) {
+function Items({
+  setOpenDeleteAccountingExports,
+  setOpenEditAccountingExports,
+  currentItems,
+}) {
   return (
     <>
       {currentItems &&
@@ -37,8 +43,14 @@ function Items({ currentItems }) {
             </td>
             <td>
               <div className="flex space-x-2 py-4">
-                <TiEdit className="text-2xl  opacity-50 cursor-pointer" />
-                <IoTrashOutline className="text-2xl text-[#F04438] cursor-pointer" />
+                <TiEdit
+                  className="text-2xl  opacity-50 cursor-pointer"
+                  onClick={() => setOpenEditAccountingExports(true)}
+                />
+                <IoTrashOutline
+                  className="text-2xl text-[#F04438] cursor-pointer"
+                  onClick={() => setOpenDeleteAccountingExports(true)}
+                />
               </div>
             </td>
           </tr>
@@ -51,6 +63,10 @@ function ExportPangration({ section, itemsPerPage, Data }) {
   // Here we use item offsets; we could also use page offsets
   // following the API or data you're working with.
   const [itemOffset, setItemOffset] = useState(0);
+  const [OpenEditAccountingExports, setOpenEditAccountingExports] =
+    useState(false);
+  const [OpenDeleteAccountingExports, setOpenDeleteAccountingExports] =
+    useState(false);
 
   // Simulate fetching items from another resources.
   // (This could be items from props; or items loaded in a local state
@@ -76,6 +92,14 @@ function ExportPangration({ section, itemsPerPage, Data }) {
         section === "exports" ? "block" : "hidden"
       } overflow-x-scroll`}
     >
+      <EditAccountExport
+        open={OpenEditAccountingExports}
+        setOpen={setOpenEditAccountingExports}
+      />
+      <DeleteAccountExport
+        open={OpenDeleteAccountingExports}
+        setOpen={setOpenDeleteAccountingExports}
+      />
       <table className="w-full h-full mt-8 bg-white rounded-t-2xl ">
         <tr className="border-b-[1px] w-full">
           <td className="w-[5%] pr-2 lg:pr-0">
@@ -100,7 +124,12 @@ function ExportPangration({ section, itemsPerPage, Data }) {
             Action
           </td>
         </tr>
-        <Items currentItems={currentItems} className="w-full bg-white" />
+        <Items
+          setOpenDeleteAccountingExports={setOpenDeleteAccountingExports}
+          setOpenEditAccountingExports={setOpenEditAccountingExports}
+          currentItems={currentItems}
+          className="w-full bg-white"
+        />
       </table>
 
       <ReactPaginate

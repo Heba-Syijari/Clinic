@@ -278,11 +278,14 @@ function EditEmployee() {
                 rows={5}
               />
               <div className="flex md:col-start-1 md:col-end-3 lg:col-start-1 lg:col-end-6 justify-end space-x-2 mt-20">
-                <div className="bg-transparent border-[1px]  border-[#D0D5DD] w-fit  flex items-center justify-center lg:px-16 px-8 py-2 rounded-xl cursor-pointer ">
+                <Link
+                  to="/Staff"
+                  className="bg-transparent border-[1px]  border-[#D0D5DD] w-fit  flex items-center justify-center lg:px-16 px-8 py-2 rounded-xl cursor-pointer "
+                >
                   <p className="text-sm flex items-center justify-center text-black font-Poppins-Regular">
                     Cancel
                   </p>
-                </div>
+                </Link>
                 <div className="bg-transparent border-[1px] border-[#D0D5DD] w-fit  flex items-center justify-center lg:px-16 px-8 py-2 rounded-xl cursor-pointer ">
                   <p className="text-sm flex items-center justify-center text-black font-Poppins-Regular">
                     Print

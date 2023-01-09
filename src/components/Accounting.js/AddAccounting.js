@@ -131,7 +131,7 @@ export default function AddAccounting({ open, setOpen }) {
                   <div className="bg-white ">
                     <div className="w-full flex  h-full items-center mt-5">
                       <p className="  justify-center font-Poppins-SemiBold flex flex-grow text-lg ml-10">
-                        Send patient
+                        Payment
                       </p>
                       <IoIosClose
                         className=" text-4xl  text-black border-[1px] rounded-full cursor-pointer bg-[#E4E7EC] "

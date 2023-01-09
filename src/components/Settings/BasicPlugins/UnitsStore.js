@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { TiEdit } from "react-icons/ti";
 import { IoTrashOutline } from "react-icons/io5";
+import DeleteUnitStore from "./UnitStore/DeleteUnitStore";
+import EditUnitStore from "./UnitStore/EditUnitStore";
 
 function UnitsStore({ type }) {
+  const [OpenDeleteUnitStore, setOpenDeleteUnitStore] = useState(false);
+  const [OpenEditUnitStore, setOpenEditUnitStore] = useState(false);
   return (
     <div className={`${type === "UnitsStore" ? "block" : "hidden"} mt-10`}>
+      <DeleteUnitStore
+        open={OpenDeleteUnitStore}
+        setOpen={setOpenDeleteUnitStore}
+      />
+      <EditUnitStore open={OpenEditUnitStore} setOpen={setOpenEditUnitStore} />
       <div className="">
         <div className="border-[#E4E7EC] w-full h-fit bg-[#F9FAFF] flex space-x-2 items-center py-3 px-4     relative m-auto border-[1px] rounded-xl ">
           <input
@@ -37,8 +46,14 @@ function UnitsStore({ type }) {
             </td>
             <td className="text-sm text-[#101828] font-semibold font-Poppins-Regular py-2 ">
               <div className="flex space-x-2 ">
-                <TiEdit className="text-2xl  opacity-50 cursor-pointer" />
-                <IoTrashOutline className="text-2xl text-[#F04438] cursor-pointer" />
+                <TiEdit
+                  className="text-2xl  opacity-50 cursor-pointer"
+                  onClick={() => setOpenEditUnitStore(true)}
+                />
+                <IoTrashOutline
+                  className="text-2xl text-[#F04438] cursor-pointer"
+                  onClick={() => setOpenDeleteUnitStore(true)}
+                />
               </div>
             </td>
           </tr>

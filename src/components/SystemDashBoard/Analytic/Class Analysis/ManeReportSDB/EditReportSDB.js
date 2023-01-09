@@ -19,7 +19,7 @@ export default function EditReportSDB({ open, setOpen, id }) {
     setOpen(false);
   }
   const Edit = async () => {
-    let select = document.getElementById("Gender");
+    let select = document.getElementById("EditGender");
     let value = select.options[select.selectedIndex].value;
 
     let content = ManeReportSelector.map((item) => {
@@ -27,24 +27,13 @@ export default function EditReportSDB({ open, setOpen, id }) {
         ? {
             id: id,
             gender: value,
-            High: document.getElementById("High").value,
-            Low: document.getElementById("Low").value,
+            High: document.getElementById("EditHigh").value,
+            Low: document.getElementById("EditLow").value,
           }
         : item;
     });
-    console.log(
-      ManeReportSelector.map((item) => {
-        return item.id == id
-          ? {
-              id: id,
-              gender: value,
-              High: document.getElementById("High").value,
-              Low: document.getElementById("Low").value,
-            }
-          : "fck";
-      })
-    );
     dispatch(addAllDBManeReport(content));
+    setOpen(false);
   };
   return (
     <div>
@@ -82,7 +71,7 @@ export default function EditReportSDB({ open, setOpen, id }) {
                   <div className="bg-white ">
                     <div className="w-full flex  h-full items-center mt-5">
                       <p className="  justify-center font-Poppins-SemiBold flex flex-grow text-lg ml-10">
-                        Edit Measuring Unit
+                        Edit Report
                       </p>
                       <IoIosClose
                         className=" text-4xl  text-black border-[1px] rounded-full cursor-pointer bg-[#E4E7EC] "
@@ -94,7 +83,7 @@ export default function EditReportSDB({ open, setOpen, id }) {
                       <div className={`space-y-5 flex-col `}>
                         <div className="w-full pr-2 py-1 bg-[#F9FAFF] rounded-xl flex border-[1px] border-[#E4E7EC]  items-center mr-5">
                           <select
-                            id="Gender"
+                            id="EditGender"
                             className=" w-full   rounded-lg bg-[#F9FAFF]   font-Poppins-Regular  text-[#98A2B3] text-xs  outline-none px-4 py-2 cursor-pointer"
                           >
                             <option value="" selected hidden className="">
@@ -116,7 +105,7 @@ export default function EditReportSDB({ open, setOpen, id }) {
                         </div>
                         <div className="w-full break-words border-[#E4E7EC] h-fit bg-[#F9FAFF] flex space-x-2 items-center py-4 px-4    relative m-auto border-[1px] rounded-xl ">
                           <input
-                            id="High"
+                            id="EditHigh"
                             placeholder={
                               ManeReportSelector
                                 ? ManeReportSelector[
@@ -132,7 +121,7 @@ export default function EditReportSDB({ open, setOpen, id }) {
                         </div>
                         <div className="w-full break-words border-[#E4E7EC] h-fit bg-[#F9FAFF] flex space-x-2 items-center py-4 px-4    relative m-auto border-[1px] rounded-xl ">
                           <input
-                            id="Low"
+                            id="EditLow"
                             placeholder={
                               ManeReportSelector
                                 ? ManeReportSelector[
@@ -156,7 +145,7 @@ export default function EditReportSDB({ open, setOpen, id }) {
                       className="flex flex-grow font-medium text-sm py-3 bg-[#B7C835] justify-center rounded-xl text-white"
                       onClick={() => Edit()}
                     >
-                      Edit Unit
+                      Edit Report
                     </button>
                   </div>
                 </Dialog.Panel>

@@ -28,7 +28,9 @@ export default function DeleteTestMethod({ open, setOpen, id }) {
     formdata.append("id", selected.id);
 
     await axios
-      .delete(`/delete-TestMethod?test_method_id=${formdata.get("id")}`)
+      .delete(
+        `/admin-scope/delete-TestMethod?test_method_id=${formdata.get("id")}`
+      )
       .then((response) => {
         dispatch(removeFromTestMethod(selected));
         setOpen(false);

@@ -12,7 +12,7 @@ export const ManeReportSDBSlice = createSlice({
       state.DBManeReports = action.payload;
     },
     addToDBManeReport: (state, action) => {
-      state.DBManeReports.data = [...state.DBManeReports.data, action.payload];
+      state.DBManeReports = [...state.DBManeReports, action.payload];
     },
 
     removeFromDBManeReport: (state, action) => {

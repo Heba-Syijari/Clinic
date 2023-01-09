@@ -64,16 +64,7 @@ function Intrputik({ show }) {
         </p>
       </div>
 
-      <div className={`${intrputik ? "hidden" : "block"} mt-7`}>
-        <div className="w-full flex space-x-5 justify-end mb-5">
-          <div className="flex items-center space-x-2">
-            <input type="checkbox" />
-            <label className="font-Poppins-Regular text-black text-xs">
-              Single Print
-            </label>
-          </div>
-        </div>
-
+      <div className={`mt-7`}>
         <div className="grid grid-cols-2 gap-5">
           <div className="border-[#E4E7EC] w-full h-fit bg-[#F9FAFF] flex space-x-2 items-center py-3 px-4     relative m-auto border-[1px] rounded-xl ">
             <input
@@ -164,7 +155,6 @@ function Intrputik({ show }) {
           <div className="mb-5 col-start-1 col-end-3">
             <Histopathology type={ClassAnalysis} />
             <ManeReport type={ClassAnalysis} />
-            <CultureReport type={ClassAnalysis} />
             <CultureReport type={ClassAnalysis} />
           </div>
         </div>

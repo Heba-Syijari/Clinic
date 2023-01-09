@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import SideBar from "./components/SideBar";
 import { AiOutlineClose, AiOutlinePlus } from "react-icons/ai";
 import { IoCalendarOutline } from "react-icons/io5";
+import { t } from "i18next";
 
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -168,7 +169,7 @@ function Patients() {
     return (
       <div className=" bg-[#F9FAFF] flex p-3 rounded-xl justify-between items-center w-fit outline-0 border-2">
         <label className="text-[#98A2B3] text-xs mr-20 font-Poppins-Medium">
-          From
+          {t("From")}
         </label>
         <div className=" flex items-center">
           <label
@@ -191,7 +192,7 @@ function Patients() {
     return (
       <div className="bg-[#F9FAFF] flex p-3 rounded-xl justify-between items-center w-fit outline-0 border-2">
         <label className="text-[#98A2B3] text-xs mr-20 font-Poppins-Medium">
-          To
+          {t("To")}
         </label>
         <div className=" flex items-center">
           <label
@@ -262,7 +263,7 @@ function Patients() {
               <div className="w-fit pr-2 bg-white rounded-lg flex items-center ">
                 <select className=" w-fit  rounded-lg font-Poppins-Medium  text-base outline-none px-4 py-2 cursor-pointer">
                   <option value="" selected disabled hidden>
-                    Sort by
+                    {t("Sort by")}
                   </option>
                   <option value="A-Z">A-Z</option>
                   <option value="Z-A">Z-A</option>
@@ -283,7 +284,7 @@ function Patients() {
                         section === "all" ? "text-white" : "text-[#101828]"
                       } text-white text-xs text-center `}
                     >
-                      All
+                      {t("All")}
                     </p>
                   </div>
 
@@ -299,7 +300,7 @@ function Patients() {
                         section === "all" ? "text-white" : "text-[#101828]"
                       } text-[#101828] text-xs text-center `}
                     >
-                      Not complete
+                      {t("Not complete")}
                     </p>
                   </div>
                   <div
@@ -318,7 +319,7 @@ function Patients() {
                           : "text-[#101828]"
                       } text-[#101828] text-xs text-center`}
                     >
-                      Completed and not printed
+                      {t("Completed and not printed")}
                     </p>
                   </div>
                 </div>
@@ -335,7 +336,7 @@ function Patients() {
                         section === "Printed" ? "text-white" : "text-[#101828]"
                       }text-[#101828] text-xs text-center`}
                     >
-                      Printed
+                      {t("Printed")}
                     </p>
                   </div>
 
@@ -353,7 +354,7 @@ function Patients() {
                           : "text-[#101828]"
                       } text-xs text-center`}
                     >
-                      Laboratories
+                      {t("Laboratories")}
                     </p>
                   </div>
 
@@ -369,7 +370,7 @@ function Patients() {
                         section === "Doctors" ? "text-white" : "text-[#101828]"
                       }  text-[#101828] text-xs text-center`}
                     >
-                      Doctors
+                      {t("Doctors")}
                     </p>
                   </div>
                 </div>
@@ -381,7 +382,7 @@ function Patients() {
               >
                 <p className="text-base font-Poppins-SemiBold flex items-center justify-center text-white ">
                   <AiOutlinePlus className="mr-2 text-lg" />
-                  Add patient
+                  {t("Add patient")}
                 </p>
               </div>
             </div>
@@ -440,73 +441,97 @@ function Patients() {
                   to="/"
                   className="hover:bg-black rounded-xl cursor-pointer flex justify-center  text-xl  p-2 md:w-1/2 w-3/4"
                 >
-                  <div className="font-Poppins-Regular text-sm">Home</div>
+                  <div className="font-Poppins-Regular text-sm">
+                    {t("Home")}
+                  </div>
                 </Link>
                 <Link
                   to="/Patients"
                   className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2 "
                 >
-                  <div className="font-Poppins-Regular text-sm">Patients </div>
+                  <div className="font-Poppins-Regular text-sm">
+                    {t("Patients")}{" "}
+                  </div>
                 </Link>
                 <Link
                   to="/Analytic"
                   className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
                 >
-                  <div className="font-Poppins-Regular text-sm">Analytics</div>
+                  <div className="font-Poppins-Regular text-sm">
+                    {t("Analytics")}
+                  </div>
                 </Link>
                 <Link
                   to="/Doctors"
                   className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
                 >
-                  <div className="font-Poppins-Regular text-sm">Doctors</div>
+                  <div className="font-Poppins-Regular text-sm">
+                    {t("Doctors")}
+                  </div>
                 </Link>
                 <Link
                   to="/Labs"
                   className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4   text-xl p-2"
                 >
-                  <div className="font-Poppins-Regular text-sm">Labs </div>
+                  <div className="font-Poppins-Regular text-sm">
+                    {t("Labs")}
+                  </div>
                 </Link>
                 <Link
                   to="/Staff"
                   className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
                 >
-                  <div className="font-Poppins-Regular text-sm">Staff</div>
+                  <div className="font-Poppins-Regular text-sm">
+                    {t("Staff")}
+                  </div>
                 </Link>
                 <Link
                   to="/Store"
                   className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
                 >
-                  <div className="font-Poppins-Regular text-sm">Store</div>
+                  <div className="font-Poppins-Regular text-sm">
+                    {t("Store")}
+                  </div>
                 </Link>
                 <Link
                   to="/Reports"
                   className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
                 >
-                  <div className="font-Poppins-Regular text-sm">Reports</div>
+                  <div className="font-Poppins-Regular text-sm">
+                    {t("Reports")}
+                  </div>
                 </Link>
                 <Link
                   to="/"
                   className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
                 >
-                  <div className="font-Poppins-Regular text-sm">Accounting</div>
+                  <div className="font-Poppins-Regular text-sm">
+                    {t("Accounting")}
+                  </div>
                 </Link>
                 <Link
                   to="/Suppliers"
                   className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
                 >
-                  <div className="font-Poppins-Regular text-sm">Suppliers</div>
+                  <div className="font-Poppins-Regular text-sm">
+                    {t("Suppliers")}
+                  </div>
                 </Link>
                 <Link
                   to="/Settings"
                   className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
                 >
-                  <div className="font-Poppins-Regular text-sm">Setting</div>
+                  <div className="font-Poppins-Regular text-sm">
+                    {t("Setting")}
+                  </div>
                 </Link>
                 <Link
                   to="/"
                   className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
                 >
-                  <div className="font-Poppins-Regular text-sm">Logout</div>
+                  <div className="font-Poppins-Regular text-sm">
+                    {t("Logout")}
+                  </div>
                 </Link>
               </div>
             </div>

@@ -7,10 +7,12 @@ import { BsThreeDots } from "react-icons/bs";
 import { HiOutlineArrowLeft } from "react-icons/hi";
 import { HiOutlineArrowRight } from "react-icons/hi";
 import { AiOutlineEye } from "react-icons/ai";
+import EditDoctor from "./EditDoctor";
+import DeleteDoctor from "./DeleteDoctor";
 
 // Example items, to simulate fetching from another resources.
 
-function Items({ currentItems }) {
+function Items({ setOpenDeleteDoctor, setOpenEditDoctor, currentItems }) {
   return (
     <>
       {currentItems &&
@@ -37,8 +39,15 @@ function Items({ currentItems }) {
             </td>
             <td>
               <div className="flex space-x-2 py-4">
-                <TiEdit className="text-2xl  opacity-50 cursor-pointer" />
-                <IoTrashOutline className="text-2xl text-[#F04438] cursor-pointer" />
+                <TiEdit
+                  className="text-2xl  opacity-50 cursor-pointer"
+                  onClick={() => setOpenEditDoctor(true)}
+                />
+
+                <IoTrashOutline
+                  className="text-2xl text-[#F04438] cursor-pointer"
+                  onClick={() => setOpenDeleteDoctor(true)}
+                />
               </div>
             </td>
           </tr>
@@ -51,6 +60,8 @@ function DoctorPangration({ itemsPerPage, Data }) {
   // Here we use item offsets; we could also use page offsets
   // following the API or data you're working with.
   const [itemOffset, setItemOffset] = useState(0);
+  const [OpenEditDoctor, setOpenEditDoctor] = useState(false);
+  const [OpenDeleteDoctor, setOpenDeleteDoctor] = useState(false);
 
   // Simulate fetching items from another resources.
   // (This could be items from props; or items loaded in a local state
@@ -72,6 +83,8 @@ function DoctorPangration({ itemsPerPage, Data }) {
 
   return (
     <div className="overflow-x-scroll">
+      <EditDoctor open={OpenEditDoctor} setOpen={setOpenEditDoctor} />
+      <DeleteDoctor open={OpenDeleteDoctor} setOpen={setOpenDeleteDoctor} />
       <table className="w-full h-full mt-8 bg-white rounded-t-2xl ">
         <tr className="border-b-[1px] w-full">
           <td className="w-[5%] pr-2 lg:pr-0">
@@ -96,7 +109,12 @@ function DoctorPangration({ itemsPerPage, Data }) {
             Action
           </td>
         </tr>
-        <Items currentItems={currentItems} className="w-full bg-white" />
+        <Items
+          setOpenDeleteDoctor={setOpenDeleteDoctor}
+          setOpenEditDoctor={setOpenEditDoctor}
+          currentItems={currentItems}
+          className="w-full bg-white"
+        />
       </table>
 
       <ReactPaginate

@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { TiEdit } from "react-icons/ti";
 import { IoTrashOutline } from "react-icons/io5";
+import EditCurrenceies from "./EditCurrenceies";
+import DeleteCurrencies from "./DeleteCurrencies";
 
 function Currencies({ type }) {
+  const [OpenEditCurrency, setOpenEditCurrency] = useState(false);
+  const [OpenDeleteCurrency, setOpenDeleteCurrency] = useState(false);
+
   return (
     <div className={`${type === "Currencies" ? "block" : "hidden"} mt-10`}>
+      <EditCurrenceies open={OpenEditCurrency} setOpen={setOpenEditCurrency} />
+      <DeleteCurrencies
+        open={OpenDeleteCurrency}
+        setOpen={setOpenDeleteCurrency}
+      />
       <div className="">
         <div className="border-[#E4E7EC] w-full h-fit bg-[#F9FAFF] flex space-x-2 items-center py-3 px-4     relative m-auto border-[1px] rounded-xl ">
           <input
@@ -37,8 +47,14 @@ function Currencies({ type }) {
             </td>
             <td className="text-sm text-[#101828] font-semibold font-Poppins-Regular py-2 ">
               <div className="flex space-x-2 ">
-                <TiEdit className="text-2xl  opacity-50 cursor-pointer" />
-                <IoTrashOutline className="text-2xl text-[#F04438] cursor-pointer" />
+                <TiEdit
+                  className="text-2xl  opacity-50 cursor-pointer"
+                  onClick={() => setOpenEditCurrency(true)}
+                />
+                <IoTrashOutline
+                  className="text-2xl text-[#F04438] cursor-pointer"
+                  onClick={() => setOpenDeleteCurrency(true)}
+                />
               </div>
             </td>
           </tr>

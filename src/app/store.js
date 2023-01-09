@@ -6,6 +6,8 @@ import GenderReducer from "../GlobalData/SystemDashBoard/GenderSlice";
 import DBLabReducer from "../GlobalData/SystemDashBoard/LabSDBSlice";
 import AnalysisSBDReducer from "../GlobalData/SystemDashBoard/AnalysisSBDSlice";
 import ManeReportSBDReducer from "../GlobalData/SystemDashBoard/ManeReportSDBSlice";
+import CultureReportSDBReducer from "../GlobalData/SystemDashBoard/CultureReportSDBSlice";
+import IntrputikSDBReducer from "../GlobalData/SystemDashBoard/IntrputikSDBSlice";
 
 export const store = configureStore({
   reducer: {
@@ -16,5 +18,7 @@ export const store = configureStore({
     DBLab: DBLabReducer,
     DBanalysis: AnalysisSBDReducer,
     DBManeReport: ManeReportSBDReducer,
+    DBCultureReport: CultureReportSDBReducer,
+    DBIntrputik: IntrputikSDBReducer,
   },
 });

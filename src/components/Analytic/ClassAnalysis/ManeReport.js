@@ -11,7 +11,7 @@ function ManeReport({ type }) {
     >
       <div className="col-start-1 col-end-3">
         <textarea
-          placeholder="Type of resalt"
+          placeholder="Normal range"
           className="bg-[#F9FAFF] border-[#E4E7EC] w-full h-fit text-xs  flex space-x-2 items-center py-3 px-4 outline-0 ring-0   relative m-auto border-[1px] rounded-xl "
           rows={5}
         />
@@ -19,7 +19,7 @@ function ManeReport({ type }) {
       <div className="grid grid-cols-3 gap-5 mt-5">
         <div className="w-full pr-2 py-1 bg-[#F9FAFF] rounded-xl flex border-[1px] border-[#E4E7EC]  items-center mr-5">
           <select
-            name="IntakeTube"
+            name="Gender"
             className=" w-full   rounded-lg bg-[#F9FAFF]   font-Poppins-Regular  text-[#98A2B3] text-xs  outline-none px-4 py-2 cursor-pointer"
           >
             <option value="" selected disabled hidden className="">

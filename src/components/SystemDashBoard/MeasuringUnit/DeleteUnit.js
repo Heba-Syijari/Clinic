@@ -24,7 +24,7 @@ export default function DeleteUnit({ open, setOpen, id }) {
     formdata.append("id", selected.id);
 
     await axios
-      .delete(`/delete-TestUnit?test_unit_id=${formdata.get("id")}`)
+      .delete(`/admin-scope/delete-TestUnit?test_unit_id=${formdata.get("id")}`)
       .then((response) => {
         dispatch(removeFromUnit(selected));
         setOpen(false);

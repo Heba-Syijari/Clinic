@@ -49,7 +49,7 @@ function TestMethodDB() {
   const GetTestMethods = async () => {
     document.getElementById("Loader").classList.remove("hidden");
     document.getElementById("Loader").classList.add("flex");
-    await axios.get(`/get-TestMethods`).then((response) => {
+    await axios.get(`/admin-scope/get-TestMethods`).then((response) => {
       dispatch(addAllTestMethod(response.data));
       document.getElementById("Loader").classList.add("hidden");
       document.getElementById("Loader").classList.remove("flex");
@@ -83,7 +83,7 @@ function TestMethodDB() {
         document.getElementById("TestMethod").value
       );
       await axios
-        .post(`/create-TestMethod`, formdata)
+        .post(`/admin-scope/create-TestMethod`, formdata)
         .then((response) => {
           document.getElementById("message").textContent = "";
           GetTestMethods();

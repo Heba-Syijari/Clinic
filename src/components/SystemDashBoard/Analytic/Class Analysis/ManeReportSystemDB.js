@@ -4,11 +4,14 @@ import { IoTrashOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addAllDBManeReport,
+  addToDBManeReport,
   selectDBManeReports,
 } from "../../../../GlobalData/SystemDashBoard/ManeReportSDBSlice";
 import EditReportSDB from "./ManeReportSDB/EditReportSDB";
+import { removeFromTupe } from "../../../../GlobalData/SystemDashBoard/TupeSlice";
+import DeleteReportSDB from "./ManeReportSDB/DeleteReportSDB";
 
-function ManeReportSystemDB({ type, formData }) {
+function ManeReportSystemDB({ type, formData, intrputik }) {
   {
     /* i was trying to make stateMangment for the table here  but if we have the intrputick get show u have to hide the div that has the buttons here*/
     /* the Save will be from the interputik div if the interputik shown */
@@ -16,26 +19,29 @@ function ManeReportSystemDB({ type, formData }) {
   const ManeReportSelector = useSelector(selectDBManeReports);
   const dispatch = useDispatch();
   const [OpenEditReport, SetOpenEditReport] = useState(false);
+  const [OpenDeleteReport, SetOpenDeleteReport] = useState(false);
+
   const [id, SetId] = useState(0);
   const Save = () => {};
   const Edit = (id) => {
     SetId(id);
     SetOpenEditReport(true);
   };
-  const Delete = (id) => {};
+  const Delete = (id) => {
+    SetId(id);
+    SetOpenDeleteReport(true);
+  };
 
   const AddNormal = () => {
     let select = document.getElementById("Gender");
     let value = select.options[select.selectedIndex].value;
-    let Data = [
-      {
-        id: ManeReportSelector.length + 1,
-        gender: value,
-        High: document.getElementById("High").value,
-        Low: document.getElementById("Low").value,
-      },
-    ];
-    dispatch(addAllDBManeReport(Data));
+    let Data = {
+      id: ManeReportSelector.length + 1,
+      gender: value,
+      High: document.getElementById("High").value,
+      Low: document.getElementById("Low").value,
+    };
+    dispatch(addToDBManeReport(Data));
   };
   return (
     <div
@@ -48,9 +54,14 @@ function ManeReportSystemDB({ type, formData }) {
         setOpen={SetOpenEditReport}
         id={id}
       />
+      <DeleteReportSDB
+        open={OpenDeleteReport}
+        setOpen={SetOpenDeleteReport}
+        id={id}
+      />
       <div className="col-start-1 col-end-3">
         <textarea
-          placeholder="Type of resalt"
+          placeholder="Normal range"
           className="bg-[#F9FAFF] border-[#E4E7EC] w-full h-fit text-xs  flex space-x-2 items-center py-3 px-4 outline-0 ring-0   relative m-auto border-[1px] rounded-xl "
           rows={5}
         />
@@ -160,7 +171,11 @@ function ManeReportSystemDB({ type, formData }) {
           </tr>
         </table>
 
-        <div className=" flex justify-end space-x-8 mt-8 col-start-1 col-end-4">
+        <div
+          className={`${
+            intrputik ? "hidden" : "flex"
+          }  flex justify-end space-x-8 mt-8 col-start-1 col-end-4`}
+        >
           <div className="bg-[#F04438] border-[1px] border-[#D0D5DD] w-fit  flex items-center justify-center px-16 py-2 rounded-xl cursor-pointer ">
             <p className="text-sm flex items-center justify-center text-white font-Poppins-Regular">
               Delete

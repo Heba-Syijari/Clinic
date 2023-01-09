@@ -47,6 +47,9 @@ import { Bar } from "react-chartjs-2";
 import NotifContainer from "./components/Home/NotifContainer";
 import { Link } from "react-router-dom";
 import i18next from "./i18n";
+import ProfileEdit from "./components/Home/ProfileEdit";
+import { t } from "i18next";
+import i18n from "./i18n";
 
 ChartJS.register(
   CategoryScale,
@@ -83,7 +86,7 @@ const options = {
       },
       title: {
         display: true,
-        text: "Reviewers Section",
+        text: t("Reviewers Section"),
         color: "black",
         font: { weight: "bold", size: 20 },
         align: "end",
@@ -95,13 +98,13 @@ export const data = {
   labels,
   datasets: [
     {
-      label: "Last Year",
+      label: t("Last Year"),
       data: tests.map((data) => data.last),
       backgroundColor: "#0D2135",
       borderRadius: 20,
     },
     {
-      label: "Current Year",
+      label: t("Current Year"),
       data: tests.map((data) => data.current),
       backgroundColor: "#B7C835",
       borderRadius: 20,
@@ -146,7 +149,7 @@ function Home() {
     endDate: new Date().setMonth(11),
   });
   const [lang, SetLang] = useState("UK");
-
+  const [OpenProfileEdit, SetOpenProfileEdit] = useState(false);
   const handleValueChange = (newValue) => {
     setValue(newValue);
   };
@@ -283,8 +286,18 @@ function Home() {
     }
   };
 
+  const changeToAR = () => {
+    SetLang("SA");
+    i18n.changeLanguage("ar");
+  };
+
+  const changeToEg = () => {
+    SetLang("UK");
+    i18n.changeLanguage("en");
+  };
   return (
     <div className=" h-full flex justify-around p-5 lg:pr-10">
+      <ProfileEdit open={OpenProfileEdit} setOpen={SetOpenProfileEdit} />
       <div className="h-full w-full flex justify-around">
         {/* left */}
         <div>
@@ -297,73 +310,73 @@ function Home() {
             <Link to="/" className="flex flex-col items-center ">
               <RiHome5Fill className="w-6 h-6 text-[#B7C835]" />
               <p className="text-[#B7C835]  text-sm mt-1 font-Poppins-Regular">
-                Home
+                {t("Home")}
               </p>
             </Link>
             <Link to="./Patients" className="flex flex-col items-center mt-5">
               <IoIosPeople className="w-6 h-6 text-[#98A2B3]" />
               <p className="text-[#98A2B3]  text-sm mt-1 font-Poppins-Regular">
-                Patients
+                {t("Patients")}
               </p>
             </Link>
             <Link to="./Analytic" className="flex flex-col items-center mt-5">
               <TbActivityHeartbeat className="w-6 h-6 text-[#98A2B3] border-2 rounded-md" />
               <p className="text-[#98A2B3]  text-sm mt-1 font-Poppins-Regular">
-                Analytic
+                {t("Analytic")}
               </p>
             </Link>
             <Link to="./Doctors" className="flex flex-col items-center mt-5">
               <CgProfile className="w-6 h-6 text-[#98A2B3]" />
               <p className="text-[#98A2B3]  text-sm mt-1 font-Poppins-Regular">
-                Doctors
+                {t("Doctors")}
               </p>
             </Link>
             <Link to="./Labs" className="flex flex-col items-center mt-5">
               <ImLab className="w-6 h-6 text-[#98A2B3]" />
               <p className="text-[#98A2B3] text-sm mt-1 font-Poppins-Regular">
-                Labs
+                {t("Labs")}
               </p>
             </Link>
             <Link to="./Staff" className="flex flex-col items-center mt-5">
               <MdOutlinePersonPin className="w-6 h-6 text-[#98A2B3]" />
               <p className="text-[#98A2B3] text-sm mt-1 font-Poppins-Regular">
-                Staff
+                {t("Staff")}
               </p>
             </Link>
             <Link to="Store" className="flex flex-col items-center mt-5">
               <FaWarehouse className="w-6 h-6 text-[#98A2B3]" />
               <p className="text-[#98A2B3] text-sm mt-1 font-Poppins-Regular">
-                Store
+                {t("Store")}
               </p>
             </Link>
             <Link to="Reports" className="flex flex-col items-center mt-5">
               <RiFileList2Line className="w-6 h-6 text-[#98A2B3]" />
               <p className="text-[#98A2B3] text-sm mt-1 font-Poppins-Regular">
-                Reports
+                {t("Reports")}
               </p>
             </Link>
             <Link to="Accounting" className="flex flex-col items-center mt-5">
               <TbCalculator className="w-6 h-6 text-[#98A2B3]" />
               <p className="text-[#98A2B3] text-sm mt-1 font-Poppins-Regular">
-                Accounting{" "}
+                {t("Accounting")}{" "}
               </p>
             </Link>
             <Link to="/Suppliers" className="flex flex-col items-center mt-5">
               <FaShippingFast className="w-6 h-6 text-[#98A2B3]" />
               <p className="text-[#98A2B3] text-sm mt-1 font-Poppins-Regular">
-                Suppliers
+                {t("Suppliers")}
               </p>
             </Link>
             <Link to="/Settings" className="flex flex-col items-center mt-5">
               <FiSettings className="w-6 h-6 text-[#98A2B3]" />
               <p className="text-[#98A2B3] text-sm mt-1 font-Poppins-Regular">
-                Settings
+                {t("Settings")}
               </p>
             </Link>
             <div className="flex flex-col items-center mt-28">
               <CiLogout className="w-6 h-6 text-[#F04438]" />
               <p className="text-[#F04438] text-sm mt-1 font-Poppins-Regular ">
-                Logout
+                {t("Logout")}
               </p>
             </div>
           </div>
@@ -377,7 +390,9 @@ function Home() {
             className="hidden absolute w-[93%] h-[64%] px-10 py-10 bg-white z-20 top-[4.8rem] shadow-inner  right-2 rounded-2xl"
           >
             <div className="font-Poppins-Regular flex justify-between items-center border-b-2 pb-5">
-              <h1 className="text-[22px] font-Poppins-Bold">Notifications</h1>
+              <h1 className="text-[22px] font-Poppins-Bold">
+                {t("Notifications")}
+              </h1>
               <p className="text-[#B7C835] font-Poppins-Medium text-sm">
                 Mark all as read
               </p>
@@ -391,7 +406,7 @@ function Home() {
             </div>
             <div className="flex justify-center items-center mt-8">
               <p className="text-[#B7C835] text-lg font-Poppins-Black">
-                Show all notifications
+                {t("Show all notifications")}
               </p>
             </div>
           </div>
@@ -406,7 +421,7 @@ function Home() {
               <input
                 dir="rtl"
                 lang="ar"
-                placeholder="Find the names of the reviewers here"
+                placeholder={t("Find the names of the reviewers here")}
                 className="p-2 bg-[#F2F4F7] w-full  focus:outline-none px-4 rounded-2xl placeholder-[#B9B9B9] text-left"
                 type="text"
               />
@@ -432,13 +447,13 @@ function Home() {
                 >
                   <div
                     className="mt-1 bg-[#F2F4F7] p-[0.2rem] hover:bg-gray-200 w-fit  rounded-full cursor-pointer"
-                    onClick={() => SetLang("SA")}
+                    onClick={() => changeToAR()}
                   >
                     <img src={SA} className=" w-16 sm:w-6 h-6 rounded-full" />
                   </div>
                   <div
                     className=" bg-[#F2F4F7] p-[0.2rem] w-fit hover:bg-gray-200  rounded-full cursor-pointer"
-                    onClick={() => SetLang("UK")}
+                    onClick={() => changeToEg()}
                   >
                     <img src={UK} className=" w-16 sm:w-5 h-5 rounded-full" />
                   </div>
@@ -473,14 +488,14 @@ function Home() {
                   👋
                   <span className="opacity-50 font-Poppins-Regular text-base">
                     {" "}
-                    Hi , Ali AbuSamra
+                    {t("Hi")} , Ali AbuSamra
                   </span>
                 </p>
                 <p className="text-[#FFFFFF] font-Poppins-Medium text-2xl ">
-                  Welcome to LeaLap
+                  {t("Welcome to LeaLap")}
                 </p>
                 <p className="text-[#FFFFFF] font-Poppins-Regular text-base opacity-50">
-                  We are glad you are joining us. Good day!
+                  {t("We are glad you are joining us. Good day!")}
                 </p>
               </div>
             </div>
@@ -490,35 +505,35 @@ function Home() {
               <img src={AnalysisToday} className="w-[64px] h-[64px] mb-3" />
               <h1 className="text-base">10000</h1>
               <p className="text-xs text-[#000000] opacity-50">
-                Analysis today
+                {t("Analysis today")}
               </p>
             </div>
             <div className="flex flex-col items-center justify-center w-full bg-[#FEE4E2] rounded-2xl px-3 pt-5 pb-8">
               <img src={PatientsImg} className="w-[64px] h-[64px] mb-3" />
               <h1 className="text-base font-Poppins-Medium">10000</h1>
               <p className="text-xs text-[#000000] font-Poppins-Regular opacity-50">
-                Patients
+                {t("Patients")}
               </p>
             </div>
             <div className="flex flex-col items-center justify-center w-full bg-[#FEF0C7] rounded-2xl px-3 pt-5 pb-8">
               <img src={Analysis} className="w-[64px] h-[64px] mb-3" />
               <h1 className="text-base font-Poppins-Medium">10000</h1>
               <p className="text-xs text-[#000000] font-Poppins-Regular opacity-50">
-                Analysis
+                {t("Analysis")}
               </p>
             </div>
             <div className="flex flex-col items-center justify-center w-full bg-[#D1FADF] rounded-2xl px-3 pt-5 pb-8">
               <img src={Workers} className="w-[64px] h-[64px] mb-3" />
               <h1 className="text-base font-Poppins-Medium">10000</h1>
               <p className="text-xs text-[#000000] font-Poppins-Regular opacity-50">
-                Workers
+                {t("Workers")}
               </p>
             </div>
             <div className="flex flex-col items-center justify-center w-full bg-[#EAECF5] rounded-2xl px-3 pt-5 pb-8">
               <img src={DoctorsImg} className="w-[64px] h-[64px] mb-3" />
               <h1 className="text-base font-Poppins-Medium">10000</h1>
               <p className="text-xs text-[#000000] font-Poppins-Regular opacity-50">
-                Doctors
+                {t("Doctors")}
               </p>
             </div>
           </div>
@@ -529,7 +544,9 @@ function Home() {
 
           <div className="w-full h-full  bg-white px-5 pt-10 rounded-lg mt-5">
             <div className="w-full flex justify-between items-center mb-5">
-              <h1 className="font-Poppins-Regular text-lg ">Store Lab</h1>
+              <h1 className="font-Poppins-Regular text-lg ">
+                {t("Store Lab")}
+              </h1>
               <div
                 id="DatePickerHome"
                 className="w-[40%] border-2 rounded-xl  "
@@ -544,22 +561,22 @@ function Home() {
             <table className="block w-full h-56 overflow-y-scroll scrollbar-hide mb-5">
               <tr className="border-y-2  sticky top-0 bg-white">
                 <td className="py-2 text-[#667085 ]  font-Poppins-Regular pr-20 lg:pr-0  text-sm w-[20%]">
-                  Material name
+                  {t("Material name")}
                 </td>
                 <td className="py-2 text-[#667085] font-Poppins-Regular pr-20 lg:pr-0 text-sm  w-[10%]">
-                  Quantity
+                  {t("Quantity")}
                 </td>
                 <td className="py-2 text-[#667085] font-Poppins-Regular pr-20 lg:pr-0 text-sm w-[10%]">
-                  Company
+                  {t("Company")}
                 </td>
                 <td className="py-2 text-[#667085] font-Poppins-Regular pr-20 lg:pr-0 text-sm w-[10%]">
-                  EXP
+                  {t("EXP")}
                 </td>
                 <td className="py-2 text-[#667085] font-Poppins-Regular pr-20 lg:pr-0 text-sm w-[10%]">
-                  Model
+                  {t("Model")}
                 </td>
                 <td className="py-2 text-[#667085] font-Poppins-Regular pr-20 lg:pr-0 text-sm w-[12%]">
-                  Measruing unit
+                  {t("Measruing unit")}
                 </td>
               </tr>
               <tr className="mt-2 border-b-[1px]">
@@ -687,7 +704,10 @@ function Home() {
             <div className="flex flex-col  pb-8  w-full justify-center items-center">
               <div className="w-44 h-44 border-2 relative rounded-full flex justify-center items-center">
                 <img src={profile} className="rounded-full w-40 h-40" />
-                <TiEdit className="absolute text-[#101828] bg-white rounded-full p-1 text-4xl right-1 bottom-2" />
+                <TiEdit
+                  className="absolute text-[#101828] bg-white rounded-full p-1 text-4xl right-1 bottom-2"
+                  onClick={() => SetOpenProfileEdit(true)}
+                />
                 <GoPrimitiveDot className="absolute bg-white rounded-full text-[#32D583]  text-2xl left-1 top-6" />
               </div>
               <h1 className="mt-5 text-[#101828] text-xl font-Poppins-Regular font-semibold">
@@ -703,16 +723,16 @@ function Home() {
           <div className="w-full">
             <div className="flex justify-between items-center">
               <h1 className="text-lg font-Poppins-Regular font-semibold">
-                Last Pateint
+                {t("Last Pateint")}
               </h1>
-              <div className="flex space-x-2 items-center">
+              <Link to="/Patients" className="flex space-x-2 items-center">
                 <p className="text-[#B7C835] font-Poppins-Regular font-semibold">
-                  View all
+                  {t("View all")}
                 </p>
                 <div className="border-2 w-fit h-fit rounded-md border-[#B7C835] ">
                   <MdOutlineKeyboardArrowRight className="text-[#B7C835] text-lg opacity-50" />
                 </div>
-              </div>
+              </Link>
             </div>
 
             <div className=" w-full mt-5 h-80  overflow-y-scroll scrollbar-hide">
@@ -726,7 +746,7 @@ function Home() {
         </div>
         <div className="bg-white px-5 pt-5 mt-10  h-fit flex flex-col rounded-xl">
           <h1 className="font-Poppins-Regular font-semibold mb-5 text-lg">
-            Doctors section
+            {t("Doctors section")}
           </h1>
           <div className="h-64 overflow-y-scroll scrollbar-hide">
             <DoctorContainer />

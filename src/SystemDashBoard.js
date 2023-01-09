@@ -58,7 +58,7 @@ function SystemDashBoard() {
     setOpenDeleteTupe(true);
   };
   const GetTupes = async () => {
-    await axios.get(`/tupes`).then((response) => {
+    await axios.get(`/admin-scope/tupes`).then((response) => {
       dispatch(addAllTupe(response.data.data));
     });
   };
@@ -69,7 +69,7 @@ function SystemDashBoard() {
     let formdata = new FormData();
     formdata.append("tupe", tupe[0]);
     await axios
-      .post(`/typeOftupe`, formdata)
+      .post(`/admin-scope/typeOftupe`, formdata)
       .then((response) => {
         document.getElementById("message").textContent = "";
 

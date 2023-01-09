@@ -17,9 +17,9 @@ export default function LoginSystemDB() {
 
     await axios
       .get(
-        `/auth-admin?email=${formdata.get("email")}&password=${formdata.get(
-          "password"
-        )}`
+        `/admin-scope/auth-admin?email=${formdata.get(
+          "email"
+        )}&password=${formdata.get("password")}`
       )
       .then((res) => {
         document.getElementById("logbtn").disabled = true;

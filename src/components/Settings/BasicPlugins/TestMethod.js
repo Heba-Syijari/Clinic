@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { TiEdit } from "react-icons/ti";
 import { IoTrashOutline } from "react-icons/io5";
+import DeleteTestMethod from "./TestMethod/DeleteTestMethod";
+import EditTestMethod from "./TestMethod/EditTestMethod";
 
 function TestMethod({ type }) {
+  const [OpenDeleteTestMethod, setOpenDeleteTestMethod] = useState(false);
+  const [OpenEditTestMethod, setOpenEditTestMethod] = useState(false);
   return (
     <div className={`${type === "TestMethod" ? "block" : "hidden"} mt-10`}>
+      <DeleteTestMethod
+        open={OpenDeleteTestMethod}
+        setOpen={setOpenDeleteTestMethod}
+      />
+      <EditTestMethod
+        open={OpenEditTestMethod}
+        setOpen={setOpenEditTestMethod}
+      />
       <div className="">
         <div className="border-[#E4E7EC] w-full h-fit bg-[#F9FAFF] flex space-x-2 items-center py-3 px-4     relative m-auto border-[1px] rounded-xl ">
           <input
@@ -37,8 +49,14 @@ function TestMethod({ type }) {
             </td>
             <td className="text-sm text-[#101828] font-semibold font-Poppins-Regular py-2 ">
               <div className="flex space-x-2 ">
-                <TiEdit className="text-2xl  opacity-50 cursor-pointer" />
-                <IoTrashOutline className="text-2xl text-[#F04438] cursor-pointer" />
+                <TiEdit
+                  className="text-2xl  opacity-50 cursor-pointer"
+                  onClick={() => setOpenEditTestMethod(true)}
+                />
+                <IoTrashOutline
+                  className="text-2xl text-[#F04438] cursor-pointer"
+                  onClick={() => setOpenDeleteTestMethod(true)}
+                />
               </div>
             </td>
           </tr>

@@ -1,3 +1,4 @@
+import { t } from "i18next";
 import React, { useState } from "react";
 import Intrputik from "./Intrputik";
 
@@ -17,17 +18,18 @@ function AddSection({ show }) {
         <div className="flex items-center space-x-2">
           <input type="checkbox" />
           <label className="font-Poppins-Regular text-black text-xs">
-            Single Print
+            {t("Single Print")}
           </label>
         </div>
         <div className="flex items-center space-x-2">
           <input type="checkbox" onClick={(e) => ShowDetails(e)} />
           <label className="font-Poppins-Regular text-black text-xs">
-            Once
+            {t("Once")}
           </label>
         </div>
       </div>
-      <div className="border-[#E4E7EC] w-full h-fit bg-[#F9FAFF] flex space-x-2 items-center py-3 px-4    relative m-auto border-[1px] rounded-xl ">
+      <div className={`${ShowAnalysisDetail == true ? "hidden" : "flex"
+        } border-[#E4E7EC] w-full h-fit bg-[#F9FAFF] flex space-x-2 items-center py-3 px-4    relative m-auto border-[1px] rounded-xl `}>
         <input
           name="SectionName"
           placeholder="Section name"

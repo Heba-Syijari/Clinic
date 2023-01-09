@@ -9,7 +9,12 @@ import { HiOutlineArrowRight } from "react-icons/hi";
 
 // Example items, to simulate fetching from another resources.
 
-function Items({ currentItems }) {
+function Items({
+  setOpenDeleteSupplier,
+  setOpenEditSupplier,
+  setOpenBill,
+  currentItems,
+}) {
   return (
     <>
       {currentItems &&
@@ -38,9 +43,19 @@ function Items({ currentItems }) {
             </td>
             <td>
               <div className="flex space-x-2 py-4">
-                <RiSendPlaneLine className="text-2xl text-black cursor-pointer" />
-                <TiEdit className="text-2xl  opacity-50 cursor-pointer" />
-                <IoTrashOutline className="text-2xl text-[#F04438] cursor-pointer" />
+                <RiSendPlaneLine
+                  className="text-2xl text-black cursor-pointer"
+                  onClick={() => setOpenBill(true)}
+                />
+
+                <TiEdit
+                  className="text-2xl  opacity-50 cursor-pointer"
+                  onClick={() => setOpenEditSupplier(true)}
+                />
+                <IoTrashOutline
+                  className="text-2xl text-[#F04438] cursor-pointer"
+                  onClick={() => setOpenDeleteSupplier(true)}
+                />
               </div>
             </td>
           </tr>
@@ -49,7 +64,13 @@ function Items({ currentItems }) {
   );
 }
 
-function PangrationSuppliersOfficeName({ itemsPerPage, Data }) {
+function PangrationSuppliersOfficeName({
+  setOpenDeleteSupplier,
+  setOpenEditSupplier,
+  setOpenBill,
+  itemsPerPage,
+  Data,
+}) {
   // Here we use item offsets; we could also use page offsets
   // following the API or data you're working with.
   const [itemOffset, setItemOffset] = useState(0);
@@ -101,7 +122,13 @@ function PangrationSuppliersOfficeName({ itemsPerPage, Data }) {
             Action
           </td>
         </tr>
-        <Items currentItems={currentItems} className="w-full bg-white" />
+        <Items
+          setOpenDeleteSupplier={setOpenDeleteSupplier}
+          setOpenEditSupplier={setOpenEditSupplier}
+          setOpenBill={setOpenBill}
+          currentItems={currentItems}
+          className="w-full bg-white"
+        />
       </table>
 
       <ReactPaginate

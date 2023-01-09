@@ -11,6 +11,7 @@ import { BsDash } from "react-icons/bs";
 import { GiCircle } from "react-icons/gi";
 import SendPatient from "./Laboratories/SendPatient";
 import Complete from "./Laboratories/Complete";
+import { t } from "i18next";
 
 // Example items, to simulate fetching from another resources.
 
@@ -29,6 +30,7 @@ function Items({ currentItems, setOpenComplete, setOpenSendPatient }) {
           <tr className="border-b-[1px] ">
             <td className="w-fit pr-2 lg:pr-0">
               <input
+                name="check"
                 type="checkbox"
                 className="text-[#E4E7EC] border-[#E4E7EC] border-[1px] ml-5 w-fit"
               />
@@ -101,7 +103,19 @@ function LaboratoriesPangration({ section, itemsPerPage, Data }) {
 
     setItemOffset(newOffset);
   };
-
+  const Checkall = () => {
+    if (document.getElementById("HeadCheck").checked) {
+      let checks = document.getElementsByName("check");
+      for (let i = 0; i <= checks.length; i++) {
+        checks[i].checked = true;
+      }
+    } else if (!document.getElementById("HeadCheck").checked) {
+      let checks = document.getElementsByName("check");
+      for (let i = 0; i <= checks.length; i++) {
+        checks[i].checked = false;
+      }
+    }
+  };
   return (
     <div className={`${section === "Laboratories" ? "block" : "hidden"}`}>
       <SendPatient open={OpenSendPatient} setOpen={setOpenSendPatient} />
@@ -111,31 +125,33 @@ function LaboratoriesPangration({ section, itemsPerPage, Data }) {
         <tr className="border-b-[1px] w-full">
           <td className="w-fit">
             <input
+              id="HeadCheck"
               type="checkbox"
               className="text-[#E4E7EC] border-[#E4E7EC] border-[1px] ml-5 "
+              onClick={() => Checkall()}
             />
           </td>
           <td className="text-sm text-[#98A2B3] font-Poppins-Regular py-2 ">
-            Patient name
+            {t("Patient name")}
           </td>
           <td className="text-sm text-[#98A2B3] font-Poppins-Regular py-2  ">
-            Date of visit
+            {t("Date of visit")}
           </td>
           <td className="text-sm text-[#98A2B3] font-Poppins-Regular py-2 pl-2">
-            Phone number
+            {t("Phone number")}
           </td>
           <td className="text-sm text-[#98A2B3] font-Poppins-Regular py-2 w-[8%] ">
-            Gender
+            {t("Gender")}
           </td>
           <td className="text-sm text-[#98A2B3] font-Poppins-Regular py-2 w-[8%]">
-            Age
+            {t("Age")}
           </td>
           <td className="text-sm text-[#98A2B3] font-Poppins-Regular py-2 pl-5">
-            Doctor
+            {t("Doctor")}
           </td>
 
           <td className="text-sm text-[#98A2B3] font-Poppins-Regular py-2 w-[15%]">
-            Action
+            {t("Action")}
           </td>
         </tr>
         <Items

@@ -24,7 +24,7 @@ export default function DeleteTupe({ open, setOpen, id }) {
     formdata.append("id", selected.id);
 
     await axios
-      .delete(`deleteTupe?id=${formdata.get("id")}`)
+      .delete(`/admin-scope/deleteTupe?id=${formdata.get("id")}`)
       .then((response) => {
         dispatch(removeFromTupe(selected));
         setOpen(false);

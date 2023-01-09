@@ -10,6 +10,9 @@ import PangrationSuppliersOfficeName from "./components/Suppliers/PangrationSupp
 import { Link } from "react-router-dom";
 import { VscListFlat } from "react-icons/vsc";
 import AddSupplier from "./components/Suppliers/AddSupplier";
+import Bill from "./components/Suppliers/Bill";
+import EditSupplier from "./components/Suppliers/EditSupplier";
+import DeleteSupplier from "./components/Suppliers/DeleteSupplier";
 
 const products = [
   {
@@ -178,6 +181,10 @@ function SuppliersOfficeName() {
   const [FromDate, setFromDate] = useState(new Date());
   const [ToDate, setToDate] = useState(new Date());
   const [OpenAddSupplier, setOpenAddSupplier] = useState(false);
+  const [OpenEditSupplier, setOpenEditSupplier] = useState(false);
+  const [OpenDeleteSupplier, setOpenDeleteSupplier] = useState(false);
+
+  const [OpenBill, setOpenBill] = useState(false);
 
   const FromInput = React.forwardRef((props, ref) => {
     return (
@@ -247,6 +254,12 @@ function SuppliersOfficeName() {
   return (
     <div className="w-full h-full p-5 pr-5">
       <AddSupplier open={OpenAddSupplier} setOpen={setOpenAddSupplier} />
+      <Bill open={OpenBill} setOpen={setOpenBill} />
+      <EditSupplier open={OpenEditSupplier} setOpen={setOpenEditSupplier} />
+      <DeleteSupplier
+        open={OpenDeleteSupplier}
+        setOpen={setOpenDeleteSupplier}
+      />
 
       <div className="w-full flex ">
         <div className="bg-white mr-[-1rem] lg:mr-0 rounded-l-xl ">
@@ -282,11 +295,14 @@ function SuppliersOfficeName() {
                   </p>
                 </Link>
 
-                <div className="bg-white w-fit flex items-center px-4 py-2 lg:py-0 rounded-xl cursor-pointer">
+                <Link
+                  to="/Suppliers/OfficeBills"
+                  className="bg-white w-fit flex items-center px-4 py-2 lg:py-0 rounded-xl cursor-pointer"
+                >
                   <p className="text-[#101828] text-center">
                     Scientific office bills
                   </p>
-                </div>
+                </Link>
 
                 <Link
                   to="/Suppliers/PaidBills"
@@ -333,7 +349,13 @@ function SuppliersOfficeName() {
 
           {/* Pangration */}
 
-          <PangrationSuppliersOfficeName itemsPerPage={8} Data={products} />
+          <PangrationSuppliersOfficeName
+            itemsPerPage={8}
+            Data={products}
+            setOpenBill={setOpenBill}
+            setOpenEditSupplier={setOpenEditSupplier}
+            setOpenDeleteSupplier={setOpenDeleteSupplier}
+          />
           {/* Drawer */}
           <div id="drawerBody" className=" hidden  ">
             <div

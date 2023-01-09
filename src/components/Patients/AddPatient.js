@@ -3,7 +3,7 @@ import React, { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { IoIosClose } from "react-icons/io";
 import { IoCalendarOutline } from "react-icons/io5";
-
+import { t } from "i18next";
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import AnalysisIDContainer from "./AddPatient/AnalysisIDContainer";
@@ -15,8 +15,9 @@ export default function AddPatient({ open, setOpen }) {
   const [VisitDate, setVisitDate] = useState(new Date());
   const [ReceiveDate, setReceiveDate] = useState(new Date());
 
-  const [SendMethod, setSendMethod] = useState("Send method");
+  const [SendMethod, setSendMethod] = useState(t("Send method"));
   const [CheckMulit, setCheckMulit] = useState([]);
+  const [CheckMulitChild, setCheckMulitChild] = useState([]);
 
   const [Urgency, setUrgency] = useState("");
 
@@ -27,7 +28,7 @@ export default function AddPatient({ open, setOpen }) {
         className=" p-2  justify-between   outline-0  border-[#E4E7EC] w-full h-fit bg-[#F9FAFF] flex space-x-2 items-center py-[0.80rem] px-4  relative  border-[1px] rounded-xl "
       >
         <label className="text-[#98A2B3] text-xs mr-10 font-Poppins-Regular">
-          Date of Visit
+          {t("Date of Visit")}
         </label>
         <div className=" flex items-center">
           <label
@@ -53,7 +54,7 @@ export default function AddPatient({ open, setOpen }) {
         className=" p-2  justify-between   outline-0  border-[#E4E7EC] w-full h-fit bg-[#F9FAFF] flex space-x-2 items-center py-[0.80rem] px-4   relative  border-[1px] rounded-xl "
       >
         <label className="text-[#98A2B3] text-xs mr-10 font-Poppins-Regular">
-          Receive of data
+          {t("Receive of data")}
         </label>
         <div className=" flex items-center">
           <label
@@ -128,7 +129,6 @@ export default function AddPatient({ open, setOpen }) {
       setUrgency(e.target.value);
     }
   };
-
   const CheckBoxList = () => {
     if (
       document
@@ -173,6 +173,68 @@ export default function AddPatient({ open, setOpen }) {
     document
       .getElementById("dropdownCheckBoxHelperButton")
       .classList.add("bg-white");
+  };
+
+  const CheckBoxListChild = () => {
+    if (
+      document
+        .getElementById("dropdownDefaultCheckBoxChild")
+        .classList.contains("hidden")
+    ) {
+      document
+        .getElementById("dropdownDefaultCheckBoxChild")
+        .classList.remove("hidden");
+      document
+        .getElementById("dropdownDefaultCheckBoxChild")
+        .classList.add("absolute");
+    } else if (
+      !document
+        .getElementById("dropdownDefaultCheckBoxChild")
+        .classList.contains("hidden")
+    ) {
+      document
+        .getElementById("dropdownDefaultCheckBoxChild")
+        .classList.add("hidden");
+      document
+        .getElementById("dropdownDefaultCheckBoxChild")
+        .classList.remove("absolute");
+    }
+
+    document.getElementById("AnalysisTypeChild").classList.remove("hidden");
+    document
+      .getElementById("dropdownCheckBoxHelperChildButton")
+      .classList.remove("border-[#E4E7EC]");
+    document
+      .getElementById("dropdownCheckBoxHelperChildButton")
+      .classList.remove("bg-[#F9FAFF]");
+    document
+      .getElementById("dropdownCheckBoxHelperChildButton")
+      .classList.add("border-[#B7C835]");
+    document
+      .getElementById("dropdownCheckBoxHelperChildButton")
+      .classList.add("bg-white");
+    document
+      .getElementById("dropdownCheckBoxHelperChildButton")
+      .classList.remove("bg-[#F9FAFF]");
+    document
+      .getElementById("dropdownCheckBoxHelperChildButton")
+      .classList.add("bg-white");
+  };
+
+  const MultiCheckChild = (e) => {
+    if (e.target.checked) {
+      setCheckMulitChild((oldArray) => [...oldArray, e.target.value]);
+    } else if (!e.target.checked) {
+      for (let i = 0; i < CheckMulitChild.length; i++) {
+        if (CheckMulitChild[i] === e.target.value) {
+          CheckMulitChild.splice(i, 1);
+          let arr = [...CheckMulitChild];
+          setCheckMulitChild(arr);
+        }
+      }
+    }
+
+    console.log(CheckMulit);
   };
 
   const MultiCheck = (e) => {
@@ -516,7 +578,7 @@ export default function AddPatient({ open, setOpen }) {
                           <input
                             name="name"
                             id="NameInput"
-                            placeholder="Patient name"
+                            placeholder={t("Patient name")}
                             type="text"
                             className=" w-full  font-Poppins-Medium placeholder:text-[#98A2B3] bg-[#F9FAFF] outline-0 ring-0"
                           />
@@ -524,7 +586,7 @@ export default function AddPatient({ open, setOpen }) {
                             id="Name"
                             className="hidden font-Poppins-Medium absolute top-[-0.8rem] bg-white left-[0.2rem]  px-1 text-[#B7C835] font-medium"
                           >
-                            Patient name
+                            {t("Patient name")}
                           </p>
                         </div>
                         <div>
@@ -545,7 +607,7 @@ export default function AddPatient({ open, setOpen }) {
                           <input
                             name="Email"
                             id="EmailInput"
-                            placeholder="Email"
+                            placeholder={t("Email")}
                             type="email"
                             className="w-full bg-[#F9FAFF] font-Poppins-Medium text-xs placeholder-[#98A2B3] outline-0 ring-0"
                           />
@@ -553,7 +615,7 @@ export default function AddPatient({ open, setOpen }) {
                             id="Email"
                             className="hidden text-xs font-Poppins-Medium absolute top-[-0.8rem] bg-white left-[0.2rem]  px-1 text-[#B7C835] font-medium"
                           >
-                            Email
+                            {t("Email")}
                           </p>
                         </div>
 
@@ -565,7 +627,7 @@ export default function AddPatient({ open, setOpen }) {
                           <input
                             name="Phone"
                             id="PhoneInput"
-                            placeholder="Phone number"
+                            placeholder={t("Phone number")}
                             type="tel"
                             className="w-full bg-[#F9FAFF] font-Poppins-Medium text-xs placeholder:text-[#98A2B3] outline-0 ring-0"
                           />
@@ -573,7 +635,7 @@ export default function AddPatient({ open, setOpen }) {
                             id="Phone"
                             className="hidden text-xs font-Poppins-Medium absolute top-[-0.8rem] bg-white left-[0.2rem]  px-1 text-[#B7C835] font-medium"
                           >
-                            Phone number
+                            {t("Phone number")}
                           </p>
                         </div>
                         <div className="w-full">
@@ -594,7 +656,7 @@ export default function AddPatient({ open, setOpen }) {
                           <input
                             name="Age"
                             id="AgeInput"
-                            placeholder="Age"
+                            placeholder={t("Age")}
                             type="text"
                             className="w-full bg-[#F9FAFF] font-Poppins-Medium text-xs placeholder:text-[#98A2B3] outline-0 ring-0"
                           />
@@ -602,7 +664,7 @@ export default function AddPatient({ open, setOpen }) {
                             id="Age"
                             className="hidden text-xs font-Poppins-Medium absolute top-[-0.8rem] bg-white left-[0.2rem]  px-1 text-[#B7C835] font-medium"
                           >
-                            Age
+                            {t("Age")}
                           </p>
                         </div>
 
@@ -623,14 +685,14 @@ export default function AddPatient({ open, setOpen }) {
                               hidden
                               className=""
                             >
-                              Gender
+                              {t("Gender")}
                             </option>
                           </select>
                           <p
                             id="Gender"
                             className="hidden text-xs font-Poppins-Medium absolute top-[-0.8rem] bg-white left-[0.2rem]  px-1 text-[#B7C835] font-medium"
                           >
-                            Gender
+                            {t("Gender")}
                           </p>
                         </div>
 
@@ -652,14 +714,14 @@ export default function AddPatient({ open, setOpen }) {
                                 hidden
                                 className=""
                               >
-                                Doctor
+                                {t("Doctor")}
                               </option>
                             </select>
                             <p
                               id="Doctor"
                               className="hidden text-xs font-Poppins-Medium absolute top-[-0.8rem] bg-white left-[0.2rem]  px-1 text-[#B7C835] font-medium"
                             >
-                              Doctor
+                              {t("Doctor")}
                             </p>
                           </div>
                           <div className="space-x-1 flex w-full lg:w-[60%]">
@@ -679,7 +741,7 @@ export default function AddPatient({ open, setOpen }) {
                                 id="Price"
                                 className="hidden text-xs font-Poppins-Medium absolute top-[-0.8rem] bg-white left-[0.2rem]  px-1 text-[#B7C835] font-medium"
                               >
-                                Price
+                                {t("Price")}
                               </p>
                             </div>
                             <div
@@ -690,7 +752,7 @@ export default function AddPatient({ open, setOpen }) {
                               <input
                                 id="RatioPriceInput"
                                 name="RatioPrice"
-                                placeholder="Ratio price"
+                                placeholder={t("Ratio price")}
                                 type="text"
                                 className="w-full bg-[#F9FAFF] font-Poppins-Medium text-xs placeholder:text-[#98A2B3] outline-0 ring-0"
                               />
@@ -698,7 +760,7 @@ export default function AddPatient({ open, setOpen }) {
                                 id="RatioPrice"
                                 className="hidden text-xs font-Poppins-Medium absolute top-[-0.8rem] bg-white left-[0.2rem]  px-1 text-[#B7C835] font-medium"
                               >
-                                Ratio price
+                                {t("Ratio price")}
                               </p>
                             </div>
                           </div>
@@ -712,7 +774,7 @@ export default function AddPatient({ open, setOpen }) {
                           <input
                             name="PatientAddress"
                             id="PatientAddressInput"
-                            placeholder="Patient address"
+                            placeholder={t("Patient address")}
                             type="text"
                             className="w-full bg-[#F9FAFF] font-Poppins-Medium text-xs placeholder:text-[#98A2B3] outline-0 ring-0"
                           />
@@ -720,7 +782,7 @@ export default function AddPatient({ open, setOpen }) {
                             id="PatientAddress"
                             className="hidden text-xs font-Poppins-Medium absolute top-[-0.8rem] bg-white left-[0.2rem]  px-1 text-[#B7C835] font-medium"
                           >
-                            Patient address
+                            {t("Patient address")}
                           </p>
                         </div>
                         <div className="flex  w-full">
@@ -741,14 +803,14 @@ export default function AddPatient({ open, setOpen }) {
                                 hidden
                                 className=""
                               >
-                                Sent lab
+                                {t("Sent lab")}
                               </option>
                             </select>
                             <p
                               id="SentLab"
                               className="hidden text-xs font-Poppins-Medium absolute top-[-0.8rem] bg-white left-[0.2rem]  px-1 text-[#B7C835] font-medium"
                             >
-                              Sent lab
+                              {t("Sent lab")}
                             </p>
                           </div>
 
@@ -768,7 +830,7 @@ export default function AddPatient({ open, setOpen }) {
                               id="LapId"
                               className="hidden text-xs font-Poppins-Medium absolute top-[-0.8rem] bg-white left-[0.2rem]  px-1 text-[#B7C835] font-medium"
                             >
-                              Lap id
+                              {t("Lap id")}
                             </p>
                           </div>
                         </div>
@@ -791,14 +853,14 @@ export default function AddPatient({ open, setOpen }) {
                                 hidden
                                 className=""
                               >
-                                Company
+                                {t("Company")}
                               </option>
                             </select>
                             <p
                               id="Company"
                               className="hidden text-xs font-Poppins-Medium absolute top-[-0.8rem] bg-white left-[0.2rem]  px-1 text-[#B7C835] font-medium"
                             >
-                              Company
+                              {t("Company")}
                             </p>
                           </div>
 
@@ -818,7 +880,7 @@ export default function AddPatient({ open, setOpen }) {
                               id="CompanyID"
                               className="hidden text-[0.50rem] font-Poppins-Medium absolute top-[-0.8rem] bg-white left-0  px-1 text-[#B7C835] font-medium"
                             >
-                              CompanyID
+                              {t("CompanyID")}
                             </p>
                           </div>
                         </div>
@@ -850,7 +912,7 @@ export default function AddPatient({ open, setOpen }) {
                               id="SendMethod"
                               className="hidden text-xs font-Poppins-Regular absolute top-[-0.8rem] bg-white left-0  px-1 text-[#B7C835] font-medium"
                             >
-                              Send method
+                              {t("Send method")}
                             </p>
                           </button>
                           <div
@@ -926,7 +988,7 @@ export default function AddPatient({ open, setOpen }) {
                         </div>
                         <div className="mt-2 lg:mt-0 text-xs lg:col-start-1 lg:col-end-3 border-[#E4E7EC] w-full h-fit bg-white flex space-x-2 items-center py-2 px-4    relative m-auto border-[1px] rounded-xl ">
                           <p className="font-Poppins-Medium absolute top-[-0.8rem] bg-white left-[0.2rem]  px-1 text-[#98A2B3] font-medium">
-                            Urgency
+                            {t("Urgency")}
                           </p>
                           <div className="justify-center items-center w-full flex">
                             <div class="flex p-2   ">
@@ -943,7 +1005,7 @@ export default function AddPatient({ open, setOpen }) {
                                   for="radio-1"
                                   class="font-medium pr-5 peer-checked:text-black text-xs text-[#98A2B3] font-Poppins-Medium"
                                 >
-                                  <div>Emergency</div>
+                                  <div>{t("Emergency")}</div>
                                 </label>
                               </div>
                             </div>
@@ -962,7 +1024,7 @@ export default function AddPatient({ open, setOpen }) {
                                   for="radio-2"
                                   class="font-medium pr-5 peer-checked:text-black text-xs text-[#98A2B3] font-Poppins-Medium"
                                 >
-                                  <div>Non emergency</div>
+                                  <div>{t("Non emergency")}</div>
                                 </label>
                               </div>
                             </div>
@@ -976,13 +1038,13 @@ export default function AddPatient({ open, setOpen }) {
                             id="NotesInput"
                             className=" bg-[#F9FAFF] placeholder:text-[#98A2B3] font-Poppins-Medium border-[#E4E7EC] w-full h-fit  flex space-x-2 items-center py-3 px-4 outline-0 ring-0   relative m-auto border-[1px] rounded-xl text-xs "
                             rows={4}
-                            placeholder="Notes"
+                            placeholder={t("Notes")}
                           />
                           <p
                             id="Notes"
                             className="hidden text-xs font-Poppins-Regular absolute top-[-0.5rem] bg-white left-[0.4rem]  px-1 text-[#B7C835] font-medium"
                           >
-                            Notes
+                            {t("Notes")}
                           </p>
                         </div>
                         <div className="w-full lg:col-start-1 lg:col-end-3">
@@ -998,7 +1060,7 @@ export default function AddPatient({ open, setOpen }) {
                                 CheckMulit.length > 0 ? "hidden" : "block"
                               }`}
                             >
-                              Analysis type
+                              {t("Analysis type")}
                             </p>
                             {CheckMulit.map((item) => (
                               <p>{item}</p>
@@ -1022,7 +1084,7 @@ export default function AddPatient({ open, setOpen }) {
                               id="AnalysisType"
                               className="hidden text-xs font-Poppins-Medium absolute top-[-0.5rem] bg-white left-[0.1rem]  px-1 text-[#B7C835] font-medium"
                             >
-                              Analysis type
+                              {t("Analysis type")}
                             </p>
                           </button>
                           <div
@@ -1096,6 +1158,119 @@ export default function AddPatient({ open, setOpen }) {
                             </ul>
                           </div>
                         </div>
+
+                        <div className="w-full lg:col-start-1 lg:col-end-3">
+                          <button
+                            id="dropdownCheckBoxHelperChildButton"
+                            data-dropdown-toggle="dropdownCheckBoxHelperChild"
+                            class="w-full justify-between text-xs text-[#98A2B3] font-Poppins-Medium border-[#E4E7EC]  h-fit bg-[#F9FAFF] flex space-x-2 items-center py-3 px-4    relative m-auto border-[1px] rounded-xl"
+                            onClick={() => CheckBoxListChild()}
+                            type="button"
+                          >
+                            <p
+                              className={`${
+                                CheckMulitChild.length > 0 ? "hidden" : "block"
+                              }`}
+                            >
+                              {t("Analysis type child")}
+                            </p>
+                            {CheckMulitChild.map((item) => (
+                              <p>{item}</p>
+                            ))}{" "}
+                            <svg
+                              class="ml-2 w-4 h-4"
+                              aria-hidden="true"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M19 9l-7 7-7-7"
+                              ></path>
+                            </svg>
+                            <p
+                              id="AnalysisTypeChild"
+                              className="hidden text-xs font-Poppins-Medium absolute top-[-0.5rem] bg-white left-[0.1rem]  px-1 text-[#B7C835] font-medium"
+                            >
+                              {t("Analysis type Child")}
+                            </p>
+                          </button>
+                          <div
+                            id="dropdownDefaultCheckBoxChild"
+                            class="hidden border-[#B7C835] font-Poppins-Regular border-[1px] rounded-b-xl border-t-0 z-10 w-[81%] sm:w-[86%] md:w-[89%] bg-white rounded divide-y divide-gray-100 shadow "
+                          >
+                            <ul
+                              class="p-3 space-y-1 text-sm text-gray-700"
+                              aria-labelledby="dropdownCheckBoxHelperChildButton"
+                            >
+                              <li>
+                                <div class="flex p-2   ">
+                                  <div class="flex flex-row-reverse justify-between w-full items-center h-5">
+                                    <input
+                                      id="helper-checkbox-4"
+                                      name="helper-checkbox"
+                                      type="checkbox"
+                                      value="Lorem1"
+                                      class="w-[15px] h-[15px] peer accent-[#B7C835]"
+                                      onClick={(e) => MultiCheckChild(e)}
+                                    />
+                                    <label
+                                      for="helper-checkbox-4"
+                                      class="font-medium ml-2 peer-checked:text-black font-Poppins-Medium text-[#98A2B3] text-xs"
+                                    >
+                                      <div>Lorem1</div>
+                                    </label>
+                                  </div>
+                                </div>
+                              </li>
+                              <li>
+                                <div class="flex p-2 ">
+                                  <div class="flex flex-row-reverse justify-between w-full items-center h-5">
+                                    <input
+                                      id="helper-checkbox-5"
+                                      name="helper-checkbox"
+                                      type="checkbox"
+                                      value="Lorem2"
+                                      class="w-[15px] h-[15px] peer accent-[#B7C835]"
+                                      onClick={(e) => MultiCheckChild(e)}
+                                    />
+                                    <label
+                                      for="helper-checkbox-5"
+                                      class="font-medium ml-2 peer-checked:text-black font-Poppins-Medium text-[#98A2B3] text-xs "
+                                    >
+                                      <div>Lorem2</div>
+                                    </label>
+                                  </div>
+                                </div>
+                              </li>
+                              <li>
+                                <div class="flex p-2  ">
+                                  <div class="flex  flex-row-reverse justify-between w-full items-center h-5">
+                                    <input
+                                      id="helper-checkbox-6"
+                                      name="helper-checkbox"
+                                      type="checkbox"
+                                      value="Lorem3"
+                                      class="w-[15px] h-[15px] peer accent-[#B7C835]  "
+                                      onClick={(e) => MultiCheckChild(e)}
+                                    />
+                                    <label
+                                      for="helper-checkbox-6"
+                                      class="font-medium ml-2 peer-checked:text-black font-Poppins-Medium text-[#98A2B3] text-xs "
+                                    >
+                                      <div>Lorem3</div>
+                                    </label>
+                                  </div>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+
                         <div className="grid grid-cols-1 lg:grid-cols-3 lg:col-start-1 lg:col-end-3 gap-5 ">
                           <AnalysisIDContainer />
                           <AnalysisIDContainer />
@@ -1110,7 +1285,7 @@ export default function AddPatient({ open, setOpen }) {
                             <input
                               id="AnalysisPriceInput"
                               name="AnalysisPrice"
-                              placeholder="Analysis price"
+                              placeholder={t("Analysis price")}
                               type="text"
                               className="w-full bg-[#F9FAFF] font-Poppins-Medium text-xs text-[#98A2B3] outline-0 ring-0"
                             />
@@ -1118,7 +1293,7 @@ export default function AddPatient({ open, setOpen }) {
                               id="AnalysisPrice"
                               className="hidden text-xs font-Poppins-Medium absolute top-[-0.8rem] bg-white left-[0.1rem]  px-1 text-[#B7C835] font-medium"
                             >
-                              Analysis price
+                              {t("Analysis price")}
                             </p>
                           </div>
                           <div
@@ -1129,7 +1304,7 @@ export default function AddPatient({ open, setOpen }) {
                             <input
                               id="PaidUpInput"
                               name="PaidUp"
-                              placeholder="Paid up"
+                              placeholder={t("Paid up")}
                               type="text"
                               className="w-full bg-[#F9FAFF] font-Poppins-Medium text-xs text-[#98A2B3] outline-0 ring-0"
                             />
@@ -1137,7 +1312,7 @@ export default function AddPatient({ open, setOpen }) {
                               id="PaidUp"
                               className="hidden text-xs font-Poppins-Medium absolute top-[-0.8rem] bg-white left-[0.1rem]  px-1 text-[#B7C835] font-medium"
                             >
-                              Paid up
+                              {t("Paid up")}
                             </p>
                           </div>
                           <div
@@ -1148,7 +1323,7 @@ export default function AddPatient({ open, setOpen }) {
                             <input
                               id="DueInput"
                               name="Due"
-                              placeholder="Due"
+                              placeholder={t("Due")}
                               type="text"
                               className="w-full bg-[#F9FAFF] font-Poppins-Medium text-xs text-[#98A2B3] outline-0 ring-0"
                             />
@@ -1156,7 +1331,7 @@ export default function AddPatient({ open, setOpen }) {
                               id="Due"
                               className="hidden text-xs font-Poppins-Medium absolute top-[-0.8rem] bg-white left-[0.1rem]  px-1 text-[#B7C835] font-medium"
                             >
-                              Due
+                              {t("Due")}
                             </p>
                           </div>
                         </div>
@@ -1178,14 +1353,14 @@ export default function AddPatient({ open, setOpen }) {
                               hidden
                               className=""
                             >
-                              Payment type
+                              {t("Payment type")}
                             </option>
                           </select>
                           <p
                             id="PaymentType"
                             className="hidden text-xs font-Poppins-Medium absolute top-[-0.8rem] bg-white left-[0.1rem]  px-1 text-[#B7C835] font-medium"
                           >
-                            PaymentType
+                            {t("PaymentType")}
                           </p>
                         </div>
                         <div
@@ -1196,7 +1371,7 @@ export default function AddPatient({ open, setOpen }) {
                           <input
                             id="DiscountInput"
                             name="Discount"
-                            placeholder="Discount"
+                            placeholder={t("Discount")}
                             type="text"
                             className="w-full bg-[#F9FAFF] font-Poppins-Medium text-xs text-[#98A2B3] outline-0 ring-0"
                           />
@@ -1204,7 +1379,7 @@ export default function AddPatient({ open, setOpen }) {
                             id="Discount"
                             className="hidden text-xs font-Poppins-Medium absolute top-[-0.8rem] bg-white left-[0.1rem]  px-1 text-[#B7C835] font-medium"
                           >
-                            Discount
+                            {t("Discount")}
                           </p>
                         </div>
                         <div className="grid grid-cols-1 lg:grid-cols-3 lg:col-start-1 lg:col-end-3 gap-5 mt-20">
@@ -1217,35 +1392,35 @@ export default function AddPatient({ open, setOpen }) {
                             type="button"
                             className="flex  flex-grow py-3 font-Poppins-Medium text-sm  bg-[#B7C835] justify-center rounded-xl text-white"
                           >
-                            Save
+                            {t("Save")}
                           </button>
 
                           <button
                             type="button"
                             className="flex border-[#D0D5DD] border-[1px] flex-grow py-3 font-Poppins-Medium text-sm  bg-[#FFFFFF] justify-center rounded-xl text-black"
                           >
-                            Print barcode
+                            {t("Print barcode")}
                           </button>
 
                           <button
                             type="button"
                             className="flex border-[#D0D5DD] border-[1px] flex-grow py-3 font-Poppins-Medium text-sm x  bg-[#FFFFFF] justify-center rounded-xl text-black"
                           >
-                            Print for patient
+                            {t("Print for patient")}
                           </button>
 
                           <button
                             type="button"
                             className="flex border-[#D0D5DD] border-[1px] flex-grow py-3 font-Poppins-Medium text-sm x  bg-[#FFFFFF] justify-center rounded-xl text-black"
                           >
-                            Print for lab
+                            {t("Print for lab")}
                           </button>
 
                           <button
                             type="button"
                             className="flex border-[#D0D5DD] border-[1px] flex-grow py-3 font-Poppins-Medium text-sm x  bg-[#FFFFFF] justify-center rounded-xl text-black"
                           >
-                            Print for drawing room
+                            {t("Print for drawing room")}
                           </button>
 
                           <button
@@ -1253,7 +1428,7 @@ export default function AddPatient({ open, setOpen }) {
                             className="flex border-[#D0D5DD] border-[1px] flex-grow py-3 font-Poppins-Medium text-sm x  bg-[#FFFFFF] justify-center rounded-xl text-black"
                             onClick={() => close()}
                           >
-                            Cancel
+                            {t("Cancel")}
                           </button>
                         </div>
                       </div>

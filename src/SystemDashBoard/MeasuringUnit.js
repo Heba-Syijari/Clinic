@@ -49,7 +49,7 @@ function MeasuringUnit() {
   const GetUnits = async () => {
     document.getElementById("Loader").classList.remove("hidden");
     document.getElementById("Loader").classList.add("flex");
-    await axios.get(`/get-TestUnits`).then((response) => {
+    await axios.get(`/admin-scope/get-TestUnits`).then((response) => {
       dispatch(addAllUnit(response.data));
       document.getElementById("Loader").classList.add("hidden");
       document.getElementById("Loader").classList.remove("flex");
@@ -81,7 +81,7 @@ function MeasuringUnit() {
       let formdata = new FormData();
       formdata.append("test_unit", document.getElementById("Unit").value);
       await axios
-        .post(`/create-TestUnit`, formdata)
+        .post(`/admin-scope/create-TestUnit`, formdata)
         .then((response) => {
           if (response.status == 201) {
             document.getElementById("message").textContent = "";

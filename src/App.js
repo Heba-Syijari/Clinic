@@ -29,16 +29,15 @@ import TestMethodDB from "./SystemDashBoard/TestMethodDB";
 import LoginSystemDB from "./SystemDashBoard/LoginSystemDB";
 import GenderSystemDB from "./SystemDashBoard/GenderSystemDB";
 import ProfileSDB from "./SystemDashBoard/ProfileSDB";
+import SuppliersOfficeBills from "./SuppliersOfficeBills";
+import ShowEmployee from "./ShowEmployee";
 import axios from "axios";
 
 const queryClient = new QueryClient();
 function App() {
-  axios.defaults.baseURL = "https://aurora-team.com/labs-obada/api/admin-scope";
-  axios.defaults.headers = {
-    "Content-type": "application/json",
-    Authorization: "Bearer " + localStorage.getItem("token"),
-  };
-  //console.log(localStorage.getItem("token"));
+  axios.defaults.baseURL = "https://aurora-team.com/labs-obada/api";
+  axios.defaults.headers.common["Authorization"] =
+    "Bearer " + localStorage.getItem("token");
   return (
     <div className="bg-[#F2F4F7] h-full w-full  ">
       <Router>
@@ -86,10 +85,18 @@ function App() {
             <Route path="/Settings" element={<Settings />} />
             <Route path="/Suppliers" element={<SuppliersOfficeName />} />
             <Route
+              path="/Suppliers/OfficeBills"
+              element={<SuppliersOfficeBills />}
+            />
+
+            <Route
               path="/Suppliers/PaidBills"
               element={<SuppliersPaidBills />}
             />
+
             <Route path="/Staff" element={<Staff />} />
+            <Route path="/Staff/ShowEmployee" element={<ShowEmployee />} />
+
             <Route path="/Staff/EditEmployee" element={<EditEmployee />} />
             <Route path="/Analytic" element={<Analytic />} />
             <Route path="/Patients" element={<Patients />} />

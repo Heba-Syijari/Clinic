@@ -33,7 +33,7 @@ export default function EditTestMethod({ open, setOpen, id }) {
 
     await axios
       .put(
-        `/update-TestMethod?test_method_id=${formdata.get(
+        `/admin-scope/update-TestMethod?test_method_id=${formdata.get(
           "id"
         )}&test_method=${formdata.get("test_method")}`
       )
@@ -47,6 +47,13 @@ export default function EditTestMethod({ open, setOpen, id }) {
             : item;
         });
         dispatch(addAllTestMethod(content));
+        setOpen(false);
+      })
+      .catch((error) => {
+        if (error.response) {
+          document.getElementById("messag").textContent =
+            error.response.data.error[0];
+        }
       });
   };
   return (
@@ -113,6 +120,10 @@ export default function EditTestMethod({ open, setOpen, id }) {
                           />
                         </div>
                       </div>
+                      <p
+                        id="messag"
+                        className="text-center text-red-500 text-sm "
+                      ></p>
                     </div>
                   </div>
 

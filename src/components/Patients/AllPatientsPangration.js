@@ -6,10 +6,19 @@ import { BsThreeDots } from "react-icons/bs";
 import { HiOutlineArrowLeft } from "react-icons/hi";
 import { HiOutlineArrowRight } from "react-icons/hi";
 import { AiOutlineEye } from "react-icons/ai";
+import ShowPatient from "./ShowPatient";
+import EditPatient from "./EditPatient";
+import DeletePatient from "./DeletePatient";
+import { t } from "i18next";
 
 // Example items, to simulate fetching from another resources.
 
-function Items({ currentItems }) {
+function Items({
+  setOpenDeletePatient,
+  setOpenShowPatient,
+  setOpenEditPatient,
+  currentItems,
+}) {
   return (
     <>
       {currentItems &&
@@ -17,6 +26,7 @@ function Items({ currentItems }) {
           <tr className="border-b-[1px] ">
             <td className="w-fit">
               <input
+                name="check"
                 type="checkbox"
                 className="text-[#E4E7EC] border-[#E4E7EC] border-[1px] ml-5 w-fit"
               />
@@ -44,9 +54,19 @@ function Items({ currentItems }) {
             </td>
             <td>
               <div className="flex space-x-2 py-4">
-                <AiOutlineEye className="text-2xl text-black cursor-pointer" />
-                <TiEdit className="text-2xl  opacity-50 cursor-pointer" />
-                <IoTrashOutline className="text-2xl text-[#F04438] cursor-pointer" />
+                <AiOutlineEye
+                  className="text-2xl text-black cursor-pointer"
+                  onClick={() => setOpenShowPatient(true)}
+                />
+                <TiEdit
+                  className="text-2xl  opacity-50 cursor-pointer"
+                  onClick={() => setOpenEditPatient(true)}
+                />
+
+                <IoTrashOutline
+                  className="text-2xl text-[#F04438] cursor-pointer"
+                  onClick={() => setOpenDeletePatient(true)}
+                />
               </div>
             </td>
           </tr>
@@ -59,6 +79,9 @@ function AllPatientsPangration({ section, itemsPerPage, Data }) {
   // Here we use item offsets; we could also use page offsets
   // following the API or data you're working with.
   const [itemOffset, setItemOffset] = useState(0);
+  const [OpenEditPatient, setOpenEditPatient] = useState(false);
+  const [OpenShowPatient, setOpenShowPatient] = useState(false);
+  const [OpenDeletePatient, setOpenDeletePatient] = useState(false);
 
   // Simulate fetching items from another resources.
   // (This could be items from props; or items loaded in a local state
@@ -77,43 +100,67 @@ function AllPatientsPangration({ section, itemsPerPage, Data }) {
 
     setItemOffset(newOffset);
   };
-
+  const Checkall = () => {
+    if (document.getElementById("HeadCheck").checked) {
+      let checks = document.getElementsByName("check");
+      for (let i = 0; i <= checks.length; i++) {
+        checks[i].checked = true;
+      }
+    } else if (!document.getElementById("HeadCheck").checked) {
+      let checks = document.getElementsByName("check");
+      for (let i = 0; i <= checks.length; i++) {
+        checks[i].checked = false;
+      }
+    }
+  };
   return (
     <div
       className={`${section === "all" ? "block" : "hidden"} overflow-x-scroll`}
     >
+      <ShowPatient open={OpenShowPatient} setOpen={setOpenShowPatient} />
+      <EditPatient open={OpenEditPatient} setOpen={setOpenEditPatient} />
+      <DeletePatient open={OpenDeletePatient} setOpen={setOpenDeletePatient} />
+
       <table className="w-full h-full mt-5 bg-white rounded-t-2xl ">
         <tr className="border-b-[1px] w-full">
           <td className="w-fit  pr-2 lg:pr-0">
             <input
+              id="HeadCheck"
               type="checkbox"
               className="text-[#E4E7EC] border-[#E4E7EC] border-[1px] ml-5 "
+              onClick={() => Checkall()}
             />
           </td>
           <td className="text-sm text-[#98A2B3] font-Poppins-Regular py-2  pr-20 lg:pr-0">
-            Patient name
+            {t("Patient name")}
           </td>
           <td className="text-sm text-[#98A2B3] font-Poppins-Regular py-2   pr-20 lg:pr-0">
-            Date of visit
+            {t("Date of visit")}
           </td>
           <td className="text-sm text-[#98A2B3] font-Poppins-Regular py-2 pl-2 pr-20 lg:pr-0">
-            Phone number
+            {t("Phone number")}
           </td>
           <td className="text-sm text-[#98A2B3] font-Poppins-Regular py-2 w-[8%] pr-20 lg:pr-0 ">
-            Gender
+            {t("Gender")}
           </td>
           <td className="text-sm text-[#98A2B3] font-Poppins-Regular py-2 w-[8%] pr-20 lg:pr-0">
-            Age
+            {t("Age")}
           </td>
           <td className="text-sm text-[#98A2B3] font-Poppins-Regular py-2 pl-5 pr-20 lg:pr-0">
-            Doctor
+            {t("Doctor")}
           </td>
 
           <td className="text-sm text-[#98A2B3] font-Poppins-Regular py-2 w-[13%] pr-20 lg:pr-0">
-            Action
+            {t("Action")}
           </td>
         </tr>
-        <Items currentItems={currentItems} className="w-full bg-white" />
+        <Items
+          setOpenEditPatient={setOpenEditPatient}
+          setOpenShowPatient={setOpenShowPatient}
+          setOpenDeletePatient={setOpenDeletePatient}
+          currentItems={currentItems}
+          className="w-full bg-white"
+        />
       </table>
 
       <ReactPaginate

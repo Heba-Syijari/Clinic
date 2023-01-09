@@ -25,7 +25,11 @@ export default function EditTupe({ open, setOpen, id, Content, setContent }) {
     formdata.append("tupe", document.getElementById("tupeName").value);
 
     await axios
-      .put(`/updateTupe?id=${formdata.get("id")}&tupe=${formdata.get("tupe")}`)
+      .put(
+        `/admin-scope/updateTupe?id=${formdata.get("id")}&tupe=${formdata.get(
+          "tupe"
+        )}`
+      )
       .then((response) => {
         let content = TupeSelector.map((item) => {
           return item.id == id
@@ -33,6 +37,14 @@ export default function EditTupe({ open, setOpen, id, Content, setContent }) {
             : item;
         });
         dispatch(addAllTupe(content));
+        setOpen(false);
+      })
+      .catch((error) => {
+        if (error.response) {
+          document.getElementById("messag").textContent =
+            error.response.data.errors.tupe[0];
+          console.log(error.response.data.errors.tupe[0]);
+        }
       });
   };
   return (
@@ -98,6 +110,10 @@ export default function EditTupe({ open, setOpen, id, Content, setContent }) {
                           />
                         </div>
                       </div>
+                      <p
+                        id="messag"
+                        className="text-center text-red-500 text-sm "
+                      ></p>
                     </div>
                   </div>
 

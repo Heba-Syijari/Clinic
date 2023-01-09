@@ -5,68 +5,127 @@ import { initReactI18next } from "react-i18next";
 // (tip move them in a JSON file and import them,
 // or even better, manage them separated from your code: https://react.i18next.com/guides/multiple-translation-files)
 
-export const language = (lan) => {
-  const resources = {
-    en: {
-      translation: {
-        "Welcome to LeaLap": "Welcome to LeaLap",
-        "Last Pateint": "Last Pateint",
-      },
+const resources = {
+  en: {
+    translation: {
+      "Welcome to LeaLap": "Welcome to LeaLap",
+      "Last Pateint": "Last Pateint",
     },
-    ar: {
-      translation: {
-        "Welcome to LeaLap": "مرحبا بك في مخبر ليا",
-        "Last Pateint": "آخر المرضى",
-        "Doctors section": "قسم الأطباء",
-        "Reviewers Section": "قسم المراجعين",
-        "Current Year": "السنة الحالية",
-        "Last Year": "السنة الماضية",
-        "Store Lab": "مخزن المتجر",
-        Doctors: "الأطباء",
-        Workers: "العمال",
-        Analysis: "التحليلات",
-        Patients: "المرضى",
-        "Analysis today": "تحليلات اليوم",
-        "Sort by": "صنف حسب",
-        All: "الكل",
-        "Not complete": "غير مكتمل",
-        "Completed and not printed": "مكتمل و غير مطبوع",
-        Printed: "مطبوع",
-        Laboratories: "مخابر",
-        "Add patient": "أضف مريض",
-        From: "من",
-        To: "إلى",
-        "Add section": "",
-        "Move up": "",
-        "Move down": "",
-        "Add SubSection": "",
-        Save: "",
-        Delete: "",
-        "Section name": "",
-        "Check code": "",
-        "Examination name in print": "",
-        "Examination method": "",
-        "intake tube": "",
-        "Examination price": "",
-        "Laboratory examination price": "",
-        "Examination price for companies": "",
-        "Measruing unit": "",
-        "Class analysis": "",
-      },
+  },
+  ar: {
+    translation: {
+      Home: "الرئيسية",
+      Analytic: "تحاليل",
+      Labs: "مخابر",
+      Staff: "موظفين",
+      Store: "مخزن",
+      Reports: "تقارير",
+      Accounting: "حسابات",
+      Suppliers: "الموردين",
+      Settings: "الإعدادات",
+      Hi: "مرحبا",
+      Logout: "تسجيل الخروج",
+      Action: "تعديل",
+      Email: "البريد الالكتروني",
+      "Ratio price": "النسبة",
+      "Sent lab": "المخبر المرسل",
+      "Lap id": "رقم المخبر",
+      "Patient address": "عنوان المريض",
+      "Receive of data": "تاريخ الاستقبال",
+      "Patient name": "اسم المريض",
+      "Date of visit": "تاريخ الزيارة",
+      "Date of Visit": "تاريخ الزيارة",
+      "Phone number": "رقم الهاتف",
+      Gender: "الجنس",
+      Age: "العمر",
+      Doctor: "طبيب",
+      Price: "السعر",
+      "We are glad you are joining us. Good day!":
+        "نحن مسرورين بإنضمامك إلينا. يوم جيد!",
+      "Welcome to LeaLap": "مرحبا بك في مخبر ليا",
+      "Last Pateint": "آخر المرضى",
+      "Doctors section": "قسم الأطباء",
+      "Reviewers Section": "قسم المراجعين",
+      "Current Year": "السنة الحالية",
+      "Last Year": "السنة الماضية",
+      "Store Lab": "مخزن المتجر",
+      Doctors: "الأطباء",
+      Workers: "العمال",
+      Analysis: "التحليلات",
+      Patients: "المرضى",
+      "Analysis today": "تحليلات اليوم",
+      "View all": "عرض الكل",
+      Notifications: "التبيهات",
+      "Show all notifications": "عرض كل التنبيهات",
+      "Reviewers Section": "قسم المراجعين",
+      "Material name": "اسم المادة",
+      "Find the names of the reviewers here": "جد أسماء المراجعين هنا",
+      "Send method": "طريقة الارسال",
+      "Single Print": "طباعة واحدة",
+      Once: "واحدة",
+      Quantity: " الكمية",
+      Urgency: "عاجل",
+      Company: "الشركة",
+      Discount: "تخفيض",
+      "Print barcode": "باركود الطباعة",
+      "Print for patient": "طباعة للمريض",
+      "Print for lab": "طباعة للمخبر",
+      "Analysis price": "سعر التحليل",
+      "Print for drawing room": "طباعة لغرفة الرسم",
+      "Do you want to delete this patient?": "هل تريد حذف هذا المريض",
+      "Delete Patient": "حذف المريض",
+      Yes: "نعم",
+      No: "لا",
+      "Edit patient": "تعديل المريض",
+      Cancel: "إلغاء",
+      "Payment type": "نوع الدفع",
+      "Paid up": "دفع",
+      "Analysis type": "نوع التحليل",
+      "Analysis type child": "التحليل الثانوي",
+      Notes: "ملاحظات",
+      "Non emergency": "غير عاجل",
+      Emergency: "عاجل",
+      EXP: "الصلاحية",
+      Model: "النوع",
+      CompanyID: "رمز الشركة",
+      "Sort by": "صنف حسب",
+      All: "الكل",
+      "Not complete": "غير مكتمل",
+      "Completed and not printed": "مكتمل و غير مطبوع",
+      Printed: "مطبوع",
+      Laboratories: "مخابر",
+      "Add patient": "أضف مريض",
+      From: "من",
+      To: "إلى",
+      "Add section": "اضافة قسم",
+      "Move up": "أعلى",
+      "Move down": "أسفل",
+      Save: "حفظ",
+      Delete: "حذق",
+      "Section name": "اسم القسم",
+      "Check code": "الرمز",
+      "Examination name in print": "اسم التحليل في الطبع",
+      "Examination method": "طريقة التحليل",
+      "intake tube": "الدوراق",
+      "Examination price": "",
+      "Laboratory examination price": "سعر تحليل المخبر",
+      "Examination price for companies": " سعر التحليل للشركات",
+      "Measruing unit": "وحدة قياس",
+      "Class analysis": " نوع التحليل",
     },
-  };
-
-  i18n
-    .use(initReactI18next) // passes i18n down to react-i18next
-    .init({
-      resources,
-      lng: { lan }, // language to use, more information here: https://www.i18next.com/overview/configuration-options#languages-namespaces-resources
-      // you can use the i18n.changeLanguage function to change the language manually: https://www.i18next.com/overview/api#changelanguage
-      // if you're using a language detector, do not define the lng option
-
-      interpolation: {
-        escapeValue: false, // react already safes from xss
-      },
-    });
-  return i18n;
+  },
 };
+
+i18n
+  .use(initReactI18next) // passes i18n down to react-i18next
+  .init({
+    resources,
+    lng: "ar", // language to use, more information here: https://www.i18next.com/overview/configuration-options#languages-namespaces-resources
+    // you can use the i18n.changeLanguage function to change the language manually: https://www.i18next.com/overview/api#changelanguage
+    // if you're using a language detector, do not define the lng option
+
+    interpolation: {
+      escapeValue: false, // react already safes from xss
+    },
+  });
+export default i18n;

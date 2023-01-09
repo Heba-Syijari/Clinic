@@ -20,8 +20,6 @@ export default function DeleteGender({ open, setOpen, id }) {
   const remove = async () => {
     console.log(id);
 
-    let token =
-      "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiN2VlN2E3Y2NmMjEzZTRkZjVjZDI2OTk3YzU5MmI0MDA1N2Q0N2ZmY2M5MzZhNmUyZjhkOGI4MDQyNzZmNTcyNmJhZjVkZWUyMjcwNGUzMzYiLCJpYXQiOjE2NzMwOTMwODguOTY2MzkxLCJuYmYiOjE2NzMwOTMwODguOTY2Mzk0LCJleHAiOjE3MDQ2MjkwODguOTYxNTUxLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.NKUc3xWBkslUAMS0LgwzHEG_ymvKjG7K3biTQJZob4pv4hG_LMWruek6EPOqNsbz0cquOkFrSx_awxTHo0RlBtsYFdyXT6grhokhdziLGVfOIK7aCVBHLo_ZyJ0KH32kV40fS62ZOgPdTgHaRn_Rwhd40OLLXDvA2-1C1AnfB46vshAS3AazeE-BOyvFnXMSW7tHhaF-nLGR1VhO209KRv8bEHCyTtwBQ6GTw7xtQaqS99y2_B3jwqNlGc34rrzdjEiFRas_Ua2QR0_8vbVCg4XbITpBVg3TfBY1uwysmMZbrtiQnlZukl2o62K30EL0FFsAyahDofFJUsVo05nRaZ-zR1cLr1Eg9LHGkhytb2lHZBHQaShuWCmdLVj-g3KnRnlHffiS7D9n1uBHgYXv6F-ONrmgra_sOl5qn7NdZor8NE_A_B7Inv3Bf0A916LnPzFmasyQlPUk1_-eaf3Jg4FpEBoTMw7Fr6j4SomNK-0ZcQVHztEhGNLfoK-4GB3UQnZVDjxkw3Wnb-4mn7RLJEbM-1N-33UpxOFFqI6tmpFIMCShI9FL6zzOSRVhvC4cGFTi5I9JJ2Yl0uAFdBZpKW8nhHTOCld3IB2mPdJ5rNkQQiG12q6qbutfTBjumTP-DAbmCOa2Hp8gAhScj780HphkjeslLkrQWGWgXpf8wlM";
     let selected =
       GenderSelector[
         GenderSelector.findIndex((genderItem) => genderItem.id === id)
@@ -30,16 +28,7 @@ export default function DeleteGender({ open, setOpen, id }) {
     formdata.append("id", selected.id);
 
     await axios
-      .delete(
-        `https://aurora-team.com/labs-obada/api/admin-scope/delete-gender?gender_id=${formdata.get(
-          "id"
-        )}`,
-        {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        }
-      )
+      .delete(`/admin-scope/delete-gender?gender_id=${formdata.get("id")}`)
       .then((response) => {
         dispatch(removeFromGender(selected));
         setOpen(false);

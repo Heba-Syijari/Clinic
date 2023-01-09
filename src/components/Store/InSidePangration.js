@@ -9,10 +9,17 @@ import { HiOutlineArrowRight } from "react-icons/hi";
 import { AiOutlineEye } from "react-icons/ai";
 import profile from "../../Images/profile.jpg";
 import OutProductContainer from "./Inside/OutProductContainer";
+import EditProduct from "./EditProduct";
+import DeleteProduct from "./DeleteProduct";
 
 // Example items, to simulate fetching from another resources.
 
-function Items({ currentItems, setOpenOutProduct }) {
+function Items({
+  setOpenDeleteProduct,
+  setOpenEditProduct,
+  currentItems,
+  setOpenOutProduct,
+}) {
   const ProductOut = () => {
     setOpenOutProduct(true);
   };
@@ -57,8 +64,15 @@ function Items({ currentItems, setOpenOutProduct }) {
                   className="text-2xl text-black cursor-pointer"
                   onClick={() => ProductOut()}
                 />
-                <TiEdit className="text-2xl  opacity-50 cursor-pointer" />
-                <IoTrashOutline className="text-2xl text-[#F04438] cursor-pointer" />
+                <TiEdit
+                  className="text-2xl  opacity-50 cursor-pointer"
+                  onClick={() => setOpenEditProduct(true)}
+                />
+
+                <IoTrashOutline
+                  className="text-2xl text-[#F04438] cursor-pointer"
+                  onClick={() => setOpenDeleteProduct(true)}
+                />
               </div>
             </td>
           </tr>
@@ -72,6 +86,8 @@ function InSidePangration({ section, itemsPerPage, Data }) {
   // following the API or data you're working with.
   const [itemOffset, setItemOffset] = useState(0);
   const [OpenOutProduct, setOpenOutProduct] = useState(false);
+  const [OpenEditProduct, setOpenEditProduct] = useState(false);
+  const [OpenDeleteProduct, setOpenDeleteProduct] = useState(false);
 
   // Simulate fetching items from another resources.
   // (This could be items from props; or items loaded in a local state
@@ -98,7 +114,8 @@ function InSidePangration({ section, itemsPerPage, Data }) {
       }  overflow-x-scroll`}
     >
       <OutProductContainer open={OpenOutProduct} setOpen={setOpenOutProduct} />
-
+      <EditProduct open={OpenEditProduct} setOpen={setOpenEditProduct} />
+      <DeleteProduct open={OpenDeleteProduct} setOpen={setOpenDeleteProduct} />
       <table className="w-full h-full mt-8 bg-white rounded-t-2xl ">
         <tr className="border-b-[1px] w-full">
           <td className="w-fit ">
@@ -133,6 +150,8 @@ function InSidePangration({ section, itemsPerPage, Data }) {
           </td>
         </tr>
         <Items
+          setOpenDeleteProduct={setOpenDeleteProduct}
+          setOpenEditProduct={setOpenEditProduct}
           setOpenOutProduct={setOpenOutProduct}
           currentItems={currentItems}
           className="w-full bg-white"

@@ -1,3 +1,4 @@
+import { t } from "i18next";
 import React from "react";
 import profile from "../../Images/profile.jpg";
 
@@ -12,7 +13,7 @@ function DoctorContainer() {
         </div>
       </div>
       <p className="font-Poppins-Regular text-[#B7C835] text-xs mt-5 font-semibold">
-        100 Analysis
+        100 {t("Analysis")}
       </p>
     </div>
   );
