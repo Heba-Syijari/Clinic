@@ -6,6 +6,7 @@ import { IoTrashOutline } from "react-icons/io5";
 import { BsThreeDots } from "react-icons/bs";
 import { HiOutlineArrowLeft } from "react-icons/hi";
 import { HiOutlineArrowRight } from "react-icons/hi";
+import { t } from "i18next";
 
 // Example items, to simulate fetching from another resources.
 
@@ -93,28 +94,28 @@ function PangrationSuppliersPaidBills({ setPayBill, itemsPerPage, Data }) {
             />
           </td>
           <td className="text-sm text-[#98A2B3] font-Poppins-Regular px-5 md:px-0  py-2 w-[10%]">
-            Scientific office name
+            {t("Scientific office name")}
           </td>
           <td className="text-sm text-[#98A2B3] font-Poppins-Regular px-5 md:px-0  py-2 w-[10%] ">
-            Date of purchase
+            {t("Date of purchase")}
           </td>
           <td className="text-sm text-[#98A2B3] font-Poppins-Regular px-5 md:px-0  py-2  w-[10%]">
-            Invoice number
+            {t("Invoice number")}
           </td>
           <td className="text-sm text-[#98A2B3] font-Poppins-Regular px-5 md:px-0  py-2 w-[10%] ">
-            Amount $ before payment
+            {t("Amount $ before payment")}
           </td>
           <td className="text-sm text-[#98A2B3] font-Poppins-Regular  px-5 md:px-0 py-2 w-[10%]">
-            Amount ID before payment
+            {t("Amount ID before payment")}
           </td>
           <td className="text-sm text-[#98A2B3] font-Poppins-Regular  px-5 md:px-0 py-2 w-[10%]">
-            Amount $ after payment
+            {t("Amount $ after payment")}
           </td>
           <td className="text-sm text-[#98A2B3] font-Poppins-Regular  px-5 md:px-0 py-2 w-[10%]">
-            Amount ID after payment
+            {t("Amount ID after payment")}
           </td>
           <td className="text-sm text-[#98A2B3] font-Poppins-Regular px-5 md:px-0  py-2 w-[10%]">
-            Action
+            {t("Action")}
           </td>
         </tr>
         <Items

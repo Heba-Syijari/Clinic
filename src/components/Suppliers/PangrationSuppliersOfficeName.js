@@ -6,7 +6,7 @@ import { IoTrashOutline } from "react-icons/io5";
 import { BsThreeDots } from "react-icons/bs";
 import { HiOutlineArrowLeft } from "react-icons/hi";
 import { HiOutlineArrowRight } from "react-icons/hi";
-
+import { t } from "i18next";
 // Example items, to simulate fetching from another resources.
 
 function Items({
@@ -104,22 +104,22 @@ function PangrationSuppliersOfficeName({
             />
           </td>
           <td className="text-sm text-[#98A2B3] font-Poppins-Regular py-2  ">
-            Scientific office name
+            {t("Scientific office name")}
           </td>
           <td className="text-sm text-[#98A2B3] font-Poppins-Regular py-2 w-[18%] ">
-            Address
+            {t("Address")}
           </td>
           <td className="text-sm text-[#98A2B3] font-Poppins-Regular py-2 pl-2 ">
-            Phone number
+            {t("Phone number")}
           </td>
           <td className="text-sm text-[#98A2B3] font-Poppins-Regular py-2 w-[18%] ">
-            Maintenance engineer Mobile
+            {t("Maintenance engineer Mobile")}
           </td>
           <td className="text-sm text-[#98A2B3] font-Poppins-Regular py-2 ">
-            Added date
+            {t("Added date")}
           </td>
           <td className="text-sm text-[#98A2B3] font-Poppins-Regular py-2 w-[10%]">
-            Action
+            {t("Action")}
           </td>
         </tr>
         <Items

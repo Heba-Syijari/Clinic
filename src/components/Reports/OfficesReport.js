@@ -3,6 +3,7 @@ import { FcPrint } from "react-icons/fc";
 import { IoCalendarOutline } from "react-icons/io5";
 
 import ReactDatePicker from "react-datepicker";
+import { t } from "i18next";
 
 function OfficesReport({ section }) {
   const [FromDate, setFromDate] = useState(new Date());
@@ -12,7 +13,7 @@ function OfficesReport({ section }) {
     return (
       <div className="flex p-4 rounded-xl justify-between items-center w-full outline-0 border-2">
         <label className="text-[#98A2B3] text-xs mr-20 font-Poppins-Medium">
-          From
+          {t("From")}
         </label>
         <div className=" flex items-center">
           <label
@@ -35,7 +36,7 @@ function OfficesReport({ section }) {
     return (
       <div className="flex p-4 rounded-xl justify-between items-center w-full outline-0 border-2">
         <label className="text-[#98A2B3] text-xs mr-20 font-Poppins-Medium">
-          To
+          {t("To")}
         </label>
         <div className=" flex items-center">
           <label
@@ -60,7 +61,7 @@ function OfficesReport({ section }) {
           <div className="w-full break-words border-[#E4E7EC] h-fit bg-[#F9FAFF] flex space-x-2 items-center py-4 px-4    relative m-auto border-[1px] rounded-xl ">
             <input
               name="OfficeName"
-              placeholder="Office name"
+              placeholder={t("Office name")}
               type="text"
               className="w-full bg-[#F9FAFF] font-Poppins-Medium text-xs placeholder:text-[#98A2B3] outline-0 ring-0"
             />
@@ -68,7 +69,7 @@ function OfficesReport({ section }) {
           <div className="w-full break-words border-[#E4E7EC] h-fit bg-[#F9FAFF] flex space-x-2 items-center py-4 px-4    relative m-auto border-[1px] rounded-xl ">
             <input
               name="InvoiceNumber"
-              placeholder="Invoice number"
+              placeholder={t("Invoice number")}
               type="text"
               className="w-full bg-[#F9FAFF] font-Poppins-Medium text-xs placeholder:text-[#98A2B3] outline-0 ring-0"
             />
@@ -76,7 +77,7 @@ function OfficesReport({ section }) {
           <div className="w-full break-words border-[#E4E7EC] h-fit bg-[#F9FAFF] flex space-x-2 items-center py-4 px-4    relative m-auto border-[1px] rounded-xl ">
             <input
               name="TotalAmountBillID"
-              placeholder="Total amount bill ID"
+              placeholder={t("Total amount bill ID")}
               type="text"
               className="w-full bg-[#F9FAFF] font-Poppins-Medium text-xs placeholder:text-[#98A2B3] outline-0 ring-0"
             />
@@ -84,7 +85,7 @@ function OfficesReport({ section }) {
           <div className="w-full break-words border-[#E4E7EC] h-fit bg-[#F9FAFF] flex space-x-2 items-center py-4 px-4    relative m-auto border-[1px] rounded-xl ">
             <input
               name="TotalAmountBillDollar"
-              placeholder="Total amount bill $"
+              placeholder={t("Total amount bill $")}
               type="text"
               className="w-full bg-[#F9FAFF] font-Poppins-Medium text-xs placeholder:text-[#98A2B3] outline-0 ring-0"
             />
@@ -92,7 +93,7 @@ function OfficesReport({ section }) {
           <div className="w-full break-words border-[#E4E7EC] h-fit bg-[#F9FAFF] flex space-x-2 items-center py-4 px-4    relative m-auto border-[1px] rounded-xl ">
             <input
               name="TheAmountPaid"
-              placeholder="The amount paid"
+              placeholder={t("The amount paid")}
               type="text"
               className="w-full bg-[#F9FAFF] font-Poppins-Medium text-xs placeholder:text-[#98A2B3] outline-0 ring-0"
             />
@@ -100,7 +101,7 @@ function OfficesReport({ section }) {
           <div className="w-full break-words border-[#E4E7EC] h-fit bg-[#F9FAFF] flex space-x-2 items-center py-4 px-4    relative m-auto border-[1px] rounded-xl ">
             <input
               name="RemainingAmount"
-              placeholder="Remaining amount"
+              placeholder={t("Remaining amount")}
               type="text"
               className="w-full bg-[#F9FAFF] font-Poppins-Medium text-xs placeholder:text-[#98A2B3] outline-0 ring-0"
             />
@@ -130,14 +131,14 @@ function OfficesReport({ section }) {
               type="button"
               className="flex border-[#D0D5DD] border-[1px] w-2/5 py-3 font-Poppins-Medium text-sm  bg-[#FFFFFF] justify-center rounded-xl text-black"
             >
-              Reset
+              {t("Reset")}
             </button>
 
             <button
               type="button"
               className="flex  flex-grow py-3 font-Poppins-Medium text-sm  bg-[#B7C835] justify-center rounded-xl text-white"
             >
-              Apply
+              {t("Apply")}
             </button>
           </div>
         </div>
@@ -146,57 +147,61 @@ function OfficesReport({ section }) {
       <div className="mt-5 grid grid-cols-3 lg:grid-cols-5 gap-5 items-center">
         <div className="flex flex-col w-full text-center h-full items-center bg-white space-y-3 px-10 py-6 rounded-2xl">
           <h1 className="font-Poppins-Bold  text-base">10000</h1>
-          <p className="font-Poppins-Regular text-xs">Offices</p>
+          <p className="font-Poppins-Regular text-xs">{t("Offices")}</p>
         </div>
         <div className="flex flex-col w-full text-center h-full items-center bg-white space-y-3 px-10 py-6 rounded-2xl">
           <h1 className="font-Poppins-Bold  text-base">10000</h1>
-          <p className="font-Poppins-Regular text-xs">Total amount ID</p>
+          <p className="font-Poppins-Regular text-xs">{t("Total amount ID")}</p>
         </div>
         <div className="flex flex-col w-full text-center h-full items-center bg-white space-y-3 px-10 py-6 rounded-2xl">
           <h1 className="font-Poppins-Bold  text-base">10000</h1>
-          <p className="font-Poppins-Regular text-xs">Total amount $</p>
+          <p className="font-Poppins-Regular text-xs">{t("Total amount $")}</p>
         </div>
         <div className="flex flex-col w-full text-center h-full items-center bg-white space-y-3 px-10 py-6 rounded-2xl">
           <h1 className="font-Poppins-Bold  text-base">10000</h1>
-          <p className="font-Poppins-Regular text-xs">Amount paid</p>
+          <p className="font-Poppins-Regular text-xs">{t("Amount paid")}</p>
         </div>
         <div className="flex flex-col w-full text-center h-full items-center bg-white space-y-3 px-10 py-6 rounded-2xl">
           <h1 className="font-Poppins-Bold  text-base">10000</h1>
-          <p className="font-Poppins-Regular text-xs">Remaining amount</p>
+          <p className="font-Poppins-Regular text-xs">
+            {t("Remaining amount")}
+          </p>
         </div>
       </div>
 
       <div className="w-full h-full flex flex-col  bg-white px-8 pt-10 pb-5 rounded-lg mt-5">
         <div className="flex justify-between w-full">
-          <h1 className="font-Poppins-Medium text-lg ">Scientific offices</h1>
+          <h1 className="font-Poppins-Medium text-lg ">
+            {t("Scientific offices")}
+          </h1>
           <div className="w-fit border-2 rounded-xl items-center flex space-x-5 px-10">
             <FcPrint className="text-xl" />
-            <p className="font-Poppins-Medium text-sm">Print</p>
+            <p className="font-Poppins-Medium text-sm">{t("Print")}</p>
           </div>
         </div>
         <div className="overflow-scroll scrollbar-hide h-64  w-full mt-5">
           <table className=" w-full    mb-5">
             <tr className="border-y-2 sticky top-0 bg-white">
               <td className="py-3 text-[#667085] pr-20 lg:pr-0 font-Poppins-Regular text-sm  w-[15%]">
-                Date
+                {t("Date")}
               </td>
               <td className="py-3 text-[#667085]  pr-20 lg:pr-0 font-Poppins-Regular  text-sm  ">
-                Office name
+                {t("Office name")}
               </td>
               <td className="py-3 text-[#667085] pr-20 lg:pr-0 font-Poppins-Regular text-sm ">
-                Invoice number
+                {t("Invoice number")}
               </td>
               <td className="py-3 text-[#667085] pr-20 lg:pr-0 font-Poppins-Regular text-sm ">
-                Total amount bill ID
+                {t("Total amount bill ID")}
               </td>
               <td className="py-3 text-[#667085] pr-20 lg:pr-0 font-Poppins-Regular text-sm ">
-                Total amount bill $
+                {t("Total amount bill $")}
               </td>
               <td className="py-3 text-[#667085] pr-20 lg:pr-0 font-Poppins-Regular text-sm ">
-                Amount paid
+                {t("Amount paid")}
               </td>
               <td className="py-3 text-[#667085] pr-20 lg:pr-0 font-Poppins-Regular text-sm ">
-                Remaining amount
+                {t("Remaining amount")}
               </td>
             </tr>
             <tr className="mt-2 border-b-[1px]">

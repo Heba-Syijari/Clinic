@@ -1,17 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { TiEdit } from "react-icons/ti";
 import { IoTrashOutline } from "react-icons/io5";
+import { t } from "i18next";
+import EditManeReport from "./ManeReport/EditManeReport";
+import DeleteManeReport from "./ManeReport/DeleteManeReport";
 
 function ManeReport({ type }) {
+  const [OpenEditManeReport, setOpenEditManeReport] = useState(false);
+  const [OpenDeleteManeReport, setOpenDeleteManeReport] = useState(false);
   return (
     <div
       className={`${
         type === "ManeReport" ? "block" : "hidden"
       } col-start-1 col-end-3`}
     >
+      <EditManeReport open={OpenEditManeReport} setOpen={setOpenEditManeReport} />
+      <DeleteManeReport
+        open={OpenDeleteManeReport}
+        setOpen={setOpenDeleteManeReport}
+      />
       <div className="col-start-1 col-end-3">
         <textarea
-          placeholder="Normal range"
+          placeholder={t("Normal range")}
           className="bg-[#F9FAFF] border-[#E4E7EC] w-full h-fit text-xs  flex space-x-2 items-center py-3 px-4 outline-0 ring-0   relative m-auto border-[1px] rounded-xl "
           rows={5}
         />
@@ -23,7 +33,7 @@ function ManeReport({ type }) {
             className=" w-full   rounded-lg bg-[#F9FAFF]   font-Poppins-Regular  text-[#98A2B3] text-xs  outline-none px-4 py-2 cursor-pointer"
           >
             <option value="" selected disabled hidden className="">
-              Gender
+              {t("Gender")}
             </option>
           </select>
         </div>
@@ -31,7 +41,7 @@ function ManeReport({ type }) {
         <div className="border-[#E4E7EC] w-full h-fit bg-[#F9FAFF] flex space-x-2 items-center py-3 px-4   relative m-auto border-[1px] rounded-xl ">
           <input
             name="High"
-            placeholder="H"
+            placeholder={t("H")}
             type="text"
             className="w-full bg-[#F9FAFF] font-Poppins-Regular text-xs text-[#707070] outline-0 ring-0"
           />
@@ -39,7 +49,7 @@ function ManeReport({ type }) {
         <div className="border-[#E4E7EC] w-full h-fit bg-[#F9FAFF] flex space-x-2 items-center py-3 px-4     relative m-auto border-[1px] rounded-xl ">
           <input
             name="Low"
-            placeholder="L"
+            placeholder={t("L")}
             type="text"
             className="w-full bg-[#F9FAFF] font-Poppins-Regular text-xs text-[#707070] outline-0 ring-0"
           />
@@ -47,23 +57,23 @@ function ManeReport({ type }) {
 
         <div className="col-start-3 col-end-4 bg-[#0D2135]   flex items-center justify-center px-20 w-full py-2 rounded-xl cursor-pointer ">
           <p className="text-sm flex items-center justify-center text-white font-Poppins-Regular">
-            Add normal
+            {t("Add normal")}
           </p>
         </div>
 
         <table className="w-full h-full mt-5  bg-white  rounded-2xl col-start-1 col-end-4 ">
           <tr className="border-b-[1px] w-full">
             <td className="text-sm text-[#98A2B3] font-Poppins-Regular py-2 pl-8 w-[30%]">
-              Gender
+              {t("Gender")}
             </td>
             <td className="text-sm text-[#98A2B3] font-Poppins-Regular py-2  w-[30%]">
-              H
+              {t("H")}
             </td>
             <td className="text-sm text-[#98A2B3] font-Poppins-Regular py-2  w-[30%]">
-              L
+              {t("L")}
             </td>
             <td className="text-sm text-[#98A2B3] font-Poppins-Regular py-2 w-[10%]">
-              Action
+              {t("Action")}
             </td>
           </tr>
 
@@ -79,8 +89,14 @@ function ManeReport({ type }) {
             </td>
             <td className="text-sm text-[#101828] font-semibold font-Poppins-Regular py-2 ">
               <div className="flex space-x-2 ">
-                <TiEdit className="text-2xl  opacity-50 cursor-pointer" />
-                <IoTrashOutline className="text-2xl text-[#F04438] cursor-pointer" />
+                <TiEdit
+                  className="text-2xl  opacity-50 cursor-pointer"
+                  onClick={() => setOpenEditManeReport(true)}
+                />
+                <IoTrashOutline
+                  className="text-2xl text-[#F04438] cursor-pointer"
+                  onClick={() => setOpenDeleteManeReport(true)}
+                />
               </div>
             </td>
           </tr>
@@ -107,12 +123,12 @@ function ManeReport({ type }) {
         <div className=" flex justify-end space-x-8 mt-8 col-start-1 col-end-4">
           <div className="bg-[#F04438] border-[1px] border-[#D0D5DD] w-fit  flex items-center justify-center px-16 py-2 rounded-xl cursor-pointer ">
             <p className="text-sm flex items-center justify-center text-white font-Poppins-Regular">
-              Delete
+              {t("Delete")}
             </p>
           </div>
           <div className="bg-[#B7C835] w-fit  flex items-center justify-center px-28 py-3 rounded-xl cursor-pointer ">
             <p className="text-sm flex items-center justify-center text-white font-Poppins-Regular">
-              Save
+              {t("Save")}
             </p>
           </div>
         </div>

@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import Header from "./components/Header";
 import SideBar from "./components/SideBar";
 import { AiOutlineClose, AiOutlinePlus } from "react-icons/ai";
 import { IoCalendarOutline } from "react-icons/io5";
-import { t } from "i18next";
 
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -14,6 +12,8 @@ import AddPatient from "./components/Patients/AddPatient";
 import LaboratoriesPangration from "./components/Patients/LaboratoriesPangration";
 import { VscListFlat } from "react-icons/vsc";
 
+import Header from "./components/Header";
+import { useTranslation } from "react-i18next";
 const patients = [
   {
     id: 1,
@@ -161,6 +161,8 @@ const patients = [
 ];
 
 function Patients() {
+  const { t, i18n } = useTranslation();
+
   const [FromDate, setFromDate] = useState(new Date());
   const [ToDate, setToDate] = useState(new Date());
   const [OpenAddPatients, setOpenAddPatients] = useState(false);
@@ -242,6 +244,7 @@ function Patients() {
   function closeDrawer() {
     document.getElementById("drawerBody").classList.add("hidden");
   }
+
   return (
     <div className="w-full h-full lg:pr-5 p-5">
       <AddPatient open={OpenAddPatients} setOpen={setOpenAddPatients} />

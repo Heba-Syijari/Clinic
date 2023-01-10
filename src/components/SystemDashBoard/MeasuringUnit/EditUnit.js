@@ -43,7 +43,7 @@ export default function EditUnit({ open, setOpen, id }) {
         if (error.response) {
           document.getElementById("messag").textContent =
             error.response.data.error[0];
-          console.log(error.response.data.error[0]);
+          //console.log(error.response.data.error[0]);
         }
       });
   };

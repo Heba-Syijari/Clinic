@@ -68,7 +68,6 @@ function GenderSystemDB() {
 
   const remove = (id) => {
     setId(id);
-
     setOpenDeleteGender(true);
   };
 
@@ -104,7 +103,7 @@ function GenderSystemDB() {
   };
   return (
     <div className="w-full h-full pr-5 p-5">
-      {/* <EditGender open={OpenEditGender} setOpen={setOpenEditGender} id={id} /> */}
+      <EditGender open={OpenEditGender} setOpen={setOpenEditGender} id={id} />
       <DeleteGender
         open={OpenDeleteGender}
         setOpen={setOpenDeleteGender}

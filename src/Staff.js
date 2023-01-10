@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import Header from "./components/Header";
+import React, { useEffect, useState } from "react";
 import SideBar from "./components/SideBar";
 import { AiOutlineClose, AiOutlinePlus } from "react-icons/ai";
 import "react-datepicker/dist/react-datepicker.css";
@@ -8,6 +7,9 @@ import StaffPangration from "./components/Staff/StaffPangration";
 import AddEmployee from "./components/Staff/AddEmployee";
 import { Link } from "react-router-dom";
 import { VscListFlat } from "react-icons/vsc";
+import Header from "./components/Header";
+import { useTranslation } from "react-i18next";
+import axios from "axios";
 
 const employers = [
   {
@@ -125,6 +127,39 @@ const employers = [
 
 function Staff() {
   const [OpenAddEmployee, setAddEmployee] = useState(false);
+  const { t, i18n } = useTranslation();
+  const [OpenDeleteGender, setOpenDeleteGender] = useState(false);
+  const [OpenEditGender, setOpenEditGender] = useState(false);
+  // const dispatch = useDispatch();
+  // const GenderSelector = useSelector(selectGenders);
+  const [id, setId] = useState(0);
+  const [data, setData] = useState([]);
+  const GetStaff = async () => {
+    // document.getElementById("Loader").classList.remove("hidden");
+    // document.getElementById("Loader").classList.add("flex");
+
+    await axios.get(`/lab-scope/staff`).then((response) => {
+      setData(response.data);
+      //dispatch(addAllGender(response.data));
+      // document.getElementById("Loader").classList.add("hidden");
+      // document.getElementById("Loader").classList.remove("flex");
+      console.log(response.data);
+    });
+  };
+
+  useEffect(() => {
+    GetStaff();
+  }, []);
+
+  const Edit = (id) => {
+    setId(id);
+    setOpenEditGender(true);
+  };
+
+  const remove = (id) => {
+    setId(id);
+    setOpenDeleteGender(true);
+  };
 
   const AddEmployer = () => {
     setAddEmployee(true);
@@ -149,6 +184,7 @@ function Staff() {
   function closeDrawer() {
     document.getElementById("drawerBody").classList.add("hidden");
   }
+
   return (
     <div className="w-full h-full pr-5 p-5">
       <AddEmployee open={OpenAddEmployee} setOpen={setAddEmployee} />
@@ -170,7 +206,7 @@ function Staff() {
               <div className="w-fit pr-2 bg-white rounded-lg flex items-center mr-5">
                 <select className=" w-fit  rounded-lg font-Poppins-Medium  text-base outline-none px-4 py-2 cursor-pointer">
                   <option value="" selected disabled hidden>
-                    Sort by
+                    {t("Sort by")}
                   </option>
                   <option value="A-Z">A-Z</option>
                   <option value="Z-A">Z-A</option>
@@ -183,14 +219,14 @@ function Staff() {
               >
                 <p className="text-base flex items-center justify-center text-white">
                   <AiOutlinePlus className="mr-2 font-Poppins-SemiBold text-lg" />
-                  Add employee
+                  {t("Add employee")}
                 </p>
               </div>
             </div>
 
             {/* Pangration */}
 
-            <StaffPangration itemsPerPage={12} Data={employers} />
+            <StaffPangration itemsPerPage={12} Data={data} />
             {/* <EmployerContainer/> */}
 
             {/* Drawer */}
@@ -211,14 +247,16 @@ function Staff() {
                     to="/"
                     className="hover:bg-black rounded-xl cursor-pointer flex justify-center  text-xl  p-2 md:w-1/2 w-3/4"
                   >
-                    <div className="font-Poppins-Regular text-sm">Home</div>
+                    <div className="font-Poppins-Regular text-sm">
+                      {t("Home")}
+                    </div>
                   </Link>
                   <Link
                     to="/Patients"
                     className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2 "
                   >
                     <div className="font-Poppins-Regular text-sm">
-                      Patients{" "}
+                      {t("Patients")}{" "}
                     </div>
                   </Link>
                   <Link
@@ -226,45 +264,55 @@ function Staff() {
                     className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
                   >
                     <div className="font-Poppins-Regular text-sm">
-                      Analytics
+                      {t("Analytics")}
                     </div>
                   </Link>
                   <Link
                     to="/Doctors"
                     className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
                   >
-                    <div className="font-Poppins-Regular text-sm">Doctors</div>
+                    <div className="font-Poppins-Regular text-sm">
+                      {t("Doctors")}
+                    </div>
                   </Link>
                   <Link
                     to="/Labs"
                     className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4   text-xl p-2"
                   >
-                    <div className="font-Poppins-Regular text-sm">Labs </div>
+                    <div className="font-Poppins-Regular text-sm">
+                      {t("Labs")}{" "}
+                    </div>
                   </Link>
                   <Link
                     to="/Staff"
                     className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
                   >
-                    <div className="font-Poppins-Regular text-sm">Staff</div>
+                    <div className="font-Poppins-Regular text-sm">
+                      {t("Staff")}
+                    </div>
                   </Link>
                   <Link
                     to="/Store"
                     className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
                   >
-                    <div className="font-Poppins-Regular text-sm">Store</div>
+                    <div className="font-Poppins-Regular text-sm">
+                      {t("Store")}
+                    </div>
                   </Link>
                   <Link
                     to="/Reports"
                     className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
                   >
-                    <div className="font-Poppins-Regular text-sm">Reports</div>
+                    <div className="font-Poppins-Regular text-sm">
+                      {t("Reports")}
+                    </div>
                   </Link>
                   <Link
                     to="/"
                     className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
                   >
                     <div className="font-Poppins-Regular text-sm">
-                      Accounting
+                      {t("Accounting")}
                     </div>
                   </Link>
                   <Link
@@ -272,20 +320,24 @@ function Staff() {
                     className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
                   >
                     <div className="font-Poppins-Regular text-sm">
-                      Suppliers
+                      {t("Suppliers")}
                     </div>
                   </Link>
                   <Link
                     to="/Settings"
                     className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
                   >
-                    <div className="font-Poppins-Regular text-sm">Setting</div>
+                    <div className="font-Poppins-Regular text-sm">
+                      {t("Setting")}
+                    </div>
                   </Link>
                   <Link
                     to="/"
                     className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
                   >
-                    <div className="font-Poppins-Regular text-sm">Logout</div>
+                    <div className="font-Poppins-Regular text-sm">
+                      {t("Logout")}
+                    </div>
                   </Link>
                 </div>
               </div>

@@ -7,6 +7,7 @@ import { IoCalendarOutline } from "react-icons/io5";
 
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { t } from "i18next";
 
 export default function EditAccountExport({ open, setOpen }) {
   const cancelButtonRef = useRef(null);
@@ -21,7 +22,7 @@ export default function EditAccountExport({ open, setOpen }) {
         className=" p-2  justify-between   outline-0  border-[#E4E7EC] w-full h-fit bg-[#F9FAFF] flex space-x-2 items-center py-[0.80rem] px-4  relative  border-[1px] rounded-xl "
       >
         <label className="text-[#98A2B3] text-xs mr-10 font-Poppins-Regular">
-          Date
+          {t("Date")}
         </label>
         <div className=" flex items-center">
           <label
@@ -47,7 +48,7 @@ export default function EditAccountExport({ open, setOpen }) {
         className=" p-2  justify-between   outline-0  border-[#E4E7EC] w-full h-fit bg-[#F9FAFF] flex space-x-2 items-center py-[0.80rem] px-4  relative  border-[1px] rounded-xl "
       >
         <label className="text-[#98A2B3] text-xs mr-10 font-Poppins-Regular">
-          Date
+          {t("Date")}
         </label>
         <div className=" flex items-center">
           <label
@@ -131,7 +132,7 @@ export default function EditAccountExport({ open, setOpen }) {
                   <div className="bg-white ">
                     <div className="w-full flex  h-full items-center mt-5">
                       <p className="  justify-center font-Poppins-SemiBold flex flex-grow text-lg ml-10">
-                        Payment
+                        {t("Payment")}
                       </p>
                       <IoIosClose
                         className=" text-4xl  text-black border-[1px] rounded-full cursor-pointer bg-[#E4E7EC] "
@@ -158,7 +159,7 @@ export default function EditAccountExport({ open, setOpen }) {
                           <input
                             name="Day"
                             id="Day"
-                            placeholder="Day"
+                            placeholder={t("Day")}
                             type="text"
                             className=" w-full  font-Poppins-Medium placeholder:text-[#98A2B3] bg-[#F9FAFF] outline-0 ring-0"
                           />
@@ -167,7 +168,7 @@ export default function EditAccountExport({ open, setOpen }) {
                         <div className="w-full break-words border-[#E4E7EC] h-fit bg-[#F9FAFF] flex space-x-2 items-center py-4 px-4    relative m-auto border-[1px] rounded-xl ">
                           <input
                             name="PaymentAmount"
-                            placeholder="Payment amount"
+                            placeholder={t("Payment amount")}
                             type="text"
                             className="w-full bg-[#F9FAFF] font-Poppins-Medium text-xs placeholder:text-[#98A2B3] outline-0 ring-0"
                           />
@@ -177,7 +178,7 @@ export default function EditAccountExport({ open, setOpen }) {
                             id="NotesInput"
                             className=" bg-[#F9FAFF] placeholder:text-[#98A2B3] font-Poppins-Medium border-[#E4E7EC] w-full h-fit  flex space-x-2 items-center py-3 px-4 outline-0 ring-0   relative m-auto border-[1px] rounded-xl text-xs "
                             rows={4}
-                            placeholder="Notes"
+                            placeholder={t("Notes")}
                           />
                         </div>
                         <div className="bg-white  py-3  flex sm:flex-row-reverse justify-between mt-10">
@@ -185,7 +186,7 @@ export default function EditAccountExport({ open, setOpen }) {
                             type="button"
                             className="flex flex-grow py-3 text-sm font-Poppins-Medium  bg-[#B7C835] justify-center rounded-xl text-white"
                           >
-                            Save
+                            {t("Save")}
                           </button>
                         </div>
                       </div>

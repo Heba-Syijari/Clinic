@@ -14,6 +14,7 @@ import { FiLock } from "react-icons/fi";
 
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { t } from "i18next";
 
 export default function AddDoctor({ open, setOpen }) {
   const cancelButtonRef = useRef(null);
@@ -262,7 +263,7 @@ export default function AddDoctor({ open, setOpen }) {
                   <div className="bg-white ">
                     <div className="w-full flex  h-full items-center mt-5">
                       <p className=" font-semibold justify-center flex flex-grow text-2xl ml-10">
-                        Add doctor
+                        {t("Add doctor")}
                       </p>
                       <IoIosClose
                         className=" text-4xl  text-black border-[1px] rounded-full cursor-pointer bg-[#E4E7EC] "
@@ -296,12 +297,12 @@ export default function AddDoctor({ open, setOpen }) {
                             Image == null ? "flex" : "hidden"
                           }`}
                         >
-                          Drop your here, or{" "}
+                          {t("Drop your here, or")}{" "}
                           <span
                             className="text-[#B7C835] mt-1 underline underline-[#B7C835] cursor-pointer"
                             onClick={(e) => filebrowser(e)}
                           >
-                            select click to browse
+                            {t("select click to browse")}
                           </span>
                         </h1>
                       </div>
@@ -317,7 +318,7 @@ export default function AddDoctor({ open, setOpen }) {
                             className="w-6 h-6 opacity-40 text-[#98A2B3]"
                           />
                           <input
-                            placeholder="Doctor name"
+                            placeholder={t("Doctor name")}
                             name="name"
                             id="NameInput"
                             type="text"
@@ -327,7 +328,7 @@ export default function AddDoctor({ open, setOpen }) {
                             id="Name"
                             className="hidden font-Poppins-Medium text-xs absolute top-[-0.8rem] bg-white left-[0.2rem]  px-1 text-[#B7C835] font-medium"
                           >
-                            Doctor name
+                            {t("Doctor name")}
                           </p>
                         </div>
 
@@ -343,7 +344,7 @@ export default function AddDoctor({ open, setOpen }) {
                           <input
                             name="Email"
                             id="EmailInput"
-                            placeholder="Email"
+                            placeholder={t("Email")}
                             type="email"
                             className="w-full bg-[#F9FAFF] font-Poppins-Medium text-xs placeholder:text-[#98A2B3] outline-0 ring-0"
                           />
@@ -351,7 +352,7 @@ export default function AddDoctor({ open, setOpen }) {
                             id="Email"
                             className="hidden font-Poppins-Regular text-xs absolute top-[-0.8rem] bg-white left-[0.2rem]  px-1 text-[#B7C835] font-medium"
                           >
-                            Email
+                            {t("Email")}
                           </p>
                         </div>
                         <div
@@ -366,7 +367,7 @@ export default function AddDoctor({ open, setOpen }) {
                           <input
                             id="PhoneIcon"
                             name="PhoneNumber"
-                            placeholder="Phone number"
+                            placeholder={t("Phone number")}
                             type="tel"
                             className="w-full bg-[#F9FAFF] font-Poppins-Medium text-xs placeholder:text-[#98A2B3] outline-0 ring-0"
                           />
@@ -374,12 +375,12 @@ export default function AddDoctor({ open, setOpen }) {
                             id="Phone"
                             className="hidden font-Poppins-Medium text-xs absolute top-[-0.8rem] bg-white left-[0.2rem]  px-1 text-[#B7C835] font-medium"
                           >
-                            Phone number
+                            {t("Phone number")}
                           </p>
                         </div>
                         <div className="text-xs col-start-1 col-end-3 border-[#E4E7EC] w-full h-fit bg-white flex space-x-2 items-center py-2 px-4    relative m-auto border-[1px] rounded-xl ">
                           <p className="font-Poppins-Medium text-xs absolute top-[-0.6rem] bg-white left-[0.9rem]  px-1 text-[#98A2B3] font-medium">
-                            Gender
+                            {t("Gender")}
                           </p>
                           <div className="justify-center items-center w-full flex">
                             <div class="flex p-2 space-x-8 rounded  ">
@@ -394,7 +395,7 @@ export default function AddDoctor({ open, setOpen }) {
                                       id="radio-1-icon"
                                       className="w-[15.38px] h-[15.38px] text-[#98A2B3]"
                                     />
-                                    <p>Male</p>
+                                    <p>{t("Male")}</p>
                                   </div>
                                 </label>
                               </div>
@@ -422,7 +423,7 @@ export default function AddDoctor({ open, setOpen }) {
                                       id="radio-2-icon"
                                       className="w-[15.38px] h-[15.38px] text-[#98A2B3]"
                                     />
-                                    <p>Female</p>
+                                    <p>{t("Female")}</p>
                                   </div>
                                 </label>
                               </div>
@@ -452,7 +453,7 @@ export default function AddDoctor({ open, setOpen }) {
                           <input
                             id="DoctorAddressInput"
                             name="DoctorAddress"
-                            placeholder="Doctor address"
+                            placeholder={t("Doctor address")}
                             type="text"
                             className="w-full bg-[#F9FAFF] font-Poppins-Medium text-xs placeholder:text-[#98A2B3] outline-0 ring-0"
                           />
@@ -460,7 +461,7 @@ export default function AddDoctor({ open, setOpen }) {
                             id="DoctorAddress"
                             className="hidden font-Poppins-Medium text-xs absolute top-[-0.8rem] bg-white left-[0.2rem]  px-1 text-[#B7C835] font-medium"
                           >
-                            Doctor Address
+                            {t("Doctor Address")}
                           </p>
                         </div>
 
@@ -481,7 +482,7 @@ export default function AddDoctor({ open, setOpen }) {
                           <input
                             id="DoctorRatioInput"
                             name="DoctorRatio"
-                            placeholder="Doctor ratio"
+                            placeholder={t("Doctor ratio")}
                             type="text"
                             className="w-full bg-[#F9FAFF] font-Poppins-Medium text-xs placeholder:text-[#98A2B3] outline-0 ring-0"
                           />
@@ -489,7 +490,7 @@ export default function AddDoctor({ open, setOpen }) {
                             id="DoctorRatio"
                             className="hidden font-Poppins-Medium text-xs absolute top-[-0.8rem] bg-white left-[0.2rem]  px-1 text-[#B7C835] font-medium"
                           >
-                            Doctor's Ratio
+                            {t("Doctor's Ratio")}
                           </p>
                         </div>
 
@@ -505,7 +506,7 @@ export default function AddDoctor({ open, setOpen }) {
                           <input
                             id="PasswordInput"
                             name="Password"
-                            placeholder="Password"
+                            placeholder={t("Password")}
                             type="password"
                             className="w-full bg-[#F9FAFF] font-Poppins-Medium text-xs placeholder:text-[#98A2B3] outline-0 ring-0"
                           />
@@ -513,7 +514,7 @@ export default function AddDoctor({ open, setOpen }) {
                             id="Password"
                             className="hidden font-Poppins-Medium text-xs absolute top-[-0.8rem] bg-white left-[0.2rem]  px-1 text-[#B7C835] font-medium"
                           >
-                            Password
+                            {t("Password")}
                           </p>
                         </div>
                       </div>
@@ -525,7 +526,7 @@ export default function AddDoctor({ open, setOpen }) {
                       type="button"
                       className="text-sm font-Poppins-Medium flex flex-grow py-4 bg-[#B7C835] justify-center rounded-xl text-white"
                     >
-                      Add doctor
+                      {t("Add doctor")}
                     </button>
                   </div>
                 </Dialog.Panel>

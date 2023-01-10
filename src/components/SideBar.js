@@ -1,4 +1,4 @@
-import React from "react";
+import Reat from "react";
 import { RiHome5Fill } from "react-icons/ri";
 import { IoIosPeople } from "react-icons/io";
 import { TbActivityHeartbeat } from "react-icons/tb";
@@ -12,11 +12,17 @@ import { FaShippingFast } from "react-icons/fa";
 import { CiLogout } from "react-icons/ci";
 import { FiSettings } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import { t } from "i18next";
+import i18n from "../i18n";
 
 function SideBar({ page }) {
   return (
     <div className="h-full pl-[2.20rem] hidden lg:block">
-      <div className="bg-white rounded-xl w-fit py-5 px-1 mt-10">
+      <div
+        className={`bg-white rounded-xl w-fit ${
+          i18n.language == "en" ? "px-1" : "px-4"
+        } py-5 mt-10`}
+      >
         <Link to="/" className="flex flex-col items-center ">
           <RiHome5Fill
             className={`w-6 h-6  ${
@@ -28,7 +34,7 @@ function SideBar({ page }) {
               page === "Home" ? "text-[#B7C835]" : "text-[#98A2B3]"
             }  text-sm mt-1 font-Poppins-Regular `}
           >
-            Home
+            {t("Home")}
           </p>
         </Link>
         <Link to="/Patients" className="flex  flex-col items-center mt-5">
@@ -42,7 +48,7 @@ function SideBar({ page }) {
               page === "Patients" ? "text-[#B7C835]" : "text-[#98A2B3]"
             }  text-sm mt-1 font-Poppins-Regular`}
           >
-            Patients
+            {t("Patients")}
           </p>
         </Link>
         <Link to="/Analytic" className="flex flex-col items-center mt-5">
@@ -56,7 +62,7 @@ function SideBar({ page }) {
               page === "Analytic" ? "text-[#B7C835]" : "text-[#98A2B3]"
             } text-sm mt-1 font-Poppins-Regular`}
           >
-            Analytic
+            {t("Analytic")}
           </p>
         </Link>
         <Link to="/Doctors" className="flex flex-col items-center mt-5">
@@ -70,7 +76,7 @@ function SideBar({ page }) {
               page === "Doctors" ? "text-[#B7C835]" : "text-[#98A2B3]"
             }  text-sm mt-1 font-Poppins-Regular`}
           >
-            Doctors
+            {t("Doctors")}
           </p>
         </Link>
         <Link to="/Labs" className="flex flex-col items-center mt-5">
@@ -84,7 +90,7 @@ function SideBar({ page }) {
               page === "Labs" ? "text-[#B7C835]" : "text-[#98A2B3]"
             } text-sm mt-1 font-Poppins-Regular`}
           >
-            Labs
+            {t("Labs")}
           </p>
         </Link>
         <Link to="/Staff" className="flex flex-col items-center mt-5">
@@ -98,7 +104,7 @@ function SideBar({ page }) {
               page === "Staff" ? "text-[#B7C835]" : "text-[#98A2B3]"
             } text-sm mt-1 font-Poppins-Regular`}
           >
-            Staff
+            {t("Staff")}
           </p>
         </Link>
         <Link to="/Store" className="flex flex-col items-center mt-5">
@@ -112,7 +118,7 @@ function SideBar({ page }) {
               page === "Store" ? "text-[#B7C835]" : "text-[#98A2B3]"
             } text-sm mt-1 font-Poppins-Regular`}
           >
-            Store
+            {t("Store")}
           </p>
         </Link>
         <Link to="/Reports" className="flex flex-col items-center mt-5">
@@ -126,7 +132,7 @@ function SideBar({ page }) {
               page === "Reports" ? "text-[#B7C835]" : "text-[#98A2B3]"
             } text-sm mt-1 font-Poppins-Regular`}
           >
-            Reports
+            {t("Reports")}
           </p>
         </Link>
         <Link to="/Accounting" className="flex flex-col items-center mt-5">
@@ -140,7 +146,7 @@ function SideBar({ page }) {
               page === "Accounting" ? "text-[#B7C835]" : "text-[#98A2B3]"
             } text-sm mt-1 font-Poppins-Regular`}
           >
-            Accounting{" "}
+            {t("Accounting")}{" "}
           </p>
         </Link>
         <Link to="/Suppliers" className="flex flex-col items-center mt-5">
@@ -154,7 +160,7 @@ function SideBar({ page }) {
               page === "Suppliers" ? "text-[#B7C835]" : "text-[#98A2B3]"
             } text-sm mt-1 font-Poppins-Regular`}
           >
-            Suppliers
+            {t("Suppliers")}
           </p>
         </Link>
         <Link to="/Settings" className="flex flex-col items-center mt-5">
@@ -168,13 +174,13 @@ function SideBar({ page }) {
               page === "Settings" ? "text-[#B7C835]" : "text-[#98A2B3]"
             } text-sm mt-1 font-Poppins-Regular`}
           >
-            Settings
+            {t("Settings")}
           </p>
         </Link>
         <div className="flex flex-col items-center mt-28">
           <CiLogout className="w-6 h-6  text-[#F04438]" />
-          <p className="text-[#F04438] text-sm mt-1  font-Poppins-Regular">
-            Logout
+          <p className="text-[#F04438] text-center text-sm mt-1  font-Poppins-Regular">
+            {t("Logout")}
           </p>
         </div>
       </div>

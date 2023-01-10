@@ -1,17 +1,16 @@
 import React, { useState } from "react";
-import Header from "./components/Header";
 import SideBar from "./components/SideBar";
 import { AiOutlineClose, AiOutlinePlus } from "react-icons/ai";
 
 import "react-datepicker/dist/react-datepicker.css";
 import { Link } from "react-router-dom";
-import AddLab from "./components/Labs/AddLab";
 import { VscListFlat } from "react-icons/vsc";
 import ExportPangration from "./components/Accounting.js/ExportPangration";
 import RevenuesPangration from "./components/Accounting.js/RevenuesPangration";
 import AddAccounting from "./components/Accounting.js/AddAccounting";
-import EditAccount from "./components/Accounting.js/EditAccountExport";
-import EditAccountExport from "./components/Accounting.js/EditAccountExport";
+
+import { useTranslation } from "react-i18next";
+import Header from "./components/Header";
 
 const exports = [
   {
@@ -133,7 +132,7 @@ const Revenues = [
 
 function Accounting() {
   const [OpenAddAccounting, setOpenAddAccounting] = useState(false);
-
+  const { t, i18n } = useTranslation();
 
   const [Section, setSection] = useState("exports");
 
@@ -160,10 +159,11 @@ function Accounting() {
   function closeDrawer() {
     document.getElementById("drawerBody").classList.add("hidden");
   }
+
   return (
     <div className="w-full h-full pr-5 p-5">
       <AddAccounting open={OpenAddAccounting} setOpen={setOpenAddAccounting} />
-     
+
       <div className="w-full flex ">
         <div className="bg-white mr-[-1rem] lg:mr-0 rounded-l-xl ">
           <VscListFlat
@@ -182,7 +182,7 @@ function Accounting() {
               <div className="w-fit pr-2 bg-white rounded-lg flex items-center mr-5">
                 <select className=" w-fit  rounded-lg font-Poppins-Medium  text-base outline-none px-4 py-2 cursor-pointer">
                   <option value="" selected disabled hidden>
-                    Sort by
+                    {t("Sort by")}
                   </option>
                   <option value="A-Z">A-Z</option>
                   <option value="Z-A">Z-A</option>
@@ -201,7 +201,7 @@ function Accounting() {
                       Section === "exports" ? "text-white" : "text-[#101828]"
                     }  text-xs text-center `}
                   >
-                    exports
+                    {t("exports")}
                   </p>
                 </div>
 
@@ -217,7 +217,7 @@ function Accounting() {
                       Section === "Revenues" ? "text-white" : "text-[#101828]"
                     }  text-xs text-center `}
                   >
-                    Revenues
+                    {t("Revenues")}
                   </p>
                 </div>
               </div>
@@ -229,7 +229,7 @@ function Accounting() {
             >
               <p className="text-base font-Poppins-SemiBold flex items-center justify-center text-white ">
                 <AiOutlinePlus className="mr-2 text-lg" />
-                Add
+                {t("Add")}
               </p>
             </div>
           </div>
@@ -261,73 +261,97 @@ function Accounting() {
                   to="/"
                   className="hover:bg-black rounded-xl cursor-pointer flex justify-center  text-xl  p-2 md:w-1/2 w-3/4"
                 >
-                  <div className="font-Poppins-Regular text-sm">Home</div>
+                  <div className="font-Poppins-Regular text-sm">
+                    {t("Home")}
+                  </div>
                 </Link>
                 <Link
                   to="/Patients"
                   className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2 "
                 >
-                  <div className="font-Poppins-Regular text-sm">Patients </div>
+                  <div className="font-Poppins-Regular text-sm">
+                    {t("Patients")}{" "}
+                  </div>
                 </Link>
                 <Link
                   to="/Analytic"
                   className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
                 >
-                  <div className="font-Poppins-Regular text-sm">Analytics</div>
+                  <div className="font-Poppins-Regular text-sm">
+                    {t("Analytics")}
+                  </div>
                 </Link>
                 <Link
                   to="/Doctors"
                   className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
                 >
-                  <div className="font-Poppins-Regular text-sm">Doctors</div>
+                  <div className="font-Poppins-Regular text-sm">
+                    {t("Doctors")}
+                  </div>
                 </Link>
                 <Link
                   to="/Labs"
                   className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4   text-xl p-2"
                 >
-                  <div className="font-Poppins-Regular text-sm">Labs </div>
+                  <div className="font-Poppins-Regular text-sm">
+                    {t("Labs")}{" "}
+                  </div>
                 </Link>
                 <Link
                   to="/Staff"
                   className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
                 >
-                  <div className="font-Poppins-Regular text-sm">Staff</div>
+                  <div className="font-Poppins-Regular text-sm">
+                    {t("Staff")}
+                  </div>
                 </Link>
                 <Link
                   to="/Store"
                   className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
                 >
-                  <div className="font-Poppins-Regular text-sm">Store</div>
+                  <div className="font-Poppins-Regular text-sm">
+                    {t("Store")}
+                  </div>
                 </Link>
                 <Link
                   to="/Reports"
                   className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
                 >
-                  <div className="font-Poppins-Regular text-sm">Reports</div>
+                  <div className="font-Poppins-Regular text-sm">
+                    {t("Reports")}
+                  </div>
                 </Link>
                 <Link
                   to="/"
                   className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
                 >
-                  <div className="font-Poppins-Regular text-sm">Accounting</div>
+                  <div className="font-Poppins-Regular text-sm">
+                    {t("Accounting")}
+                  </div>
                 </Link>
                 <Link
                   to="/Suppliers"
                   className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
                 >
-                  <div className="font-Poppins-Regular text-sm">Suppliers</div>
+                  <div className="font-Poppins-Regular text-sm">
+                    {t("Suppliers")}
+                  </div>
                 </Link>
                 <Link
                   to="/Settings"
                   className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
                 >
-                  <div className="font-Poppins-Regular text-sm">Setting</div>
+                  <div className="font-Poppins-Regular text-sm">
+                    {t("Setting")}
+                  </div>
                 </Link>
                 <Link
                   to="/"
                   className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
                 >
-                  <div className="font-Poppins-Regular text-sm">Logout</div>
+                  <div className="font-Poppins-Regular text-sm">
+                    {t("Logout")}
+                  </div>
                 </Link>
               </div>
             </div>

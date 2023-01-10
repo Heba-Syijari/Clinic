@@ -46,10 +46,8 @@ import {
 import { Bar } from "react-chartjs-2";
 import NotifContainer from "./components/Home/NotifContainer";
 import { Link } from "react-router-dom";
-import i18next from "./i18n";
 import ProfileEdit from "./components/Home/ProfileEdit";
-import { t } from "i18next";
-import i18n from "./i18n";
+import { useTranslation } from "react-i18next";
 
 ChartJS.register(
   CategoryScale,
@@ -75,42 +73,6 @@ const tests = [
     current: 180,
   },
 ];
-
-const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      labels: {
-        usePointStyle: true,
-        pointStyle: "circle",
-      },
-      title: {
-        display: true,
-        text: t("Reviewers Section"),
-        color: "black",
-        font: { weight: "bold", size: 20 },
-        align: "end",
-      },
-    },
-  },
-};
-export const data = {
-  labels,
-  datasets: [
-    {
-      label: t("Last Year"),
-      data: tests.map((data) => data.last),
-      backgroundColor: "#0D2135",
-      borderRadius: 20,
-    },
-    {
-      label: t("Current Year"),
-      data: tests.map((data) => data.current),
-      backgroundColor: "#B7C835",
-      borderRadius: 20,
-    },
-  ],
-};
 
 const ShowNotification = () => {
   if (document.getElementById("Notification").classList.contains("hidden")) {
@@ -144,16 +106,51 @@ function closeDrawer() {
 }
 
 function Home() {
+  const { t, i18n } = useTranslation();
   const [value, setValue] = useState({
     startDate: new Date(),
     endDate: new Date().setMonth(11),
   });
-  const [lang, SetLang] = useState("UK");
+  const [lang, SetLang] = useState("en");
   const [OpenProfileEdit, SetOpenProfileEdit] = useState(false);
   const handleValueChange = (newValue) => {
     setValue(newValue);
   };
-
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        labels: {
+          usePointStyle: true,
+          pointStyle: "circle",
+        },
+        title: {
+          display: true,
+          text: t("Reviewers Section"),
+          color: "black",
+          font: { weight: "bold", size: 20 },
+          align: "end",
+        },
+      },
+    },
+  };
+  const data = {
+    labels,
+    datasets: [
+      {
+        label: t("Last Year"),
+        data: tests.map((data) => data.last),
+        backgroundColor: "#0D2135",
+        borderRadius: 20,
+      },
+      {
+        label: t("Current Year"),
+        data: tests.map((data) => data.current),
+        backgroundColor: "#B7C835",
+        borderRadius: 20,
+      },
+    ],
+  };
   const ShowLaguages = () => {
     if (document.getElementById("lang").classList.contains("hidden")) {
       document.getElementById("lang").classList.remove("hidden");
@@ -287,12 +284,12 @@ function Home() {
   };
 
   const changeToAR = () => {
-    SetLang("SA");
+    SetLang(i18n.language);
     i18n.changeLanguage("ar");
   };
 
   const changeToEg = () => {
-    SetLang("UK");
+    SetLang(i18n.language);
     i18n.changeLanguage("en");
   };
   return (
@@ -416,7 +413,7 @@ function Home() {
               className="text-black text-xl m-2  cursor-pointer w-10 h-20 lg:hidden"
               onClick={() => drawer()}
             />
-            <div className="flex items-center w-[60%] flex-grow mr-5 lg:mr-0 lg:flex-grow-0  rounded-2xl bg-[#F2F4F7]">
+            <div className="flex items-center w-[40%] md:w[60%] sm:flex-grow mr-5 lg:mr-0 lg:flex-grow-0  rounded-2xl bg-[#F2F4F7]">
               <RiSearch2Line className="ml-2 text-[#B9B9B9]  text-3xl" />
               <input
                 dir="rtl"
@@ -434,8 +431,8 @@ function Home() {
               >
                 <img
                   id="CurrentLang"
-                  src={lang === "UK" ? UK : SA}
-                  className="w-16 h-6 sm:w-6 sm:h-6 rounded-full cursor-pointer"
+                  src={i18n.language === "en" ? UK : SA}
+                  className="w-6 h-6 sm:w-6 sm:h-6 rounded-full cursor-pointer"
                 />
                 <AiOutlineClose
                   id="CloseLangIcon"
@@ -452,10 +449,10 @@ function Home() {
                     <img src={SA} className=" w-16 sm:w-6 h-6 rounded-full" />
                   </div>
                   <div
-                    className=" bg-[#F2F4F7] p-[0.2rem] w-fit hover:bg-gray-200  rounded-full cursor-pointer"
+                    className="mt-1 bg-[#F2F4F7] p-[0.2rem] w-fit hover:bg-gray-200  rounded-full cursor-pointer"
                     onClick={() => changeToEg()}
                   >
-                    <img src={UK} className=" w-16 sm:w-5 h-5 rounded-full" />
+                    <img src={UK} className=" w-16 sm:w-6 h-6 rounded-full" />
                   </div>
                 </div>
               </div>
@@ -774,73 +771,81 @@ function Home() {
               to="/"
               className="hover:bg-black rounded-xl cursor-pointer flex justify-center  text-xl  p-2 md:w-1/2 w-3/4"
             >
-              <div className="font-Poppins-Regular text-sm">Home</div>
+              <div className="font-Poppins-Regular text-sm">{t("Home")}</div>
             </Link>
             <Link
               to="/Patients"
               className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2 "
             >
-              <div className="font-Poppins-Regular text-sm">Patients </div>
+              <div className="font-Poppins-Regular text-sm">
+                {t("Patients")}{" "}
+              </div>
             </Link>
             <Link
               to="/Analytic"
               className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
             >
-              <div className="font-Poppins-Regular text-sm">Analytics</div>
+              <div className="font-Poppins-Regular text-sm">
+                {t("Analytics")}
+              </div>
             </Link>
             <Link
               to="/Doctors"
               className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
             >
-              <div className="font-Poppins-Regular text-sm">Doctors</div>
+              <div className="font-Poppins-Regular text-sm">{t("Doctors")}</div>
             </Link>
             <Link
               to="/Labs"
               className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4   text-xl p-2"
             >
-              <div className="font-Poppins-Regular text-sm">Labs </div>
+              <div className="font-Poppins-Regular text-sm">{t("Labs")} </div>
             </Link>
             <Link
               to="/Staff"
               className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
             >
-              <div className="font-Poppins-Regular text-sm">Staff</div>
+              <div className="font-Poppins-Regular text-sm">{t("Staff")}</div>
             </Link>
             <Link
               to="/Store"
               className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
             >
-              <div className="font-Poppins-Regular text-sm">Store</div>
+              <div className="font-Poppins-Regular text-sm">{t("Store")}</div>
             </Link>
             <Link
               to="/Reports"
               className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
             >
-              <div className="font-Poppins-Regular text-sm">Reports</div>
+              <div className="font-Poppins-Regular text-sm">{t("Reports")}</div>
             </Link>
             <Link
               to="/"
               className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
             >
-              <div className="font-Poppins-Regular text-sm">Accounting</div>
+              <div className="font-Poppins-Regular text-sm">
+                {t("Accounting")}
+              </div>
             </Link>
             <Link
               to="/Suppliers"
               className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
             >
-              <div className="font-Poppins-Regular text-sm">Suppliers</div>
+              <div className="font-Poppins-Regular text-sm">
+                {t("Suppliers")}
+              </div>
             </Link>
             <Link
               to="/Settings"
               className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
             >
-              <div className="font-Poppins-Regular text-sm">Setting</div>
+              <div className="font-Poppins-Regular text-sm">{t("Setting")}</div>
             </Link>
             <Link
               to="/"
               className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
             >
-              <div className="font-Poppins-Regular text-sm">Logout</div>
+              <div className="font-Poppins-Regular text-sm">{t("Logout")}</div>
             </Link>
           </div>
         </div>

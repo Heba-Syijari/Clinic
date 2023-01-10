@@ -6,6 +6,7 @@ import { IoCalendarOutline } from "react-icons/io5";
 
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { t } from "i18next";
 
 export default function EditSupplier({ open, setOpen }) {
   const cancelButtonRef = useRef(null);
@@ -18,7 +19,7 @@ export default function EditSupplier({ open, setOpen }) {
         className=" p-2  justify-between    outline-0  border-[#E4E7EC] w-full h-fit bg-[#F9FAFF] flex space-x-2 items-center py-[1rem] px-4  relative  border-[1px] rounded-xl "
       >
         <label className="text-[#98A2B3] text-xs mr-10 font-Poppins-Regular">
-          Added Date
+          {t("Added Date")}
         </label>
         <div className=" flex items-center">
           <label
@@ -76,7 +77,7 @@ export default function EditSupplier({ open, setOpen }) {
                   <div className="bg-white ">
                     <div className="w-full flex  h-full items-center mt-5">
                       <p className="  justify-center font-Poppins-SemiBold flex flex-grow text-2xl ml-10">
-                        Edit Supplier
+                        {t("Edit Supplier")}
                       </p>
                       <IoIosClose
                         className=" text-4xl  text-black border-[1px] rounded-full cursor-pointer bg-[#E4E7EC] "
@@ -89,7 +90,7 @@ export default function EditSupplier({ open, setOpen }) {
                         <div className="w-full break-words border-[#E4E7EC] h-fit bg-[#F9FAFF] flex space-x-2 items-center py-4 px-4    relative m-auto border-[1px] rounded-xl ">
                           <input
                             name="ScientificOfficeName	"
-                            placeholder="Scientific office name	"
+                            placeholder={t("Scientific office name")}
                             type="text"
                             className="w-full bg-[#F9FAFF] font-Poppins-Regular text-xs text-[#707070] outline-0 ring-0"
                           />
@@ -107,7 +108,7 @@ export default function EditSupplier({ open, setOpen }) {
                         <div className="w-full break-words border-[#E4E7EC] h-fit bg-[#F9FAFF] flex space-x-2 items-center py-4 px-4    relative m-auto border-[1px] rounded-xl ">
                           <input
                             name="PhoneNumber"
-                            placeholder="Phone number"
+                            placeholder={t("Phone number")}
                             type="tel"
                             className="w-full bg-[#F9FAFF] font-Poppins-Regular text-xs text-[#707070] outline-0 ring-0"
                           />
@@ -115,7 +116,7 @@ export default function EditSupplier({ open, setOpen }) {
                         <div className="w-full break-words border-[#E4E7EC] h-fit bg-[#F9FAFF] flex space-x-2 items-center py-4 px-4    relative m-auto border-[1px] rounded-xl ">
                           <input
                             name="MaintenanceEngineerMobile"
-                            placeholder="Maintenance engineer Mobile"
+                            placeholder={t("Maintenance engineer Mobile")}
                             type="tel"
                             className="w-full bg-[#F9FAFF] font-Poppins-Regular text-xs text-[#707070] outline-0 ring-0"
                           />
@@ -123,7 +124,7 @@ export default function EditSupplier({ open, setOpen }) {
                         <div className="w-full col-start-1 col-end-3 break-words border-[#E4E7EC] h-fit bg-[#F9FAFF] flex space-x-2 items-center py-4 px-4    relative m-auto border-[1px] rounded-xl ">
                           <input
                             name="Address"
-                            placeholder="Address"
+                            placeholder={t("Address")}
                             type="text"
                             className="w-full bg-[#F9FAFF] font-Poppins-Regular text-xs text-[#707070] outline-0 ring-0"
                           />
@@ -137,7 +138,7 @@ export default function EditSupplier({ open, setOpen }) {
                       type="button"
                       className="flex flex-grow py-2 bg-[#B7C835] justify-center rounded-xl text-white"
                     >
-                      Edit Supplier
+                      {t("Edit Supplier")}
                     </button>
                   </div>
                 </Dialog.Panel>

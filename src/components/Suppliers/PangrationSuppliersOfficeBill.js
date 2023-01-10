@@ -6,10 +6,15 @@ import { IoTrashOutline } from "react-icons/io5";
 import { BsThreeDots } from "react-icons/bs";
 import { HiOutlineArrowLeft } from "react-icons/hi";
 import { HiOutlineArrowRight } from "react-icons/hi";
+import { t } from "i18next";
 
 // Example items, to simulate fetching from another resources.
 
-function Items({ currentItems }) {
+function Items({
+  setOpenEditOfficeBill,
+  setOpenDeleteOfficeBill,
+  currentItems,
+}) {
   return (
     <>
       {currentItems &&
@@ -35,8 +40,14 @@ function Items({ currentItems }) {
             </td>
             <td>
               <div className="flex space-x-2 py-4">
-                <TiEdit className="text-2xl  opacity-50 cursor-pointer" />
-                <IoTrashOutline className="text-2xl text-[#F04438] cursor-pointer" />
+                <TiEdit
+                  className="text-2xl  opacity-50 cursor-pointer"
+                  onClick={() => setOpenEditOfficeBill(true)}
+                />
+                <IoTrashOutline
+                  className="text-2xl text-[#F04438] cursor-pointer"
+                  onClick={() => setOpenDeleteOfficeBill(true)}
+                />
               </div>
             </td>
           </tr>
@@ -45,7 +56,12 @@ function Items({ currentItems }) {
   );
 }
 
-function PangrationSuppliersOfficeBill({ itemsPerPage, Data }) {
+function PangrationSuppliersOfficeBill({
+  setOpenEditOfficeBill,
+  setOpenDeleteOfficeBill,
+  itemsPerPage,
+  Data,
+}) {
   // Here we use item offsets; we could also use page offsets
   // following the API or data you're working with.
   const [itemOffset, setItemOffset] = useState(0);
@@ -79,22 +95,27 @@ function PangrationSuppliersOfficeBill({ itemsPerPage, Data }) {
             />
           </td>
           <td className="text-sm text-[#98A2B3] font-Poppins-Regular py-2  ">
-            Scientific office name
+            {t("Scientific office name")}
           </td>
           <td className="text-sm text-[#98A2B3] font-Poppins-Regular py-2 w-[18%] ">
-            Date of Purchase
+            {t("Date of Purchase")}
           </td>
           <td className="text-sm text-[#98A2B3] font-Poppins-Regular py-2 pl-2 ">
-            Invoice Number
+            {t("Invoice Number")}
           </td>
           <td className="text-sm text-[#98A2B3] font-Poppins-Regular py-2 w-[18%] ">
-            Total Payment
+            {t("Total Payment")}
           </td>
           <td className="text-sm text-[#98A2B3] font-Poppins-Regular py-2 w-[10%]">
-            Action
+            {t("Action")}
           </td>
         </tr>
-        <Items currentItems={currentItems} className="w-full bg-white" />
+        <Items
+          setOpenEditOfficeBill={setOpenEditOfficeBill}
+          setOpenDeleteOfficeBill={setOpenDeleteOfficeBill}
+          currentItems={currentItems}
+          className="w-full bg-white"
+        />
       </table>
 
       <ReactPaginate

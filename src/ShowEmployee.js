@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Header from "./components/Header";
 import SideBar from "./components/SideBar";
 import "react-datepicker/dist/react-datepicker.css";
 import profile from "./Images/profile.jpg";
@@ -13,8 +12,22 @@ import TimePicker from "react-time-picker";
 import { VscListFlat } from "react-icons/vsc";
 import { Link } from "react-router-dom";
 import { AiOutlineClose } from "react-icons/ai";
+import { t } from "i18next";
+
+import { RiSearch2Line } from "react-icons/ri";
+import { FiSettings } from "react-icons/fi";
+import { IoIosNotificationsOutline } from "react-icons/io";
+import Logo from "./Images/Logo.svg";
+import UK from "./Images/UK.png";
+import NotifContainer from "./components/Home/NotifContainer";
+
+import SA from "./Images/SA.png";
+import { useTranslation } from "react-i18next";
+import Header from "./components/Header";
 
 function ShowEmployee() {
+  const { t, i18n } = useTranslation();
+
   const [BirthDate, setBirthDate] = useState(new Date());
   const [WorkDate, setWorkDate] = useState(new Date());
 
@@ -25,7 +38,7 @@ function ShowEmployee() {
     return (
       <div className=" p-3  justify-between   outline-0  border-[#E4E7EC] w-full h-fit bg-[#F9FAFF] flex space-x-2 items-center py-4 px-4  relative m-auto border-[1px] rounded-xl ">
         <label className="text-[#98A2B3] text-xs mr-20 font-Poppins-Medium">
-          Date of birth
+          {t("Date of birth")}
         </label>
         <div className=" flex items-center">
           <label
@@ -48,7 +61,7 @@ function ShowEmployee() {
     return (
       <div className="flex bg-[#F9FAFF] p-3 py-4 rounded-xl justify-between items-center w-full outline-0 border-2 ">
         <label className="text-[#98A2B3] text-xs mr-20 font-Poppins-Medium">
-          Work start
+          {t("Work start")}
         </label>
         <div className=" flex items-center">
           <label
@@ -85,6 +98,7 @@ function ShowEmployee() {
   function closeDrawer() {
     document.getElementById("drawerBody").classList.add("hidden");
   }
+
   return (
     <div className="w-full h-full pr-5 p-5">
       <div className="w-full flex ">
@@ -95,6 +109,7 @@ function ShowEmployee() {
             onClick={() => drawer()}
           />
         </div>
+
         <Header />
       </div>
       <div className="flex ">
@@ -118,14 +133,14 @@ function ShowEmployee() {
                 </div>
                 <div className="bg-[#F04438] w-fit py-3  flex items-center justify-center px-10 md:px-20 rounded-xl cursor-pointer ">
                   <p className="text-sm flex items-center justify-center font-Poppins-Medium text-white">
-                    Delete
+                    {t("Delete")}
                   </p>
                 </div>
               </div>
             </div>
 
             <div className=" mt-5">
-              <div className="flex space-y-5 lg:space-y-0  lg:flex-row flex-col slg:pace-x-5 w-full">
+              <div className="flex space-y-5 lg:space-y-0  lg:flex-row flex-col lg:space-x-5 w-full">
                 <div className="flex flex-col md:flex-row space-y-5 md:space-y-0 md:space-x-5 lg:w-[60%]">
                   <div className="relative mx-auto w-fit h-full rounded-2xl flex   bg-no-repeat">
                     <img
@@ -141,7 +156,7 @@ function ShowEmployee() {
                       <input
                         disabled
                         name="Name"
-                        placeholder="Name"
+                        placeholder={t("Name")}
                         type="text"
                         className="w-full bg-[#F9FAFF] font-Poppins-Medium text-xs placeholder:text-[#98A2B3] outline-0 ring-0"
                       />
@@ -150,7 +165,7 @@ function ShowEmployee() {
                       <input
                         disabled
                         name="Email"
-                        placeholder="Email"
+                        placeholder={t("Email")}
                         type="email"
                         className="w-full bg-[#F9FAFF] font-Poppins-Medium text-xs placeholder:text-[#98A2B3] outline-0 ring-0"
                       />
@@ -159,7 +174,7 @@ function ShowEmployee() {
                       <input
                         disabled
                         name="Phone number"
-                        placeholder="Phone number"
+                        placeholder={t("Phone number")}
                         type="tel"
                         className="w-full bg-[#F9FAFF] font-Poppins-Medium text-xs placeholder:text-[#98A2B3] outline-0 ring-0"
                       />
@@ -180,7 +195,7 @@ function ShowEmployee() {
                 <div className="grid grid-cols-1 gap-5 lg:w-[40%]">
                   <textarea
                     disabled
-                    placeholder="Experience"
+                    placeholder={t("Experience")}
                     name="Experience"
                     className=" bg-[#F9FAFF] row-span-2 text-xs border-[#E4E7EC] w-full h-full  flex  items-center py-3 px-4 outline-0 ring-0   relative  border-[1px] rounded-xl "
                     rows={6}
@@ -189,7 +204,7 @@ function ShowEmployee() {
                     <input
                       disabled
                       name="College"
-                      placeholder="College"
+                      placeholder={t("College")}
                       type="text"
                       className="w-full bg-[#F9FAFF] font-Poppins-Medium text-xs placeholder:text-[#98A2B3] outline-0 ring-0"
                     />
@@ -198,7 +213,7 @@ function ShowEmployee() {
                     <input
                       disabled
                       name="Salary rate"
-                      placeholder="Salary rate"
+                      placeholder={t("Salary rate")}
                       type="text"
                       className="w-full bg-[#F9FAFF] font-Poppins-Medium text-xs placeholder:text-[#98A2B3] outline-0 ring-0"
                     />
@@ -211,7 +226,7 @@ function ShowEmployee() {
                     <input
                       disabled
                       name="Address"
-                      placeholder="Address"
+                      placeholder={t("Address")}
                       type="text"
                       className="w-full bg-[#F9FAFF] font-Poppins-Medium text-xs placeholder:text-[#98A2B3] outline-0 ring-0"
                     />
@@ -224,7 +239,7 @@ function ShowEmployee() {
                         className=" w-full   rounded-lg bg-[#F9FAFF]   font-Poppins-Medium  text-[#98A2B3] text-xs  outline-none px-4 py-2 cursor-pointer"
                       >
                         <option value="" selected disabled hidden className="">
-                          Job title
+                          {t("Job title")}
                         </option>
                       </select>
                     </div>
@@ -249,13 +264,13 @@ function ShowEmployee() {
                       className=" w-full   rounded-lg bg-[#F9FAFF]   font-Poppins-Medium  text-[#98A2B3] text-xs  outline-none px-4 py-2 cursor-pointer"
                     >
                       <option value="" selected disabled hidden className="">
-                        Specialization
+                        {t("Specialization")}
                       </option>
                     </select>
                   </div>
                   <div className="flex  bg-[#F9FAFF] items-center justify-end rounded-xl flex-grow">
                     <p className="bg-[#F9FAFF] opacity-80 font-Poppins-Medium text-xs text-[#98A2B3] pl-5">
-                      Worktime
+                      {t("Worktime")}
                     </p>
                     <div className="flex x items-center justify-end rounded-xl flex-grow">
                       <div className="bg-[#F9FAFF] border-[#E4E7EC] px-4  h-fit  flex  items-center   border-r-[1px] rounded-l-xl">
@@ -286,7 +301,7 @@ function ShowEmployee() {
               </div>
               <textarea
                 disabled
-                placeholder="Notes"
+                placeholder={t("Notes")}
                 name="Notes"
                 className="mt-8  text-xs font-Poppins-Medium placeholder:text-[#98A2B3] bg-[#F9FAFF] border-[#E4E7EC] w-full h-full  flex  items-center py-3 px-4 outline-0 ring-0   relative  border-[1px] rounded-xl "
                 rows={5}
@@ -297,12 +312,12 @@ function ShowEmployee() {
                   className="bg-transparent border-[1px]  border-[#D0D5DD] w-fit  flex items-center justify-center lg:px-16 px-8 py-2 rounded-xl cursor-pointer "
                 >
                   <p className="text-sm flex items-center justify-center text-black font-Poppins-Regular">
-                    Cancel
+                    {t("Cancel")}
                   </p>
                 </Link>
                 <div className="bg-transparent border-[1px] border-[#D0D5DD] w-fit  flex items-center justify-center lg:px-16 px-8 py-2 rounded-xl cursor-pointer ">
                   <p className="text-sm flex items-center justify-center text-black font-Poppins-Regular">
-                    Print
+                    {t("Print")}
                   </p>
                 </div>
               </div>
@@ -328,73 +343,81 @@ function ShowEmployee() {
               to="/"
               className="hover:bg-black rounded-xl cursor-pointer flex justify-center  text-xl  p-2 md:w-1/2 w-3/4"
             >
-              <div className="font-Poppins-Regular text-sm">Home</div>
+              <div className="font-Poppins-Regular text-sm">{t("Home")}</div>
             </Link>
             <Link
               to="/Patients"
               className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2 "
             >
-              <div className="font-Poppins-Regular text-sm">Patients </div>
+              <div className="font-Poppins-Regular text-sm">
+                {t("Patients")}{" "}
+              </div>
             </Link>
             <Link
               to="/Analytic"
               className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
             >
-              <div className="font-Poppins-Regular text-sm">Analytics</div>
+              <div className="font-Poppins-Regular text-sm">
+                {t("Analytics")}
+              </div>
             </Link>
             <Link
               to="/Doctors"
               className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
             >
-              <div className="font-Poppins-Regular text-sm">Doctors</div>
+              <div className="font-Poppins-Regular text-sm">{t("Doctors")}</div>
             </Link>
             <Link
               to="/Labs"
               className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4   text-xl p-2"
             >
-              <div className="font-Poppins-Regular text-sm">Labs </div>
+              <div className="font-Poppins-Regular text-sm">{t("Labs")} </div>
             </Link>
             <Link
               to="/Staff"
               className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
             >
-              <div className="font-Poppins-Regular text-sm">Staff</div>
+              <div className="font-Poppins-Regular text-sm">{t("Staff")}</div>
             </Link>
             <Link
               to="/Store"
               className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
             >
-              <div className="font-Poppins-Regular text-sm">Store</div>
+              <div className="font-Poppins-Regular text-sm">{t("Store")}</div>
             </Link>
             <Link
               to="/Reports"
               className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
             >
-              <div className="font-Poppins-Regular text-sm">Reports</div>
+              <div className="font-Poppins-Regular text-sm">{t("Reports")}</div>
             </Link>
             <Link
               to="/"
               className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
             >
-              <div className="font-Poppins-Regular text-sm">Accounting</div>
+              <div className="font-Poppins-Regular text-sm">
+                {t("Accounting")}
+              </div>
             </Link>
             <Link
               to="/Suppliers"
               className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
             >
-              <div className="font-Poppins-Regular text-sm">Suppliers</div>
+              <div className="font-Poppins-Regular text-sm">
+                {t("Suppliers")}
+              </div>
             </Link>
             <Link
               to="/Settings"
               className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
             >
-              <div className="font-Poppins-Regular text-sm">Setting</div>
+              <div className="font-Poppins-Regular text-sm">{t("Setting")}</div>
             </Link>
             <Link
               to="/"
               className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
             >
-              <div className="font-Poppins-Regular text-sm">Logout</div>
+              <div className="font-Poppins-Regular text-sm">{t("Logout")}</div>
             </Link>
           </div>
         </div>

@@ -1,3 +1,4 @@
+import { t } from "i18next";
 import React, { useState } from "react";
 import Doctor from "./CollectedMoney/Doctor";
 import ReceiveLab from "./CollectedMoney/ReceiveLab";
@@ -20,7 +21,7 @@ function CollectedMoney({ section }) {
               SubSection === "Doctor" ? "text-white" : "text-black"
             } `}
           >
-            Doctors
+            {t("Doctors")}
           </p>
         </div>
         <div
@@ -34,7 +35,7 @@ function CollectedMoney({ section }) {
               SubSection === "SendLab" ? "text-white" : "text-black"
             } `}
           >
-            Send lab
+            {t("Send lab")}
           </p>
         </div>
         <div
@@ -48,7 +49,7 @@ function CollectedMoney({ section }) {
               SubSection === "ReceiveLab" ? "text-white" : "text-black"
             } `}
           >
-            Receive lab
+            {t("Receive lab")}
           </p>
         </div>
       </div>

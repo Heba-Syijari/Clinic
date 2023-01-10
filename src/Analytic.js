@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Header from "./components/Header";
 import SideBar from "./components/SideBar";
 import "react-datepicker/dist/react-datepicker.css";
 import { AiOutlineClose } from "react-icons/ai";
@@ -12,11 +11,15 @@ import { FcFolder } from "react-icons/fc";
 import { FcOpenedFolder } from "react-icons/fc";
 import AddSection from "./components/Analytic/AddSection";
 import Intrputik from "./components/Analytic/Intrputik";
-import { VscListFlat } from "react-icons/vsc";
 import { Link } from "react-router-dom";
-import { t } from "i18next";
+import { VscListFlat } from "react-icons/vsc";
+
+import Header from "./components/Header";
+import { useTranslation } from "react-i18next";
 
 function Analytic() {
+  const { t, i18n } = useTranslation();
+
   const [ShowAddSection, SetShowAddSection] = useState(false);
   const [ShowAddSubSection, SetShowAddSubSection] = useState(false);
 
@@ -68,6 +71,7 @@ function Analytic() {
   function closeDrawer() {
     document.getElementById("drawerBody").classList.add("hidden");
   }
+
   return (
     <div className="w-full h-full pr-5 p-5">
       <div className="w-full flex ">
@@ -97,11 +101,13 @@ function Analytic() {
               <div className="flex justify-between w-full  px-3 mt-5">
                 <div className="flex items-center space-x-2">
                   <BsArrowDown />
-                  <p className="font-Poppins-Regular text-sm">Move up</p>
+                  <p className="font-Poppins-Regular text-sm">{t("Move up")}</p>
                 </div>
                 <div className="flex items-center space-x-2">
                   <BsArrowUp />
-                  <p className="font-Poppins-Regular text-sm">Move down</p>
+                  <p className="font-Poppins-Regular text-sm">
+                    {t("Move down")}
+                  </p>
                 </div>
               </div>
               <div className="w-full">

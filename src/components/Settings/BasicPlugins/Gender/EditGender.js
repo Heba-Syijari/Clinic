@@ -1,16 +1,53 @@
 /* This example requires Tailwind CSS v2.0+ */
-import React, { Fragment, useRef, useState } from "react";
+import React, { Fragment, useRef, useState, useEffect } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { IoIosClose } from "react-icons/io";
 import axios from "axios";
+import { t } from "i18next";
+import { useDispatch, useSelector } from "react-redux";
+import { addAllGender, selectGenders } from "./GenderSlice";
 
-export default function EditGender({ open, setOpen }) {
+export default function EditGender({ open, setOpen, id }) {
   const cancelButtonRef = useRef(null);
+  //const [data, setData] = useState([]);
+  const GenderSelector = useSelector(selectGenders);
+  const dispatch = useDispatch();
 
   function close() {
     setOpen(false);
   }
-  const Edit = async () => {};
+  const Edit = async () => {
+    let selected =
+      GenderSelector[
+        GenderSelector.findIndex((GenderItem) => GenderItem.id === id)
+      ];
+    let formdata = new FormData();
+    formdata.append("id", selected.id);
+    formdata.append("name", document.getElementById("GenderName").value);
+
+    await axios
+      .put(
+        `/lab-scope/gender-update?gender_id=${formdata.get(
+          "id"
+        )}&name=${formdata.get("name")}`
+      )
+      .then((response) => {
+        let content = GenderSelector.map((item) => {
+          return item.id == id
+            ? { id: id, name: document.getElementById("GenderName").value }
+            : item;
+        });
+        dispatch(addAllGender(content));
+        setOpen(false);
+      })
+      .catch((error) => {
+        if (error.response) {
+          document.getElementById("messag").textContent =
+            error.response.data.message;
+          console.log(error.response.data.message);
+        }
+      });
+  };
   return (
     <div>
       <Transition.Root show={open} as={Fragment}>
@@ -47,7 +84,7 @@ export default function EditGender({ open, setOpen }) {
                   <div className="bg-white ">
                     <div className="w-full flex  h-full items-center mt-5">
                       <p className="  justify-center font-Poppins-SemiBold flex flex-grow text-lg ml-10">
-                        Edit Gender
+                        {t("Edit Gender")}
                       </p>
                       <IoIosClose
                         className=" text-4xl  text-black border-[1px] rounded-full cursor-pointer bg-[#E4E7EC] "
@@ -59,13 +96,25 @@ export default function EditGender({ open, setOpen }) {
                       <div className={`space-y-5 flex-col `}>
                         <div className="w-full break-words border-[#E4E7EC] h-fit bg-[#F9FAFF] flex space-x-2 items-center py-4 px-4    relative m-auto border-[1px] rounded-xl ">
                           <input
-                            id="Gender"
-                            placeholder="Gender"
+                            id="GenderName"
+                            placeholder={
+                              GenderSelector
+                                ? GenderSelector[
+                                    GenderSelector?.findIndex(
+                                      (genderItem) => genderItem.id === id
+                                    )
+                                  ]?.name
+                                : t("Gender")
+                            }
                             type="text"
                             className="w-full bg-[#F9FAFF] font-Poppins-Medium text-xs placeholder:text-[#98A2B3] outline-0 ring-0"
                           />
                         </div>
                       </div>
+                      <p
+                        id="messag"
+                        className="text-center text-red-500 text-sm "
+                      ></p>
                     </div>
                   </div>
 
@@ -75,7 +124,7 @@ export default function EditGender({ open, setOpen }) {
                       className="flex flex-grow font-medium text-sm py-3 bg-[#B7C835] justify-center rounded-xl text-white"
                       onClick={() => Edit()}
                     >
-                      Edit Gender
+                      {t("Edit Gender")}
                     </button>
                   </div>
                 </Dialog.Panel>

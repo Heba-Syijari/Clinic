@@ -7,6 +7,7 @@ import { IoCalendarOutline } from "react-icons/io5";
 
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { t } from "i18next";
 
 export default function AddEmployee({ open, setOpen }) {
   const cancelButtonRef = useRef(null);
@@ -22,7 +23,7 @@ export default function AddEmployee({ open, setOpen }) {
         className=" p-2  justify-between   outline-0  border-[#E4E7EC] w-full h-fit bg-[#F9FAFF] flex space-x-2 items-center py-3 px-4  relative m-auto border-[1px] rounded-xl "
       >
         <label className="text-[#98A2B3] text-xs mr-20 font-Poppins-Regular">
-          Date of birth
+          {t("Date of birth")}
         </label>
         <div className=" flex items-center">
           <label
@@ -48,7 +49,7 @@ export default function AddEmployee({ open, setOpen }) {
         className=" p-2  justify-between   outline-0  border-[#E4E7EC] w-full h-fit bg-[#F9FAFF] flex space-x-2 items-center py-3 px-4   relative m-auto border-[1px] rounded-xl "
       >
         <label className="text-[#98A2B3] text-xs mr-20 font-Poppins-Regular">
-          Work start
+          {t("Work start")}
         </label>
         <div className=" flex items-center">
           <label
@@ -205,7 +206,7 @@ export default function AddEmployee({ open, setOpen }) {
                   <div className="bg-white ">
                     <div className="w-full flex  h-full items-center mt-5">
                       <p className=" font-semibold justify-center flex flex-grow text-2xl ml-10">
-                        Add employee
+                        {t("Add employee")}
                       </p>
                       <IoIosClose
                         className=" text-4xl  text-black border-[1px] rounded-full cursor-pointer bg-[#E4E7EC] "
@@ -239,12 +240,12 @@ export default function AddEmployee({ open, setOpen }) {
                             Image == null ? "flex" : "hidden"
                           }`}
                         >
-                          Drop your here, or{" "}
+                          {t("Drop your here, or")}{" "}
                           <span
                             className="text-[#B7C835] mt-1 underline underline-[#B7C835] cursor-pointer"
                             onClick={(e) => filebrowser(e)}
                           >
-                            select click to browse
+                            {t("select click to browse")}
                           </span>
                         </h1>
                       </div>
@@ -258,7 +259,7 @@ export default function AddEmployee({ open, setOpen }) {
                           <input
                             name="name"
                             id="NameInput"
-                            placeholder="Employee name"
+                            placeholder={t("Employee name")}
                             type="text"
                             className=" w-full  font-Poppins-Regular bg-[#F9FAFF] text-sm text-[#707070] outline-0 ring-0"
                           />
@@ -266,7 +267,7 @@ export default function AddEmployee({ open, setOpen }) {
                             id="Name"
                             className="hidden font-Poppins-Regular text-sm absolute top-[-0.8rem] bg-white left-[0.2rem]  px-1 text-[#B7C835] font-medium"
                           >
-                            Employee name
+                            {t("Employee name")}
                           </p>
                         </div>
 
@@ -278,7 +279,7 @@ export default function AddEmployee({ open, setOpen }) {
                           <input
                             name="Email"
                             id="EmailInput"
-                            placeholder="Email"
+                            placeholder={t("Email")}
                             type="email"
                             className="w-full bg-[#F9FAFF] font-Poppins-Regular text-sm text-[#707070] outline-0 ring-0"
                           />
@@ -286,7 +287,7 @@ export default function AddEmployee({ open, setOpen }) {
                             id="Email"
                             className="hidden font-Poppins-Regular text-sm absolute top-[-0.8rem] bg-white left-[0.2rem]  px-1 text-[#B7C835] font-medium"
                           >
-                            Email
+                            {t("Email")}
                           </p>
                         </div>
 
@@ -298,7 +299,7 @@ export default function AddEmployee({ open, setOpen }) {
                           <input
                             id="PhoneInput"
                             name="Phone"
-                            placeholder="Phone number"
+                            placeholder={t("Phone number")}
                             type="tel"
                             className="w-full bg-[#F9FAFF] font-Poppins-Regular text-sm text-[#707070] outline-0 ring-0"
                           />
@@ -306,7 +307,7 @@ export default function AddEmployee({ open, setOpen }) {
                             id="Phone"
                             className="hidden font-Poppins-Regular text-sm absolute top-[-0.8rem] bg-white left-[0.2rem]  px-1 text-[#B7C835] font-medium"
                           >
-                            Phone number
+                            {t("Phone number")}
                           </p>
                         </div>
                         <div>
@@ -327,7 +328,7 @@ export default function AddEmployee({ open, setOpen }) {
                           <input
                             id="AddressInput"
                             name="Address"
-                            placeholder="Address"
+                            placeholder={t("Address")}
                             type="text"
                             className="w-full bg-[#F9FAFF] font-Poppins-Regular text-sm text-[#707070] outline-0 ring-0"
                           />
@@ -335,7 +336,7 @@ export default function AddEmployee({ open, setOpen }) {
                             id="Address"
                             className="hidden font-Poppins-Regular text-sm absolute top-[-0.8rem] bg-white left-[0.2rem]  px-1 text-[#B7C835] font-medium"
                           >
-                            Address
+                            {t("Address")}
                           </p>
                         </div>
                         <div>
@@ -355,7 +356,7 @@ export default function AddEmployee({ open, setOpen }) {
                           <select
                             id="NotesInput"
                             name="Notes"
-                            className=" w-full   rounded-lg bg-[#F9FAFF]   font-Poppins-Regular  text-[#98A2B3] text-sm  outline-none px-4 py-2 cursor-pointer"
+                            className=" w-full   rounded-lg bg-[#F9FAFF]   font-Poppins-Regular  text-[#98A2B3] text-xs  outline-none px-4 py-2 cursor-pointer"
                             onChange={() => JobTitleChanged()}
                           >
                             <option
@@ -365,21 +366,21 @@ export default function AddEmployee({ open, setOpen }) {
                               hidden
                               className=""
                             >
-                              Job title
+                              {t("Job title")}
                             </option>
                           </select>
                           <p
                             id="JobTitle"
                             className="hidden font-Poppins-Regular text-sm absolute top-[-0.8rem] bg-white left-[0.9rem]  px-1 text-[#B7C835] font-medium"
                           >
-                            Job title
+                            {t("Job title")}
                           </p>
                         </div>
                         <div className="relative w-full">
                           <textarea
                             id="NotesInput"
-                            placeholder="Notes"
-                            className="bg-[#F9FAFF] border-[#E4E7EC] w-full h-fit  flex space-x-2 items-center py-3 px-4 outline-0 ring-0   relative m-auto border-[1px] rounded-xl "
+                            placeholder={t("Notes")}
+                            className="bg-[#F9FAFF] text-xs border-[#E4E7EC] w-full h-fit  flex space-x-2 items-center py-3 px-4 outline-0 ring-0   relative m-auto border-[1px] rounded-xl "
                             rows={3}
                             onClick={() => NotesClicked()}
                           />
@@ -387,7 +388,7 @@ export default function AddEmployee({ open, setOpen }) {
                             id="Notes"
                             className="hidden font-Poppins-Regular text-sm absolute top-[-0.8rem] bg-white left-[0.9rem]  px-1 text-[#B7C835] font-medium"
                           >
-                            Notes
+                            {t("Notes")}
                           </p>
                         </div>
                       </div>
@@ -399,7 +400,7 @@ export default function AddEmployee({ open, setOpen }) {
                       type="button"
                       className="flex flex-grow py-2 bg-[#B7C835] justify-center rounded-xl text-white"
                     >
-                      Add worker
+                      {t("Add worker")}
                     </button>
                   </div>
                 </Dialog.Panel>

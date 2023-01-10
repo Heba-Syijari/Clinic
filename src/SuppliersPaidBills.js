@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Header from "./components/Header";
 import SideBar from "./components/SideBar";
 import { AiOutlineClose, AiOutlinePlus } from "react-icons/ai";
 import { IoCalendarOutline } from "react-icons/io5";
@@ -11,6 +10,9 @@ import PangrationSuppliersPaidBills from "./components/Suppliers/PangrationSuppl
 import PayBill from "./components/Suppliers/PayBill";
 import { VscListFlat } from "react-icons/vsc";
 import AddPaidBill from "./components/Suppliers/AddPaidBill";
+
+import Header from "./components/Header";
+import { useTranslation } from "react-i18next";
 
 const items = [
   {
@@ -156,6 +158,8 @@ const items = [
 ];
 
 function SuppliersPaidBills() {
+  const { t, i18n } = useTranslation();
+
   const [FromDate, setFromDate] = useState(new Date());
   const [ToDate, setToDate] = useState(new Date());
   const [OpenPayBill, setPayBill] = useState(false);
@@ -165,7 +169,7 @@ function SuppliersPaidBills() {
     return (
       <div className="flex p-2 bg-[#F9FAFF] rounded-xl justify-between items-center w-fit outline-0 border-2">
         <label className="text-[#98A2B3] text-xs mr-20 font-Poppins-Regular">
-          From
+          {t("From")}
         </label>
         <div className=" flex items-center">
           <label
@@ -188,7 +192,7 @@ function SuppliersPaidBills() {
     return (
       <div className="flex p-2 bg-[#F9FAFF] rounded-xl justify-between items-center w-fit outline-0 border-2">
         <label className="text-[#98A2B3] text-xs mr-20 font-Poppins-Regular">
-          To
+          {t("To")}
         </label>
         <div className=" flex items-center">
           <label
@@ -226,6 +230,7 @@ function SuppliersPaidBills() {
   function closeDrawer() {
     document.getElementById("drawerBody").classList.add("hidden");
   }
+
   return (
     <div className="w-full h-full pr-5 p-5">
       <PayBill open={OpenPayBill} setOpen={setPayBill} />
@@ -249,7 +254,7 @@ function SuppliersPaidBills() {
               <div className="w-fit pr-2 bg-white rounded-lg flex items-center mr-5">
                 <select className=" w-fit  rounded-lg font-Poppins-Regular  text-base outline-none px-4 py-2 cursor-pointer">
                   <option value="" selected disabled hidden>
-                    Sort by
+                    {t("Sort by")}
                   </option>
                   <option value="A-Z">A-Z</option>
                   <option value="Z-A">Z-A</option>
@@ -261,7 +266,7 @@ function SuppliersPaidBills() {
                   className="bg-white w-fit flex items-center px-4 py-2 lg:py-0 rounded-xl cursor-pointer"
                 >
                   <p className="text-[#101828] text-center">
-                    Scientific office names
+                    {t("Scientific office names")}
                   </p>
                 </Link>
 
@@ -270,7 +275,7 @@ function SuppliersPaidBills() {
                   className="bg-white w-fit flex items-center px-4 py-2 lg:py-0 rounded-xl cursor-pointer"
                 >
                   <p className="text-[#101828] text-center">
-                    Scientific office bills
+                    {t("Scientific office bills")}
                   </p>
                 </Link>
 
@@ -278,7 +283,7 @@ function SuppliersPaidBills() {
                   to="/Suppliers/PaidBills"
                   className="bg-[#B7C835] w-fit flex items-center px-4 py-2 lg:py-0 rounded-xl cursor-pointer"
                 >
-                  <p className="text-white text-center">Paid bills</p>
+                  <p className="text-white text-center">{t("Paid bills")}</p>
                 </Link>
               </div>
               <div
@@ -287,7 +292,7 @@ function SuppliersPaidBills() {
               >
                 <p className="text-base flex items-center justify-center text-white">
                   <AiOutlinePlus className="mr-2 text-lg" />
-                  Add
+                  {t("Add")}
                 </p>
               </div>
               <div className="flex mt-5 flex-col md:flex-row  space-y-2 md:space-y-0  md:space-x-10">
@@ -341,73 +346,97 @@ function SuppliersPaidBills() {
                   to="/"
                   className="hover:bg-black rounded-xl cursor-pointer flex justify-center  text-xl  p-2 md:w-1/2 w-3/4"
                 >
-                  <div className="font-Poppins-Regular text-sm">Home</div>
+                  <div className="font-Poppins-Regular text-sm">
+                    {t("Home")}
+                  </div>
                 </Link>
                 <Link
                   to="/Patients"
                   className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2 "
                 >
-                  <div className="font-Poppins-Regular text-sm">Patients </div>
+                  <div className="font-Poppins-Regular text-sm">
+                    {t("Patients")}{" "}
+                  </div>
                 </Link>
                 <Link
                   to="/Analytic"
                   className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
                 >
-                  <div className="font-Poppins-Regular text-sm">Analytics</div>
+                  <div className="font-Poppins-Regular text-sm">
+                    {t("Analytics")}
+                  </div>
                 </Link>
                 <Link
                   to="/Doctors"
                   className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
                 >
-                  <div className="font-Poppins-Regular text-sm">Doctors</div>
+                  <div className="font-Poppins-Regular text-sm">
+                    {t("Doctors")}
+                  </div>
                 </Link>
                 <Link
                   to="/Labs"
                   className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4   text-xl p-2"
                 >
-                  <div className="font-Poppins-Regular text-sm">Labs </div>
+                  <div className="font-Poppins-Regular text-sm">
+                    {t("Labs")}{" "}
+                  </div>
                 </Link>
                 <Link
                   to="/Staff"
                   className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
                 >
-                  <div className="font-Poppins-Regular text-sm">Staff</div>
+                  <div className="font-Poppins-Regular text-sm">
+                    {t("Staff")}
+                  </div>
                 </Link>
                 <Link
                   to="/Store"
                   className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
                 >
-                  <div className="font-Poppins-Regular text-sm">Store</div>
+                  <div className="font-Poppins-Regular text-sm">
+                    {t("Store")}
+                  </div>
                 </Link>
                 <Link
                   to="/Reports"
                   className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
                 >
-                  <div className="font-Poppins-Regular text-sm">Reports</div>
+                  <div className="font-Poppins-Regular text-sm">
+                    {t("Reports")}
+                  </div>
                 </Link>
                 <Link
                   to="/"
                   className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
                 >
-                  <div className="font-Poppins-Regular text-sm">Accounting</div>
+                  <div className="font-Poppins-Regular text-sm">
+                    {t("Accounting")}
+                  </div>
                 </Link>
                 <Link
                   to="/Suppliers"
                   className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
                 >
-                  <div className="font-Poppins-Regular text-sm">Suppliers</div>
+                  <div className="font-Poppins-Regular text-sm">
+                    {t("Suppliers")}
+                  </div>
                 </Link>
                 <Link
                   to="/Settings"
                   className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
                 >
-                  <div className="font-Poppins-Regular text-sm">Setting</div>
+                  <div className="font-Poppins-Regular text-sm">
+                    {t("Setting")}
+                  </div>
                 </Link>
                 <Link
                   to="/"
                   className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
                 >
-                  <div className="font-Poppins-Regular text-sm">Logout</div>
+                  <div className="font-Poppins-Regular text-sm">
+                    {t("Logout")}
+                  </div>
                 </Link>
               </div>
             </div>

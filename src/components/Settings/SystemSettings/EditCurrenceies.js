@@ -3,6 +3,7 @@ import React, { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { IoIosClose } from "react-icons/io";
 import axios from "axios";
+import { t } from "i18next";
 
 export default function EditCurrenceies({ open, setOpen }) {
   const cancelButtonRef = useRef(null);
@@ -47,7 +48,7 @@ export default function EditCurrenceies({ open, setOpen }) {
                   <div className="bg-white ">
                     <div className="w-full flex  h-full items-center mt-5">
                       <p className="  justify-center font-Poppins-SemiBold flex flex-grow text-lg ml-10">
-                        Edit Tupe
+                        {t("Edit Currency")}
                       </p>
                       <IoIosClose
                         className=" text-4xl  text-black border-[1px] rounded-full cursor-pointer bg-[#E4E7EC] "
@@ -60,7 +61,7 @@ export default function EditCurrenceies({ open, setOpen }) {
                         <div className="w-full break-words border-[#E4E7EC] h-fit bg-[#F9FAFF] flex space-x-2 items-center py-4 px-4    relative m-auto border-[1px] rounded-xl ">
                           <input
                             id="CurrencyName"
-                            placeholder="Currency"
+                            placeholder={t("Currency")}
                             type="text"
                             className="w-full bg-[#F9FAFF] font-Poppins-Medium text-xs placeholder:text-[#98A2B3] outline-0 ring-0"
                           />
@@ -75,7 +76,7 @@ export default function EditCurrenceies({ open, setOpen }) {
                       className="flex flex-grow font-medium text-sm py-3 bg-[#B7C835] justify-center rounded-xl text-white"
                       onClick={() => Edit()}
                     >
-                      Edit Currnecy
+                      {t("Edit Currency")}
                     </button>
                   </div>
                 </Dialog.Panel>

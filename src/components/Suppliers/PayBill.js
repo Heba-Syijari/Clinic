@@ -2,7 +2,7 @@
 import { Fragment, useRef } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { IoIosClose } from "react-icons/io";
-
+import { t } from "i18next";
 export default function PayBill({ open, setOpen }) {
   const cancelButtonRef = useRef(null);
 
@@ -45,7 +45,7 @@ export default function PayBill({ open, setOpen }) {
                   <div className="bg-white ">
                     <div className="w-full flex  h-full items-center mt-10">
                       <p className=" font-semibold justify-center flex flex-grow text-2xl ml-10">
-                        Pay the bill
+                        {t("Pay the bill")}
                       </p>
                       <IoIosClose
                         className=" text-4xl  text-black border-[1px] rounded-full cursor-pointer bg-[#E4E7EC] "
@@ -58,14 +58,14 @@ export default function PayBill({ open, setOpen }) {
                         <input
                           dir="rtl"
                           lang="ar"
-                          placeholder="Amount in dinars"
+                          placeholder={t("Amount in dinars")}
                           className="py-4 bg-[#F2F4F7] w-[45%] text-xs  focus:outline-none px-4  placeholder-[#B9B9B9] text-left rounded-xl border-[1px] border-[#E4E7EC]"
                           type="text"
                         />
                         <input
                           dir="rtl"
                           lang="ar"
-                          placeholder="Amount in dollars"
+                          placeholder={t("Amount in dollars")}
                           className="py-4 bg-[#F2F4F7] w-[45%] text-xs  focus:outline-none px-4  placeholder-[#B9B9B9] text-left rounded-xl border-[1px] border-[#E4E7EC]"
                           type="text"
                         />
@@ -78,7 +78,7 @@ export default function PayBill({ open, setOpen }) {
                       type="button"
                       className="flex flex-grow py-2 bg-[#B7C835] justify-center rounded-xl text-white"
                     >
-                      Pay
+                      {t("Pay")}
                     </button>
                     <button
                       type="button"
@@ -86,7 +86,7 @@ export default function PayBill({ open, setOpen }) {
                       onClick={() => close()}
                       ref={cancelButtonRef}
                     >
-                      Cancel
+                      {t("Cancel")}
                     </button>
                   </div>
                 </Dialog.Panel>

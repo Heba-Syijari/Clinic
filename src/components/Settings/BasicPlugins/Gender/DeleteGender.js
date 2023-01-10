@@ -3,14 +3,35 @@ import React, { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { IoIosClose } from "react-icons/io";
 import axios from "axios";
+import { t } from "i18next";
+import { useDispatch, useSelector } from "react-redux";
+import { removeFromGender, selectGenders } from "./GenderSlice";
 
 export default function DeleteGender({ open, setOpen, id }) {
   const cancelButtonRef = useRef(null);
+  const GenderSelector = useSelector(selectGenders);
+  const dispatch = useDispatch();
 
   function close() {
     setOpen(false);
   }
-  const remove = async () => {};
+  const remove = async () => {
+    console.log(id);
+
+    let selected =
+      GenderSelector[
+        GenderSelector.findIndex((genderItem) => genderItem.id === id)
+      ];
+    let formdata = new FormData();
+    formdata.append("id", selected.id);
+
+    await axios
+      .delete(`/lab-scope/gender-delete?gender_id=${formdata.get("id")}`)
+      .then((response) => {
+        dispatch(removeFromGender(selected));
+        setOpen(false);
+      });
+  };
   return (
     <div>
       <Transition.Root show={open} as={Fragment}>
@@ -47,7 +68,7 @@ export default function DeleteGender({ open, setOpen, id }) {
                   <div className="bg-white ">
                     <div className="w-full flex  h-full items-center mt-5">
                       <p className="  justify-center font-Poppins-SemiBold flex flex-grow text-lg ml-10">
-                        Delete Gender
+                        {t("Delete Gender")}
                       </p>
                       <IoIosClose
                         className=" text-4xl  text-black border-[1px] rounded-full cursor-pointer bg-[#E4E7EC] "
@@ -59,8 +80,17 @@ export default function DeleteGender({ open, setOpen, id }) {
                       <div className={`space-y-5 flex-col `}>
                         <div className="w-full ">
                           <p className="w-fit  font-Poppins-Medium text-sm ">
-                            Do you want to delete this Gender? :{" "}
-                            <span className="text-black ml-5">Gender</span>
+                            {t("Do you want to delete this Gender?")}
+                            <span className="text-black ml-5">
+                              {
+                                GenderSelector[
+                                  GenderSelector.findIndex(
+                                    (genderItem) => genderItem.id === id
+                                  )
+                                ]?.name
+                              }
+                              {/* {t("Gender")} */}
+                            </span>
                           </p>
                         </div>
                       </div>

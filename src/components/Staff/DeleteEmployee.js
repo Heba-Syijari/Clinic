@@ -3,6 +3,7 @@ import React, { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { IoIosClose } from "react-icons/io";
 import axios from "axios";
+import { t } from "i18next";
 
 export default function DeleteEmployee({ open, setOpen, id }) {
   const cancelButtonRef = useRef(null);
@@ -47,7 +48,7 @@ export default function DeleteEmployee({ open, setOpen, id }) {
                   <div className="bg-white ">
                     <div className="w-full flex  h-full items-center mt-5">
                       <p className="  justify-center font-Poppins-SemiBold flex flex-grow text-lg ml-10">
-                        Delete Employee
+                        {t("Delete Employee")}
                       </p>
                       <IoIosClose
                         className=" text-4xl  text-black border-[1px] rounded-full cursor-pointer bg-[#E4E7EC] "
@@ -59,8 +60,10 @@ export default function DeleteEmployee({ open, setOpen, id }) {
                       <div className={`space-y-5 flex-col `}>
                         <div className="w-full ">
                           <p className="w-fit  font-Poppins-Medium text-sm ">
-                            Do you want to delete this empolyee? :{" "}
-                            <span className="text-black ml-5">empolyee</span>
+                            {t("Do you want to delete this empolyee?")} :{" "}
+                            <span className="text-black ml-5">
+                              {t("empolyee")}
+                            </span>
                           </p>
                         </div>
                       </div>

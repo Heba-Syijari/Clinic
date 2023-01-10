@@ -5,6 +5,7 @@ import { IoIosClose } from "react-icons/io";
 import profile from "../../Images/profile.jpg";
 
 import "react-datepicker/dist/react-datepicker.css";
+import { t } from "i18next";
 
 export default function ProfileEdit({ open, setOpen }) {
   const cancelButtonRef = useRef(null);
@@ -69,7 +70,7 @@ export default function ProfileEdit({ open, setOpen }) {
                   <div className="bg-white ">
                     <div className="w-full flex  h-full items-center mt-5">
                       <p className="  justify-center font-Poppins-SemiBold flex flex-grow text-lg ml-10">
-                        Edit Profile
+                        {t("Edit Profile")}
                       </p>
                       <IoIosClose
                         className=" text-4xl  text-black border-[1px] rounded-full cursor-pointer bg-[#E4E7EC] "
@@ -99,13 +100,13 @@ export default function ProfileEdit({ open, setOpen }) {
                             className="text-white  py-2 px-5 rounded-xl mt-1  bg-[#B7C835] cursor-pointer"
                             onClick={(e) => filebrowser(e)}
                           >
-                            click to browse
+                            {t("click to browse")}
                           </button>
                         </div>
                         <div className="w-full break-words border-[#E4E7EC] h-fit bg-[#F9FAFF] flex space-x-2 items-center py-4 px-4    relative m-auto border-[1px] rounded-xl ">
                           <input
                             name="Name"
-                            placeholder="name"
+                            placeholder={t("name")}
                             type="text"
                             className="w-full bg-[#F9FAFF] font-Poppins-Medium text-xs placeholder:text-[#908F8F] outline-0 ring-0"
                           />
@@ -119,7 +120,7 @@ export default function ProfileEdit({ open, setOpen }) {
                       type="button"
                       className="flex flex-grow font-medium text-sm py-3 bg-[#B7C835] justify-center rounded-xl text-white"
                     >
-                      Edit Profile
+                      {t("Edit Profile")}
                     </button>
                   </div>
                 </Dialog.Panel>

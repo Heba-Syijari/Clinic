@@ -9,7 +9,7 @@ import { HiOutlineArrowRight } from "react-icons/hi";
 import { AiOutlineEye } from "react-icons/ai";
 import EditAccountRevenue from "./EditAccountRevenue";
 import DeleteAccountRevenue from "./DeleteAccountRevenue";
-
+import { t } from "i18next";
 // Example items, to simulate fetching from another resources.
 
 function Items({
@@ -108,19 +108,19 @@ function RevenuesPangration({ section, itemsPerPage, Data }) {
             />
           </td>
           <td className="text-sm pr-24 lg:pr-0 text-[#98A2B3] font-Poppins-Regular py-2 pl-2">
-            Date
+            {t("Date")}
           </td>
           <td className="text-sm pr-20 lg:pr-0 text-[#98A2B3] font-Poppins-Regular py-2 w-[25%] ">
-            Day
+            {t("Day")}
           </td>
           <td className="text-sm pr-20 lg:pr-0 text-[#98A2B3] font-Poppins-Regular py-2 ">
-            Payment_amount
+            {t("Payment_amount")}
           </td>
           <td className="text-sm pr-20 lg:pr-0 text-[#98A2B3] font-Poppins-Regular py-2  ">
-            Note
+            {t("Note")}
           </td>
           <td className="text-sm pr-20 lg:pr-0 text-[#98A2B3] font-Poppins-Regular py-2 w-[9%]">
-            Action
+            {t("Action")}
           </td>
         </tr>
         <Items

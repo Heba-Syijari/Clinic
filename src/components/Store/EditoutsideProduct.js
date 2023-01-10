@@ -7,6 +7,7 @@ import { IoCalendarOutline } from "react-icons/io5";
 
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { t } from "i18next";
 
 export default function EditoutsideProduct({ open, setOpen }) {
   const cancelButtonRef = useRef(null);
@@ -18,7 +19,7 @@ export default function EditoutsideProduct({ open, setOpen }) {
         className=" p-2  justify-between   outline-0  border-[#E4E7EC] w-full h-fit bg-[#F9FAFF] flex space-x-2 items-center py-[0.80rem] px-4  relative  border-[1px] rounded-xl "
       >
         <label className="text-[#98A2B3] text-xs mr-10 font-Poppins-Regular">
-          out side date
+          {t("out side date")}
         </label>
         <div className=" flex items-center">
           <label
@@ -47,7 +48,7 @@ export default function EditoutsideProduct({ open, setOpen }) {
         className=" p-2  justify-between   outline-0  border-[#E4E7EC] w-full h-fit bg-[#F9FAFF] flex space-x-2 items-center py-3 px-4  relative m-auto border-[1px] rounded-xl "
       >
         <label className="text-[#98A2B3] text-xs mr-20 font-Poppins-Regular">
-          Date of birth
+          {t("Date of birth")}
         </label>
         <div className=" flex items-center">
           <label
@@ -73,7 +74,7 @@ export default function EditoutsideProduct({ open, setOpen }) {
         className=" p-2  justify-between   outline-0  border-[#E4E7EC] w-full h-fit bg-[#F9FAFF] flex space-x-2 items-center py-3 px-4   relative m-auto border-[1px] rounded-xl "
       >
         <label className="text-[#98A2B3] text-xs mr-20 font-Poppins-Regular">
-          Work start
+          {t("Work start")}
         </label>
         <div className=" flex items-center">
           <label
@@ -256,7 +257,7 @@ export default function EditoutsideProduct({ open, setOpen }) {
                   <div className="bg-white ">
                     <div className="w-full flex  h-full items-center mt-5">
                       <p className=" font-semibold justify-center flex flex-grow text-2xl ml-10">
-                        Edit Product
+                        {t("Edit OutSide Product")}
                       </p>
                       <IoIosClose
                         className=" text-4xl  text-black border-[1px] rounded-full cursor-pointer bg-[#E4E7EC] "
@@ -272,7 +273,7 @@ export default function EditoutsideProduct({ open, setOpen }) {
                           onClick={() => NameClicked()}
                         >
                           <input
-                            placeholder="Product name"
+                            placeholder={t("Product name")}
                             name="name"
                             id="NameInput"
                             type="text"
@@ -282,13 +283,13 @@ export default function EditoutsideProduct({ open, setOpen }) {
                             id="Name"
                             className="hidden font-Poppins-Medium text-xs absolute top-[-0.8rem] bg-white left-[0.2rem]  px-1 text-[#B7C835] font-medium"
                           >
-                            Product name
+                            {t("Product name")}
                           </p>
                         </div>
                         <div className="w-full relative">
                           <textarea
                             id="DescriptionInput"
-                            placeholder="Description"
+                            placeholder={t("Description")}
                             className="bg-[#F9FAFF] font-Poppins-Medium placeholder:text-[#98A2B3] text-xs border-[#E4E7EC] w-full h-fit  flex space-x-2 items-center py-4 px-4 outline-0 ring-0   relative m-auto border-[1px] rounded-xl "
                             rows={3}
                             onClick={() => DescriptionClicked()}
@@ -297,7 +298,7 @@ export default function EditoutsideProduct({ open, setOpen }) {
                             id="Description"
                             className="hidden font-Poppins-Medium text-xs absolute  top-[-0.8rem] bg-white left-[0.8rem]  px-1 text-[#B7C835] font-medium"
                           >
-                            Description
+                            {t("Description")}
                           </p>
                         </div>
                         <div
@@ -308,7 +309,7 @@ export default function EditoutsideProduct({ open, setOpen }) {
                           <input
                             id="CompanyInput"
                             name="Company"
-                            placeholder="Company"
+                            placeholder={t("Company")}
                             type="text"
                             className="w-full bg-[#F9FAFF] font-Poppins-Medium text-xs placeholder:text-[#98A2B3] outline-0 ring-0"
                           />
@@ -316,7 +317,7 @@ export default function EditoutsideProduct({ open, setOpen }) {
                             id="Company"
                             className="hidden font-Poppins-Medium text-xs absolute top-[-0.8rem] bg-white left-[0.2rem]  px-1 text-[#B7C835] font-medium"
                           >
-                            Company
+                            {t("Company")}
                           </p>
                         </div>
                         <div>
@@ -338,7 +339,7 @@ export default function EditoutsideProduct({ open, setOpen }) {
                           <input
                             id="ModelInput"
                             name="Model"
-                            placeholder="Model"
+                            placeholder={t("Model")}
                             type="text"
                             className="w-full bg-[#F9FAFF] font-Poppins-Medium text-xs placeholder:text-[#98A2B3] outline-0 ring-0"
                           />
@@ -346,7 +347,7 @@ export default function EditoutsideProduct({ open, setOpen }) {
                             id="Model"
                             className="hidden font-Poppins-Medium text-xs absolute top-[-0.8rem] bg-white left-[0.2rem]  px-1 text-[#B7C835] font-medium"
                           >
-                            Model
+                            {t("Model")}
                           </p>
                         </div>
 
@@ -367,14 +368,14 @@ export default function EditoutsideProduct({ open, setOpen }) {
                               hidden
                               className=""
                             >
-                              Measuring unit
+                              {t("Measuring unit")}
                             </option>
                           </select>
                           <p
                             id="MeasuringUnit"
                             className="hidden font-Poppins-Medium text-xs absolute top-[-0.8rem] bg-white left-[0.8rem]  px-1 text-[#B7C835] font-medium"
                           >
-                            Measuring unit
+                            {t("Measuring unit")}
                           </p>
                         </div>
 
@@ -386,7 +387,7 @@ export default function EditoutsideProduct({ open, setOpen }) {
                           <input
                             id="QuantityInput"
                             name="Quantity"
-                            placeholder="Quantity"
+                            placeholder={t("Quantity")}
                             type="text"
                             className="w-full bg-[#F9FAFF] font-Poppins-Medium text-xs placeholder:text-[#98A2B3] outline-0 ring-0"
                           />
@@ -394,7 +395,7 @@ export default function EditoutsideProduct({ open, setOpen }) {
                             id="Quantity"
                             className="hidden font-Poppins-Medium text-xs absolute top-[-0.8rem] bg-white left-[0.2rem]  px-1 text-[#B7C835] font-medium"
                           >
-                            Quantity
+                            {t("Quantity")}
                           </p>
                         </div>
                       </div>
@@ -406,7 +407,7 @@ export default function EditoutsideProduct({ open, setOpen }) {
                       type="button"
                       className="flex flex-grow py-3 text-sm font-Poppins-Medium bg-[#B7C835] justify-center rounded-xl text-white"
                     >
-                      Edit Product
+                      {t("Edit OutSide Product")}
                     </button>
                   </div>
                 </Dialog.Panel>

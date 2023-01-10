@@ -6,28 +6,57 @@ import LogoLog from "./Images/Login/LogoLog.svg";
 import LabLog1 from "./Images/Login/LabLog1.jpg";
 import Cookies from "universal-cookie";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
+  const navigate = useNavigate();
   const cookies = new Cookies();
   const [meesage, SetMessage] = useState();
 
+  // const LoginFun = async () => {
+  //   let Data = {
+  //     email: document.getElementById("Email").value,
+  //     password: document.getElementById("password").value,
+  //   };
+
+  //   await axios.post(`/lab-login`, Data).then((res) => {
+  //     document.getElementById("logbtn").disabled = true;
+  //     if (res.data === "Email or password is incorrect") {
+  //       document.getElementById("message").textContent = res.data;
+  //       document.getElementById("logbtn").disabled = false;
+  //     } else {
+  //       cookies.set("token", res.data, { path: "/" });
+  //       window.location.replace("/");
+  //       document.getElementById("logbtn").disabled = false;
+  //     }
+  //   });
+  // };
   const LoginFun = async () => {
-    let Data = {
-      email: document.getElementById("Email").value,
-      password: document.getElementById("password").value,
-    };
+    let formdata = new FormData();
+    formdata.append("email", document.getElementById("Email").value);
+    formdata.append("password", document.getElementById("password").value);
 
     await axios
-      .post(`https://aurora-team.com/Labs/public/api/lab-login`, Data)
+      .get(
+        `/lab-scope/auth-lab?email=${formdata.get(
+          "email"
+        )}&password=${formdata.get("password")}`
+      )
       .then((res) => {
         document.getElementById("logbtn").disabled = true;
-        if (res.data === "Email or password is incorrect") {
-          document.getElementById("message").textContent = res.data;
+        cookies.set("token_lab", res.data, { path: "/" });
+        localStorage.setItem("token", res.data.token);
+        //localStorage.setItem("token", JSON.stringify(res.data.token));
+        // window.location.replace("/SystemDashBoard");
+        navigate("/");
+        console.log(res);
+      })
+      .catch((error) => {
+        if (error.response) {
+          document.getElementById("message").textContent =
+            error.response.data.message;
           document.getElementById("logbtn").disabled = false;
-        } else {
-          cookies.set("token", res.data, { path: "/" });
-          window.location.replace("/");
-          document.getElementById("logbtn").disabled = false;
+          console.log(error);
         }
       });
   };

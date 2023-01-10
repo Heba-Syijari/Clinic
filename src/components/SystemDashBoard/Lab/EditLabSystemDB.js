@@ -2,16 +2,18 @@
 import React, { Fragment, useEffect, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { IoIosClose } from "react-icons/io";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   addAllDBLab,
   selectDBLabs,
 } from "../../../GlobalData/SystemDashBoard/LabSDBSlice";
+import axios from "axios";
 
 export default function EditLabSystemDB({ open, setOpen, id }) {
   const cancelButtonRef = useRef(null);
   const LabSelector = useSelector(selectDBLabs);
   const [selected, Setselected] = useState({});
+  const dispatch = useDispatch();
   useEffect(() => {
     Setselected(
       LabSelector.data
@@ -23,9 +25,6 @@ export default function EditLabSystemDB({ open, setOpen, id }) {
   }, [id]);
 
   const Edit = async () => {
-    let token =
-      "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiOTNjNmIwNGU3YWM4MDJkYTZmMjBmNDFlOTQ0YzgwY2FhZWFkYTUzODYwYjQ0MzliOTIxYzUxYmMxNGI5NzRiZjFmM2Y0MzgxMzdkNWM5MjUiLCJpYXQiOjE2NzMwMDQ1MjYuMTk2NzU2LCJuYmYiOjE2NzMwMDQ1MjYuMTk2NzU4LCJleHAiOjE3MDQ1NDA1MjYuMTkyMjE0LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.fnLnZuk2fJ5ZzZ9mNLUiFs8kuIxepWPbx8iTXWQT32Ex1w-GE6CQcs0F6QtwB6v0venr55OlRen94-Kj6zo98O_OXDDeyi2_NDB0GXLFH0w7aoLxFHSO8MKjOzJ__AuDHlQSMiqe8Gb3_G3-lfII9xAeEbs4oOOklGTiSj0NT2hH0sqNc1lov4nqc1rahtEAR3SZKanW8tjkqKTFb1u97fE6impKxCiLPJLFCj5izyacy0y0nuDGNAEoJSd83TyOwBCmiZOKGH2Dw5yCURcfrG246qqee_zcuYGuipjHAMvIN1CXsQLyIMnMWfQHuGQTzFWhU5QSmmQOZZKuas2wneiSdgFVCLWImQS_U0njfY-WtXh7dJu1vauJqRJnrmlSaXwyWzoKjhKxSUPST3KzGvV9rST6mQeP0G6LPcv5b70QLf_fSrDb4AVC4Vi6cTgvMsLzreo5pg20A5dNWAvxnCz0RJkQdhUYQEy5yBKJQOryEMOqTQm2RMrf6z4eVVIKYKDcROy_CPwk5nC6RwEdMRZjBwQEtl7tD1LbL6Kjkuyi8Cc9fSm55moR4NG293_JrhjnTnmFju3m952Bx3LNxiZUVcBs2rhzF9ZD8AGfAvHD_XlxOSiMIZasEhfxb0MA1rd7xdRdklevX5svfxU2HJT6S6rnrsU6CIgM7-b-BVI";
-
     let selected =
       LabSelector[LabSelector.findIndex((LabItem) => LabItem.id === id)];
     let formdata = new FormData();
@@ -34,15 +33,9 @@ export default function EditLabSystemDB({ open, setOpen, id }) {
 
     await axios
       .put(
-        `https://aurora-team.com/labs-obada/api/admin-scope/updateTupe?id=${formdata.get(
-          "id"
-        )}&tupe=${formdata.get("tupe")}`,
-        axios.interceptors.request.use(function (config) {
-          let token =
-            "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMmU1OTAyOTQwNjY1OWQ1OGVlMzQ4MTMzOWZkNDlmOThhYzAxMDNjODcyZjgyNzVjNjY2ODc4NThhZDNkZjBjOGFhOGVmZTM4YjJkZmQyZjAiLCJpYXQiOjE2NzMwMjY0ODAuNjE5OTI2LCJuYmYiOjE2NzMwMjY0ODAuNjE5OTI5LCJleHAiOjE3MDQ1NjI0ODAuNjE0MTE0LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.alMtvstRFur9U7Ue5bvu2QDE_QVsQBDmw-VW7t7LEOO7feDxspvm77Zt-7Yi9JpWZ1hgOj2xRYF3LkkG4oakLXA2as8JwAxU7cTrD1jOoVdHsQTL2qwMj63hYKi9TwYw-JqAWB5F9aoULfW9MlCgOAkUIFvlZAIHuPAjwEhDKvFQhpQbpWAAs3MswitX0s8XR6roWEooTAi6ITWulnnOKComQTRnYxPh_ziy8iJUovjzW2sZ6TWY7nJdu1mjtYUaBRF0qlLCUEpv8EAu7-z4r3vNTIhFSp5jjtbWX3Cc_0SphfxApim1wCVPRJ6Ba2oI9DWf8MvILHKCxICRyybH4R5rCe64PkZqItY2ft9_K1TypWs-xiULh1-5-_Bg6Ris9sEdP7x-zQy4bxv0ioD1XO9sFT8a9btQdMGkReXDaXzcbIQxrWl_T1BA-XPAg9mNrZY6buhJPPw_CqbPzyZ7ZaQiFReVJBMCoH3BBApdKG4XXUnGlsjidPeyaC2s1ibUBYlwrQUpm6hnvMxNJivyH8IZ76hRSsc8_LDfRKcZ3rzb5UOxm27TjJaL1A1U6xsUwXRfFhW1C4oj1ASaSnk68h-pfvpZqn_fctEl9veSEx_4-Is2Wnw9h4mSS3KRynGgLmqp_jj7dQojFkrQxgsVkfNYkgYkDlCIh4FG6Y2tLqM";
-          config.headers.Authorization = token ? `Bearer ${token}` : "";
-          return config;
-        })
+        `/admin-scope/updateTupe?id=${formdata.get("id")}&tupe=${formdata.get(
+          "tupe"
+        )}`
       )
       .then((response) => {
         let content = LabSelector.map((item) => {

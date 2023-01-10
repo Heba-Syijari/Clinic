@@ -11,14 +11,6 @@ import {
 
 export default function EditGender({ open, setOpen, id }) {
   const GenderSelector = useSelector(selectGenders);
-  useEffect(() => {
-    let value = GenderSelector
-      ? GenderSelector[
-          GenderSelector?.findIndex((genderItem) => genderItem.id === id)
-        ]?.name
-      : "SDAfa";
-    document.getElementById("GenderName").textContent = value;
-  }, [id]);
 
   const cancelButtonRef = useRef(null);
   const dispatch = useDispatch();
@@ -49,6 +41,13 @@ export default function EditGender({ open, setOpen, id }) {
         });
         dispatch(addAllGender(content));
         setOpen(false);
+      })
+      .catch((error) => {
+        if (error.response) {
+          document.getElementById("messag").textContent =
+            error.response.data.error[0];
+          //console.log(error.response.data.error[0]);
+        }
       });
   };
   const textChange = () => {};
@@ -101,12 +100,25 @@ export default function EditGender({ open, setOpen, id }) {
                         <div className="w-full break-words border-[#E4E7EC] h-fit bg-[#F9FAFF] flex space-x-2 items-center py-4 px-4    relative m-auto border-[1px] rounded-xl ">
                           <input
                             id="GenderName"
+                            placeholder={
+                              GenderSelector
+                                ? GenderSelector[
+                                    GenderSelector?.findIndex(
+                                      (genderItem) => genderItem.id === id
+                                    )
+                                  ]?.name
+                                : "SDAfa"
+                            }
                             type="text"
                             className="w-full bg-[#F9FAFF] font-Poppins-Medium text-xs placeholder:text-[#98A2B3] outline-0 ring-0"
                             onChange={(e) => textChange(e)}
                           />
                         </div>
                       </div>
+                      <p
+                        id="messag"
+                        className="text-center text-red-500 text-sm "
+                      ></p>
                     </div>
                   </div>
 

@@ -11,6 +11,7 @@ import profile from "../../Images/profile.jpg";
 import OutProductContainer from "./Inside/OutProductContainer";
 import EditProduct from "./EditProduct";
 import DeleteProduct from "./DeleteProduct";
+import { t } from "i18next";
 
 // Example items, to simulate fetching from another resources.
 
@@ -125,28 +126,28 @@ function InSidePangration({ section, itemsPerPage, Data }) {
             />
           </td>
           <td className="text-sm  pr-20 lg:pr-0 text-[#98A2B3] font-Poppins-Regular py-2 pl-2">
-            Product name
+            {t("Product name")}
           </td>
           <td className="text-sm   pr-20 lg:pr-0 text-[#98A2B3] font-Poppins-Regular py-2  w-[18%]">
-            Description
+            {t("Description")}
           </td>
           <td className="text-sm   pr-20 lg:pr-0 text-[#98A2B3] font-Poppins-Regular py-2  w-[8%]">
-            Quantity
+            {t("Quantity")}
           </td>
           <td className="text-sm  pr-20 lg:pr-0 text-[#98A2B3] font-Poppins-Regular py-2  ">
-            Company
+            {t("Company")}
           </td>
           <td className="text-sm  pr-20 lg:pr-0 text-[#98A2B3] font-Poppins-Regular py-2 w-[8%]">
-            Exp
+            {t("Exp")}
           </td>
           <td className="text-sm  pr-20 lg:pr-0 text-[#98A2B3] font-Poppins-Regular py-2 pl-5 w-[8%]">
-            Model
+            {t("Model")}
           </td>
           <td className="text-sm  pr-20 lg:pr-0 text-[#98A2B3] font-Poppins-Regular py-2 pl-5">
-            Measuring unit
+            {t("Measuring unit")}
           </td>
           <td className="text-sm  pr-20 lg:pr-0 text-[#98A2B3] font-Poppins-Regular py-2 w-[9%]">
-            Action
+            {t("Action")}
           </td>
         </tr>
         <Items

@@ -9,6 +9,7 @@ import { HiOutlineArrowRight } from "react-icons/hi";
 import { AiOutlineEye } from "react-icons/ai";
 import EditDoctor from "./EditDoctor";
 import DeleteDoctor from "./DeleteDoctor";
+import { t } from "i18next";
 
 // Example items, to simulate fetching from another resources.
 
@@ -94,19 +95,19 @@ function DoctorPangration({ itemsPerPage, Data }) {
             />
           </td>
           <td className="text-sm pr-24 lg:pr-0 text-[#98A2B3] font-Poppins-Regular py-2 pl-2">
-            Doctor name
+            {t("Doctor name")}
           </td>
           <td className="text-sm pr-20 lg:pr-0 text-[#98A2B3] font-Poppins-Regular py-2 w-[25%] ">
-            Doctor's address
+            {t("Doctor's address")}
           </td>
           <td className="text-sm pr-20 lg:pr-0 text-[#98A2B3] font-Poppins-Regular py-2 ">
-            Phone number
+            {t("Phone number")}
           </td>
           <td className="text-sm pr-20 lg:pr-0 text-[#98A2B3] font-Poppins-Regular py-2  ">
-            Doctor ratio
+            {t("Doctor ratio")}
           </td>
           <td className="text-sm pr-20 lg:pr-0 text-[#98A2B3] font-Poppins-Regular py-2 w-[9%]">
-            Action
+            {t("Action")}
           </td>
         </tr>
         <Items

@@ -6,6 +6,7 @@ import { HiOutlineArrowLeft } from "react-icons/hi";
 import { HiOutlineArrowRight } from "react-icons/hi";
 import profile from "../../Images/profile.jpg";
 import DeleteLab from "./DeleteLab";
+import { t } from "i18next";
 
 // Example items, to simulate fetching from another resources.
 
@@ -85,19 +86,19 @@ function LabPangration({ itemsPerPage, Data }) {
             />
           </td>
           <td className="text-sm text-[#98A2B3] font-Poppins-Regular py-2 pl-2 pr-20 lg:pr-0">
-            Lab name
+            {t("Lab name")}
           </td>
           <td className="text-sm text-[#98A2B3] font-Poppins-Regular py-2 pr-20 lg:pr-0 ">
-            Phone number
+            {t("Phone number")}
           </td>
           <td className="text-sm text-[#98A2B3] font-Poppins-Regular py-2 w-[26%] pr-20 lg:pr-0">
-            Address
+            {t("Address")}
           </td>
           <td className="text-sm text-[#98A2B3] font-Poppins-Regular py-2  pl-2 pr-20 lg:pr-0">
-            Code
+            {t("Code")}
           </td>
           <td className="text-sm text-[#98A2B3] font-Poppins-Regular py-2 w-[9%] pr-20 lg:pr-0">
-            Action
+            {t("Action")}
           </td>
         </tr>
         <Items

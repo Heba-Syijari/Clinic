@@ -5,6 +5,7 @@ import DebtNames from "../../Images/Debt/DebtNames.svg";
 import Amount from "../../Images/Debt/Amount.svg";
 
 import ReactDatePicker from "react-datepicker";
+import { t } from "i18next";
 
 function Debt({ section }) {
   const [FromDate, setFromDate] = useState(new Date());
@@ -14,7 +15,7 @@ function Debt({ section }) {
     return (
       <div className="flex p-3 rounded-xl justify-between items-center w-full outline-0 border-2">
         <label className="text-[#98A2B3] text-xs mr-20 font-Poppins-Regular">
-          From
+          {t("From")}
         </label>
         <div className=" flex items-center">
           <label
@@ -37,7 +38,7 @@ function Debt({ section }) {
     return (
       <div className="flex p-3 rounded-xl justify-between items-center w-full outline-0 border-2">
         <label className="text-[#98A2B3] text-xs mr-20 font-Poppins-Regular">
-          To
+          {t("To")}
         </label>
         <div className=" flex items-center">
           <label
@@ -63,7 +64,7 @@ function Debt({ section }) {
             <div className="w-full break-words border-[#E4E7EC] h-fit bg-[#F9FAFF] flex space-x-2 items-center py-4 px-4    relative m-auto border-[1px] rounded-xl ">
               <input
                 name="Name"
-                placeholder="Name"
+                placeholder={t("Name")}
                 type="text"
                 className="w-full bg-[#F9FAFF] font-Poppins-Regular text-xs text-[#707070] outline-0 ring-0"
               />
@@ -71,7 +72,7 @@ function Debt({ section }) {
             <div className="w-full break-words border-[#E4E7EC] h-fit bg-[#F9FAFF] flex space-x-2 items-center py-4 px-4    relative m-auto border-[1px] rounded-xl ">
               <input
                 name="Amount"
-                placeholder="Amount"
+                placeholder={t("Amount")}
                 type="text"
                 className="w-full bg-[#F9FAFF] font-Poppins-Regular text-xs text-[#707070] outline-0 ring-0"
               />
@@ -104,14 +105,14 @@ function Debt({ section }) {
                 type="button"
                 className="flex border-[#D0D5DD] border-[1px] w-2/5 py-3 font-Poppins-Medium text-sm  bg-[#FFFFFF] justify-center rounded-xl text-black"
               >
-                Reset
+                {t("Reset")}
               </button>
 
               <button
                 type="button"
                 className="flex  flex-grow py-3 font-Poppins-Medium text-sm  bg-[#B7C835] justify-center rounded-xl text-white"
               >
-                Apply
+                {t("Apply")}
               </button>
             </div>
           </div>
@@ -123,37 +124,37 @@ function Debt({ section }) {
           <img src={DebtNames} className="w-[52px] h-[52px]" />
           <div className="flex flex-col items-center space-y-3">
             <h1 className="font-Poppins-Bold  text-base">10000</h1>
-            <p className="font-Poppins-Regular text-xs">Names</p>
+            <p className="font-Poppins-Regular text-xs">{t("Names")}</p>
           </div>
         </div>
         <div className="flex justify-center w-full items-center bg-white space-x-4 px-10 py-6 rounded-2xl">
           <img src={Amount} className="w-[52px] h-[52px]" />
           <div className="flex flex-col items-center space-y-3">
             <h1 className="font-Poppins-Bold  text-base">10000</h1>
-            <p className="font-Poppins-Regular text-xs">Amount</p>
+            <p className="font-Poppins-Regular text-xs">{t("Amount")}</p>
           </div>
         </div>
       </div>
 
       <div className="w-full h-full flex flex-col  bg-white px-8 pt-10 pb-5 rounded-lg mt-5">
         <div className="flex justify-between w-full">
-          <h1 className="font-Poppins-Medium text-lg ">Debt</h1>
+          <h1 className="font-Poppins-Medium text-lg ">{t("Debt")}</h1>
           <div className="w-fit border-2 rounded-xl items-center flex space-x-5 px-10">
             <FcPrint className="text-xl" />
-            <p className="font-Poppins-Medium text-sm">Print</p>
+            <p className="font-Poppins-Medium text-sm">{t("Print")}</p>
           </div>
         </div>
         <div className="overflow-y-scroll scrollbar-hide h-64  w-full mt-5">
           <table className=" w-full    mb-5">
             <tr className="border-y-2 sticky top-0 bg-white">
               <td className="py-3 text-[#667085] pr-14 lg:pr-0  font-Poppins-Regular  text-sm  ">
-                Name (Patient or lab or company)
+                {t("Name (Patient or lab or company)")}
               </td>
               <td className="py-3 text-[#667085] pr-14 lg:pr-0 font-Poppins-Regular text-sm  ">
-                Date
+                {t("Date")}
               </td>
               <td className="py-3 text-[#667085] pr-14 lg:pr-0 font-Poppins-Regular text-sm ">
-                Amount (ID)
+                {t("Amount (ID)")}
               </td>
             </tr>
             <tr className="mt-2 border-b-[1px]">

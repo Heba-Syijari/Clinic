@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { VscListFlat } from "react-icons/vsc";
 import { GoSettings } from "react-icons/go";
@@ -8,10 +8,13 @@ import { RiListSettingsLine } from "react-icons/ri";
 import { HiOutlineArrowRight } from "react-icons/hi";
 
 import { Link } from "react-router-dom";
-import Header from "./components/Header";
 import SideBar from "./components/SideBar";
 
+import Header from "./components/Header";
+import { useTranslation } from "react-i18next";
 function Settings() {
+  const { t, i18n } = useTranslation();
+
   function drawer() {
     document.getElementById("drawerBody").classList.remove("hidden");
     document
@@ -31,6 +34,7 @@ function Settings() {
   function closeDrawer() {
     document.getElementById("drawerBody").classList.add("hidden");
   }
+
   return (
     <div className="h-full w-full p-5">
       <div className="w-full flex ">
@@ -46,7 +50,9 @@ function Settings() {
       <div className="w-full h-full flex ">
         <SideBar page="Settings" />
         <div className="flex flex-col w-full lg:ml-8 mt-9">
-          <h1 className="font-bold text-2xl font-Poppins-Regular ">Settings</h1>
+          <h1 className="font-bold text-2xl font-Poppins-Regular ">
+            {t("Settings")}
+          </h1>
           <div className="w-full  grid grid-cols-2 lg:grid-cols-4 gap-10 mt-10">
             <Link
               to="/Settings/SystemSettings"
@@ -54,7 +60,9 @@ function Settings() {
             >
               <RiListSettingsLine className="text-4xl text-[#B7C835] group-hover:text-white" />
               <div className="flex space-x-2 group-hover:text-white items-center mt-2">
-                <h1 className="font-Poppins-Bold text-lg">System Settings</h1>
+                <h1 className="font-Poppins-Bold text-lg">
+                  {t("System Settings")}
+                </h1>
                 <HiOutlineArrowRight />
               </div>
             </Link>
@@ -62,7 +70,9 @@ function Settings() {
             <div className="bg-white w-full lg:col-start-3 lg:col-end-4 hover:bg-[#B7C835] group pl-5 pb-5 pt-20 rounded-xl cursor-pointer">
               <BsPrinter className="text-4xl ml-2 text-[#B7C835] group-hover:text-white" />
               <div className="flex space-x-2 group-hover:text-white items-center mt-2">
-                <h1 className="font-Poppins-Bold text-lg">Print Settings</h1>
+                <h1 className="font-Poppins-Bold text-lg">
+                  {t("Print Settings")}
+                </h1>
                 <HiOutlineArrowRight />
               </div>
             </div>
@@ -73,7 +83,9 @@ function Settings() {
             >
               <RiListSettingsLine className="text-4xl ml-2 text-[#B7C835] group-hover:text-white" />
               <div className="flex space-x-2 group-hover:text-white items-center mt-2">
-                <h1 className="font-Poppins-Bold text-lg">Basic plugins</h1>
+                <h1 className="font-Poppins-Bold text-lg">
+                  {t("Basic plugins")}
+                </h1>
                 <HiOutlineArrowRight />
               </div>
             </Link>
@@ -83,7 +95,9 @@ function Settings() {
                 <RxPerson className="text-4xl group-hover:text-white text-[#B7C835]" />
               </div>
               <div className="flex space-x-2 items-center group-hover:text-white mt-2">
-                <h1 className="font-Poppins-Bold text-lg">System Owner</h1>
+                <h1 className="font-Poppins-Bold text-lg">
+                  {t("System Owner")}
+                </h1>
                 <HiOutlineArrowRight />
               </div>
             </div>
@@ -93,7 +107,9 @@ function Settings() {
                 <GoSettings className="text-3xl group-hover:text-white text-[#B7C835]" />
               </div>
               <div className="flex space-x-2 items-center group-hover:text-white mt-2">
-                <h1 className="font-Poppins-Bold text-lg">Premissions</h1>
+                <h1 className="font-Poppins-Bold text-lg">
+                  {t("Premissions")}
+                </h1>
                 <HiOutlineArrowRight />
               </div>
             </div>
@@ -119,73 +135,81 @@ function Settings() {
               to="/"
               className="hover:bg-black rounded-xl cursor-pointer flex justify-center  text-xl  p-2 md:w-1/2 w-3/4"
             >
-              <div className="font-Poppins-Regular text-sm">Home</div>
+              <div className="font-Poppins-Regular text-sm">{t("Home")}</div>
             </Link>
             <Link
               to="/Patients"
               className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2 "
             >
-              <div className="font-Poppins-Regular text-sm">Patients </div>
+              <div className="font-Poppins-Regular text-sm">
+                {t("Patients")}{" "}
+              </div>
             </Link>
             <Link
               to="/Analytic"
               className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
             >
-              <div className="font-Poppins-Regular text-sm">Analytics</div>
+              <div className="font-Poppins-Regular text-sm">
+                {t("Analytics")}
+              </div>
             </Link>
             <Link
               to="/Doctors"
               className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
             >
-              <div className="font-Poppins-Regular text-sm">Doctors</div>
+              <div className="font-Poppins-Regular text-sm">{t("Doctors")}</div>
             </Link>
             <Link
               to="/Labs"
               className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4   text-xl p-2"
             >
-              <div className="font-Poppins-Regular text-sm">Labs </div>
+              <div className="font-Poppins-Regular text-sm">{t("Labs")} </div>
             </Link>
             <Link
               to="/Staff"
               className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
             >
-              <div className="font-Poppins-Regular text-sm">Staff</div>
+              <div className="font-Poppins-Regular text-sm">{t("Staff")}</div>
             </Link>
             <Link
               to="/Store"
               className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
             >
-              <div className="font-Poppins-Regular text-sm">Store</div>
+              <div className="font-Poppins-Regular text-sm">{t("Store")}</div>
             </Link>
             <Link
               to="/Reports"
               className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
             >
-              <div className="font-Poppins-Regular text-sm">Reports</div>
+              <div className="font-Poppins-Regular text-sm">{t("Reports")}</div>
             </Link>
             <Link
               to="/"
               className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
             >
-              <div className="font-Poppins-Regular text-sm">Accounting</div>
+              <div className="font-Poppins-Regular text-sm">
+                {t("Accounting")}
+              </div>
             </Link>
             <Link
               to="/Suppliers"
               className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
             >
-              <div className="font-Poppins-Regular text-sm">Suppliers</div>
+              <div className="font-Poppins-Regular text-sm">
+                {t("Suppliers")}
+              </div>
             </Link>
             <Link
               to="/Settings"
               className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
             >
-              <div className="font-Poppins-Regular text-sm">Setting</div>
+              <div className="font-Poppins-Regular text-sm">{t("Setting")}</div>
             </Link>
             <Link
               to="/"
               className="hover:bg-black rounded-xl cursor-pointer flex justify-center md:w-1/2 w-3/4  text-xl p-2"
             >
-              <div className="font-Poppins-Regular text-sm">Logout</div>
+              <div className="font-Poppins-Regular text-sm">{t("Logout")}</div>
             </Link>
           </div>
         </div>

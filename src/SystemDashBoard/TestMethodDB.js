@@ -137,10 +137,7 @@ function TestMethodDB() {
                   className="w-full bg-[#F9FAFF] font-Poppins-Medium text-xs placeholder:text-[#98A2B3] outline-0 ring-0"
                 />
               </div>
-              <p
-                id="message"
-                className="text-sm text-red-500 flex items-center"
-              ></p>
+
               <div className=" bg-[#0D2135] w-[30%] lg:w-[20%]  flex items-center justify-center px-5 lg:px-10  py-2 rounded-xl cursor-pointer ">
                 <p
                   className="text-sm flex items-center text-center justify-center text-white font-Poppins-Medium"
@@ -152,7 +149,7 @@ function TestMethodDB() {
             </div>
             <p
               id="message"
-              className="text-sm w-full text-center justify-center mt-1 text-red-500 flex items-center"
+              className=" mt-2 text-sm w-full text-center justify-center  text-red-500 flex items-center"
             ></p>
             <div
               id="Loader"

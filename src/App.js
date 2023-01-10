@@ -31,14 +31,16 @@ import GenderSystemDB from "./SystemDashBoard/GenderSystemDB";
 import ProfileSDB from "./SystemDashBoard/ProfileSDB";
 import SuppliersOfficeBills from "./SuppliersOfficeBills";
 import ShowEmployee from "./ShowEmployee";
+import "./i18n";
 import axios from "axios";
 import PrivateRoutes from "./PrivateRoutes";
-
 const queryClient = new QueryClient();
 function App() {
   axios.defaults.baseURL = "https://aurora-team.com/labs-obada/api";
   axios.defaults.headers.common["Authorization"] =
     "Bearer " + localStorage.getItem("token");
+  // "Bearer " + localStorage.getItem("token-lab");
+
   return (
     <div className="bg-[#F2F4F7] h-full w-full  ">
       <Router>

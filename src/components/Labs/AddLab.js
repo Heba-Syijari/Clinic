@@ -8,6 +8,7 @@ import { IoCalendarOutline } from "react-icons/io5";
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import LabNameContainer from "./AddLab/LabNameContainer";
+import { t } from "i18next";
 
 export default function AddLab({ open, setOpen }) {
   const cancelButtonRef = useRef(null);
@@ -60,7 +61,7 @@ export default function AddLab({ open, setOpen }) {
                   <div className="bg-white ">
                     <div className="w-full flex  h-full items-center mt-5">
                       <p className="  justify-center font-Poppins-SemiBold flex flex-grow text-lg ml-10">
-                        Add Lab
+                        {t("Add Lab")}
                       </p>
                       <IoIosClose
                         className=" text-4xl  text-black border-[1px] rounded-full cursor-pointer bg-[#E4E7EC] "
@@ -85,7 +86,7 @@ export default function AddLab({ open, setOpen }) {
                                 : "text-[#98A2B3]"
                             }  text-sm font-Poppins-Medium  `}
                           >
-                            With system
+                            {t("With system")}
                           </p>
                         </div>
 
@@ -104,7 +105,7 @@ export default function AddLab({ open, setOpen }) {
                                 : "text-[#98A2B3]"
                             }  text-sm font-Poppins-Medium  `}
                           >
-                            Without system
+                            {t("Without system")}
                           </p>
                         </div>
                       </div>
@@ -116,7 +117,7 @@ export default function AddLab({ open, setOpen }) {
                         <div className="w-full break-words border-[#E4E7EC] h-fit bg-[#F9FAFF] flex space-x-2 items-center py-4 px-4    relative m-auto border-[1px] rounded-xl ">
                           <input
                             name="Code"
-                            placeholder="Code"
+                            placeholder={t("Code")}
                             type="text"
                             className="w-full bg-[#F9FAFF] font-Poppins-Medium text-xs placeholder:text-[#98A2B3] outline-0 ring-0"
                           />
@@ -132,7 +133,7 @@ export default function AddLab({ open, setOpen }) {
                         <div className="w-full break-words border-[#E4E7EC] h-fit bg-[#F9FAFF] flex space-x-2 items-center py-4 px-4    relative m-auto border-[1px] rounded-xl ">
                           <input
                             name="LabName"
-                            placeholder="Lab name"
+                            placeholder={t("Lab name")}
                             type="text"
                             className="w-full bg-[#F9FAFF] font-Poppins-Medium text-xs placeholder:text-[#908F8F] outline-0 ring-0"
                           />
@@ -140,7 +141,7 @@ export default function AddLab({ open, setOpen }) {
                         <div className="w-full break-words border-[#E4E7EC] h-fit bg-[#F9FAFF] flex space-x-2 items-center py-4 px-4    relative m-auto border-[1px] rounded-xl ">
                           <input
                             name="Address"
-                            placeholder="Address"
+                            placeholder={t("Address")}
                             type="text"
                             className="w-full bg-[#F9FAFF] font-Poppins-Medium text-xs placeholder:text-[#908F8F] outline-0 ring-0"
                           />
@@ -148,7 +149,7 @@ export default function AddLab({ open, setOpen }) {
                         <div className="w-full break-words border-[#E4E7EC] h-fit bg-[#F9FAFF] flex space-x-2 items-center py-4 px-4    relative m-auto border-[1px] rounded-xl ">
                           <input
                             name="PhoneNumber"
-                            placeholder="Phone number"
+                            placeholder={t("Phone number")}
                             type="text"
                             className="w-full bg-[#F9FAFF] font-Poppins-Medium text-xs placeholder:text-[#908F8F] outline-0 ring-0"
                           />
@@ -162,7 +163,7 @@ export default function AddLab({ open, setOpen }) {
                       type="button"
                       className="flex flex-grow font-medium text-sm py-3 bg-[#B7C835] justify-center rounded-xl text-white"
                     >
-                      Add Lab
+                      {t("Add Lab")}
                     </button>
                   </div>
                 </Dialog.Panel>

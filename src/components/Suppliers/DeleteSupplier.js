@@ -2,10 +2,10 @@
 import React, { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { IoIosClose } from "react-icons/io";
+import { t } from "i18next";
 
 export default function DeleteSupplier({ open, setOpen, id }) {
   const cancelButtonRef = useRef(null);
-
 
   function close() {
     setOpen(false);
@@ -47,7 +47,7 @@ export default function DeleteSupplier({ open, setOpen, id }) {
                   <div className="bg-white ">
                     <div className="w-full flex  h-full items-center mt-5">
                       <p className="  justify-center font-Poppins-SemiBold flex flex-grow text-lg ml-10">
-                        Delete Supplier
+                        {t("Delete Supplier")}
                       </p>
                       <IoIosClose
                         className=" text-4xl  text-black border-[1px] rounded-full cursor-pointer bg-[#E4E7EC] "
@@ -59,9 +59,9 @@ export default function DeleteSupplier({ open, setOpen, id }) {
                       <div className={`space-y-5 flex-col `}>
                         <div className="w-full ">
                           <p className="w-fit  font-Poppins-Medium text-sm ">
-                            Do you want to delete? :{" "}
+                            {t("Do you want to delete This Supplier?")} :{" "}
                             <span className="text-black ml-5">
-                              This Supplier
+                              
                             </span>
                           </p>
                         </div>

@@ -28,11 +28,14 @@ function AddSection({ show }) {
           </label>
         </div>
       </div>
-      <div className={`${ShowAnalysisDetail == true ? "hidden" : "flex"
-        } border-[#E4E7EC] w-full h-fit bg-[#F9FAFF] flex space-x-2 items-center py-3 px-4    relative m-auto border-[1px] rounded-xl `}>
+      <div
+        className={`${
+          ShowAnalysisDetail == true ? "hidden" : "flex"
+        } border-[#E4E7EC] w-full h-fit bg-[#F9FAFF] flex space-x-2 items-center py-3 px-4    relative m-auto border-[1px] rounded-xl `}
+      >
         <input
           name="SectionName"
-          placeholder="Section name"
+          placeholder={t("Section name")}
           type="text"
           className="w-full bg-[#F9FAFF] font-Poppins-Regular text-sm text-[#707070] outline-0 ring-0"
         />
@@ -44,12 +47,12 @@ function AddSection({ show }) {
       >
         <div className="bg-[#F04438] border-[1px] border-[#D0D5DD] w-fit  flex items-center justify-center px-16 py-2 rounded-xl cursor-pointer ">
           <p className="text-sm flex items-center justify-center text-white font-Poppins-Regular">
-            Delete
+            {t("Delete")}
           </p>
         </div>
         <div className="bg-[#B7C835] w-fit  flex items-center justify-center px-28 py-3 rounded-xl cursor-pointer ">
           <p className="text-sm flex items-center justify-center text-white font-Poppins-Regular">
-            Save
+            {t("Save")}
           </p>
         </div>
       </div>

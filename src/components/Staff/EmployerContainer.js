@@ -7,6 +7,7 @@ import { AiFillEye } from "react-icons/ai";
 import { RiEdit2Fill } from "react-icons/ri";
 import { IoMdTrash } from "react-icons/io";
 import { Link } from "react-router-dom";
+import { t } from "i18next";
 
 function EmployerContainer({
   setOpenDeleteEmployss,
@@ -61,7 +62,7 @@ function EmployerContainer({
 
             <AiFillEye className="text-[#98A2B3] text-xl" />
             <h1 className="font-Poppins-Regular text-[#98A2B3] text-sm">
-              View profile
+              {t("View profile")}
             </h1>
           </Link>
 
@@ -72,7 +73,7 @@ function EmployerContainer({
             <div className="bg-[#b7c835] opacity-10 absolute w-full h-full rounded-md hidden group-hover:block" />
             <RiEdit2Fill className="text-[#B7C835] text-xl" />
             <h1 className="font-Poppins-Regular font-semibold text-[#B7C835] text-sm">
-              Edit
+              {t("Edit")}
             </h1>
           </Link>
 
@@ -83,7 +84,7 @@ function EmployerContainer({
             <div className="bg-[#b7c835] opacity-10 absolute w-full h-full rounded-md hidden group-hover:block" />
             <IoMdTrash className="text-[#F04438] text-xl " />
             <h1 className="font-Poppins-Regular text-[#F04438] text-sm">
-              Delete
+              {t("Delete")}
             </h1>
           </div>
         </div>
