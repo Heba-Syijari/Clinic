@@ -7,9 +7,9 @@ import AddDoctor from "./components/Doctors/AddDoctor";
 import DoctorPangration from "./components/Doctors/DoctorPangration";
 import { Link } from "react-router-dom";
 import { VscListFlat } from "react-icons/vsc";
-
 import Header from "./components/Header";
 import { useTranslation } from "react-i18next";
+import axios from "axios";
 
 const Doctor = [
   {
@@ -128,6 +128,39 @@ const Doctor = [
 
 function Doctors() {
   const { t, i18n } = useTranslation();
+
+  const [OpenDeleteGender, setOpenDeleteGender] = useState(false);
+  const [OpenEditGender, setOpenEditGender] = useState(false);
+  // const dispatch = useDispatch();
+  // const GenderSelector = useSelector(selectGenders);
+  const [id, setId] = useState(0);
+  const [data, setData] = useState([]);
+  const GetStaff = async () => {
+    // document.getElementById("Loader").classList.remove("hidden");
+    // document.getElementById("Loader").classList.add("flex");
+
+    await axios.get(`/lab-scope/myDoctors`).then((response) => {
+      setData(response.data);
+      //dispatch(addAllGender(response.data));
+      // document.getElementById("Loader").classList.add("hidden");
+      // document.getElementById("Loader").classList.remove("flex");
+      console.log(response.data);
+    });
+  };
+
+  useEffect(() => {
+    GetStaff();
+  }, []);
+
+  const Edit = (id) => {
+    setId(id);
+    setOpenEditGender(true);
+  };
+
+  const remove = (id) => {
+    setId(id);
+    setOpenDeleteGender(true);
+  };
 
   const [value, setValue] = useState({
     startDate: new Date(),

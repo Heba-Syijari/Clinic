@@ -28,8 +28,8 @@ export default function LoginSystemDB() {
         cookies.set("token_Admin", res.data, { path: "/" });
         localStorage.setItem("token", res.data.token);
         //localStorage.setItem("token", JSON.stringify(res.data.token));
-        // window.location.replace("/SystemDashBoard");
-        navigate("/SystemDashBoard");
+        window.location.replace("/SystemDashBoard");
+        //navigate("/SystemDashBoard");
         console.log(res);
       })
       .catch((error) => {
